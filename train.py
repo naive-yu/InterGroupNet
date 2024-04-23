@@ -28,19 +28,13 @@ def train(config):
     dehaze_net.apply(weights_init)
 
     train_dataset = dataloader.DehazeLoader(config.orig_images_path, config.hazy_images_path)
-    val_dataset = dataloader.DehazeLoader(config.orig_images_path, config.hazy_images_path, mode="val")
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=config.train_batch_size, shuffle=True, num_workers=config.num_workers,
-                                               pin_memory=True)
-    val_loader = torch.utils.data.DataLoader(val_dataset, batch_size=config.val_batch_size, shuffle=True, num_workers=config.num_workers,
-                                             pin_memory=True)
+    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=config.train_batch_size, shuffle=True, num_workers=config.num_workers, pin_memory=True)
 
     criterion = nn.MSELoss().cuda()
     optimizer = torch.optim.Adam(dehaze_net.parameters(), lr=config.lr, weight_decay=config.weight_decay)
 
     dehaze_net.train()
 
-    # 只写入一次验证集的原始图像和含雾图像
-    # flag = True
     for epoch in range(config.num_epochs):
         for index, (img_orig, img_haze) in enumerate(train_loader):
 
@@ -58,25 +52,15 @@ def train(config):
 
             if ((index + 1) % config.display_iter) == 0:
                 print("Loss at batch", index + 1, ":", loss.item())
-                # 保存模型快照
-                # if ((index + 1) % config_para.snapshot_iter) == 0:
-                #     torch.save(DehazeNet.state_dict(), config_para.snapshots_folder + "Epoch" + str(epoch) + '.pth')
-            # record
-            # Validation Stage
-        # my_net.eval()
-        # with torch.no_grad():
-        #     for index, (img_orig, img_haze) in enumerate(val_loader):
-        #         img_orig = img_orig.cuda()
-        #         img_haze = img_haze.cuda()
-        #         clean_image = my_net(img_haze)
-        #
-        #         if flag:
-        #             torchvision.utils.save_image(img_orig, config.origin_output_folder + str(index + 1) + ".png")
-        #             torchvision.utils.save_image(img_haze, config.haze_output_folder + str(index + 1) + ".png")
-        #         torchvision.utils.save_image(clean_image, config.clean_output_folder + str(index + 1) + ".png")
-        #     flag = False
-        torch.save(dehaze_net.state_dict(), config.snapshots_folder + "DehazeNet_epoch" + str(epoch) + ".pth")
+        # 保存模型快照
+        # record
+        torch.save(
+            dehaze_net.state_dict(),
+            f"{config.snapshots_folder}DehazeNet_epoch{str(epoch)}.pth",
+        )
         print(f"epoch{epoch} finished!")
+
+
 
 
 if __name__ == "__main__":
@@ -84,22 +68,17 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
 
     # Input Parameters
-    parser.add_argument('--orig_images_path', type=str, default="data/images/")
-    parser.add_argument('--hazy_images_path', type=str, default="data/data/")
+    parser.add_argument('--orig_images_path', type=str, default="Haze4K/test/gt/")
+    parser.add_argument('--hazy_images_path', type=str, default="Haze4K/test/haze/")
     parser.add_argument('--lr', type=float, default=0.0001)
     parser.add_argument('--weight_decay', type=float, default=0.0001)
     parser.add_argument('--grad_clip_norm', type=float, default=0.1)
-    parser.add_argument('--num_epochs', type=int, default=300)
+    parser.add_argument('--num_epochs', type=int, default=200)
     parser.add_argument('--train_batch_size', type=int, default=8)
-    parser.add_argument('--val_batch_size', type=int, default=1)
     parser.add_argument('--num_workers', type=int, default=4)
     parser.add_argument('--display_iter', type=int, default=10)
     parser.add_argument('--snapshot_iter', type=int, default=200)
     parser.add_argument('--snapshots_folder', type=str, default="snapshots/")
-    parser.add_argument('--sample_output_folder', type=str, default="samples/")
-    parser.add_argument('--origin_output_folder', type=str, default="original/")
-    parser.add_argument('--clean_output_folder', type=str, default="clean_path/")
-    parser.add_argument('--haze_output_folder', type=str, default="haze_image_path/")
 
     config_para = parser.parse_args()
 
