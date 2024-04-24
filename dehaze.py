@@ -19,7 +19,7 @@ parser.add_argument('--dehaze_dir', default='Haze4K/test/dehaze')
 parser.add_argument('--original_dir', default='Haze4K/test/gt')
 parser.add_argument('--haze_dir', default='Haze4K/test/haze')
 parser.add_argument('--sample_dir', default='samples/')
-parser.add_argument('--snapshot_model', default='snapshots/record-DehazeNet_epoch30.pth')
+parser.add_argument('--snapshot_model', default='record-snapshots/DehazeNet_epoch12.pth')
 
 config = parser.parse_args()
 
@@ -45,12 +45,14 @@ def dehazeImage(my_net, haze_image_path, dehaze_path):
     dehaze_image = (dehaze_image * 255.0).astype(np.uint8)  # 将像素值转换为0-255范围内的整数
 
     # 构建保存路径
+    # 构建保存路径
     if os.name == 'posix':
         # print("当前程序在 Linux 系统上运行")
         dehaze_file_name = haze_image_path.split('/')[-1].split('_')[0] + '.png'
     elif os.name == 'nt':
         # print("当前程序在 Windows 系统上运行")
-        dehaze_file_name = haze_image_path.split('\\')[-1].split('_')[0] + '.png'   
+        dehaze_file_name = haze_image_path.split('\\')[-1].split('_')[0] + '.png'
+
     dehaze_file_path = os.path.join(dehaze_path, dehaze_file_name)
     # print(dehaze_file_path)
     # 保存图像
