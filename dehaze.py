@@ -1,8 +1,13 @@
+import datetime
 import torch
 import torchvision
 import torch.optim
-import net
+import net as net1
+import net2 as net2
+import net as net3
+import net as net4
 import numpy as np
+import pandas as pd
 from PIL import Image
 import glob
 import argparse
@@ -19,9 +24,15 @@ parser.add_argument('--dehaze_dir', default='Haze4K/test/dehaze')
 parser.add_argument('--original_dir', default='Haze4K/test/gt')
 parser.add_argument('--haze_dir', default='Haze4K/test/haze')
 parser.add_argument('--sample_dir', default='samples/')
-parser.add_argument('--snapshot_model', default='snapshots/record-DehazeNet_epoch30.pth')
+parser.add_argument('--snapshot_model_dir_or_file', default='snapshots1/')
+parser.add_argument('--cuda_index', default=3)
+parser.add_argument('--result_file', default="result.xlsx")
 
 config = parser.parse_args()
+
+# num_gpus = torch.cuda.device_count()
+# print(num_gpus)
+cuda_index = config.cuda_index
 
 
 def dehazeImage(my_net, haze_image_path, dehaze_path):
@@ -29,12 +40,12 @@ def dehazeImage(my_net, haze_image_path, dehaze_path):
     data_haze = cv2.imread(haze_image_path)
     # 将图像归一化到 [0, 1]
     if data_haze is None:
-        print(f"Error: Unable to load image {haze_image_path}")
+        print(f"[{datetime.datetime.now()}] Error: Unable to load image {haze_image_path}")
     data_haze = data_haze.astype(np.float32) / 255.0
     # 调整图像的通道顺序，从 (height, width, channels) 变为 (channels, height, width)
     data_haze = np.transpose(data_haze, (2, 0, 1))
     # 将图像数据转换为PyTorch Tensor，并添加一个批次维度
-    data_haze = torch.from_numpy(data_haze).float().cuda().unsqueeze(0)
+    data_haze = torch.from_numpy(data_haze).float().cuda(cuda_index).unsqueeze(0)
 
     # 使用模型进行去雾
     dehaze_image = my_net(data_haze)
@@ -50,7 +61,8 @@ def dehazeImage(my_net, haze_image_path, dehaze_path):
         dehaze_file_name = haze_image_path.split('/')[-1].split('_')[0] + '.png'
     elif os.name == 'nt':
         # print("当前程序在 Windows 系统上运行")
-        dehaze_file_name = haze_image_path.split('\\')[-1].split('_')[0] + '.png'   
+        dehaze_file_name = haze_image_path.split('\\')[-1].split('_')[0] + '.png'
+
     dehaze_file_path = os.path.join(dehaze_path, dehaze_file_name)
     # print(dehaze_file_path)
     # 保存图像
@@ -99,27 +111,73 @@ def dataAnalysis(haze_path, origin_path, dehaze_path):
     return avg_score_psnr, avg_score_ssim
 
 
-if __name__ == '__main__':
-    # 读取参数
-    dehaze_dir = config.dehaze_dir
-    original_dir = config.original_dir
-    haze_dir = config.haze_dir
-    snapshot_model = config.snapshot_model
-
-    # 导入快照模型
-    dehaze_net = net.DehazeNet().cuda()
-    dehaze_net.load_state_dict(torch.load(snapshot_model))
-
+def runTest(net, snapshot_model):
     # 测试模式
-    dehaze_net.eval()
-    print("test start....")
+    net.load_state_dict(torch.load(snapshot_model))
+    net.eval()
+    print(f"[{datetime.datetime.now()}] test start with {snapshot_model}")
     with torch.no_grad():
         # print(glob.glob(f"{haze_dir}/*"))
         for image in glob.glob(f"{haze_dir}/*"):
-            dehazeImage(dehaze_net, image, dehaze_dir)
-    print("test end....")
+            dehazeImage(net, image, dehaze_dir)
+    print(f"[{datetime.datetime.now()}] test end with {snapshot_model}")
 
-    # 分析结果
-    avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
-    print("===> Avg_PSNR: {:.4f} dB ".format(avg_psnr))
-    print("===> Avg_SSIM: {:.4f} ".format(avg_ssim))
+
+def analysis_out(file_path, DF):
+    # pd.DataFrame(result).to_excel(util.stock_files_dataAnalysis_path, sheet_name='sheet1', index=False)
+    # cols = ['情况', '操作', '总收益', '出现次数', '平均收益', '总盈利', '盈利次数', '平均盈利', '胜率']
+    try:
+        if not os.path.exists(file_path):
+            DF.to_excel(file_path, sheet_name='sheet1', index=False)
+        else:
+            with pd.ExcelWriter(file_path, engine='openpyxl', mode='a') as writer:
+                DF.to_excel(writer, sheet_name='sheet1', index=False, header=False)
+    except Exception as e:
+        print(f"[{datetime.datetime.now()}] Warning!")
+        raise e
+
+if __name__ == '__main__':
+    # 读取参数
+    snapshot_model_dir_or_file = config.snapshot_model_dir_or_file
+    dehaze_dir = config.dehaze_dir
+    original_dir = config.original_dir
+    haze_dir = config.haze_dir
+    result_file = config.result_file
+    
+    # 导入快照模型
+    net_num = int(snapshot_model_dir_or_file.split('/')[-2][-1])
+    if net_num == 1:
+        dehaze_net = net1.DehazeNet().cuda(cuda_index)
+    elif net_num == 2:
+        dehaze_net = net2.DehazeNet().cuda(cuda_index)
+    elif net_num == 3:
+        dehaze_net = net3.DehazeNet().cuda(cuda_index)
+    else:
+        dehaze_net = net4.DehazeNet().cuda(cuda_index)
+    # 判断路径是目录还是文件
+    try:
+        if os.path.isfile(snapshot_model_dir_or_file):
+            # 单文件不使用表格记录结果
+            runTest(dehaze_net, snapshot_model=snapshot_model_dir_or_file)
+            # 分析结果
+            avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
+            print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
+        elif os.path.isdir(snapshot_model_dir_or_file):
+            df = pd.DataFrame(columns=['net', 'model', 'avg_psnr', 'avg_ssim'])
+            for snapshot_model in os.listdir(snapshot_model_dir_or_file):
+                # print(snapshot_model)
+                snapshot_model_file = os.path.join(snapshot_model_dir_or_file, snapshot_model)
+                runTest(dehaze_net, snapshot_model=snapshot_model_file)
+                # 分析结果并输出到excel文件
+                avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
+                df.loc[len(df)] = {'net': f'net{net_num}' , 'model': snapshot_model, 'avg_psnr': avg_psnr, 'avg_ssim': avg_ssim}
+                print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
+                # 测试专用
+                # if len(df) >= 3:
+                #     break
+            analysis_out(result_file, df)
+    except Exception as e:
+        print(f"[{datetime.datetime.now()}] Warning!")
+        print(e)
+
+

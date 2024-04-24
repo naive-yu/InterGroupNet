@@ -26,12 +26,11 @@ parser.add_argument('--train_batch_size', type=int, default=8)
 parser.add_argument('--num_workers', type=int, default=4)
 parser.add_argument('--display_iter', type=int, default=10)
 parser.add_argument('--snapshot_iter', type=int, default=200)
-parser.add_argument('--cuda_index', type=str, default=0)
-parser.add_argument('--snapshots_folder', type=str, default="snapshots/")
+parser.add_argument('--cuda_index', type=str, default=2)
+parser.add_argument('--snapshots_folder', type=str, default="snapshots2/")
 
 config_para = parser.parse_args()
 cuda_index = config_para.cuda_index
-torch.cuda.empty_cache()
 
 def weights_init(m):
     class_name = m.__class__.__name__
@@ -78,6 +77,7 @@ def train(config):
             f"{config.snapshots_folder}DehazeNet_epoch{str(epoch)}.pth",
         )
         print(f"epoch{epoch} finished!")
+
 
 
 if __name__ == "__main__":
