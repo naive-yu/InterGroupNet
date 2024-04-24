@@ -11,6 +11,7 @@ random.seed(1143)
 
 def generate_train_list(orig_images_path, hazy_images_path):
     # 训练集
+    # print(f"{orig_images_path},{hazy_images_path}")
     train_list = []
     tmp_dict = {}
     haze_image_list = glob.glob(hazy_images_path + "*.png")
@@ -19,8 +20,8 @@ def generate_train_list(orig_images_path, hazy_images_path):
         image = image.split("\\")[-1]  # 图片文件名
         key = image.split("_")[0] + ".png"  # 该图片对应的原图文件名
         # print(key)
-        if key in tmp_dict.keys():
-            tmp_dict[key] = image
+        # if key in tmp_dict.keys():
+        tmp_dict[key] = image
 
     for key in tmp_dict.keys():
         train_list.append([orig_images_path + key, hazy_images_path + tmp_dict[key]])
@@ -33,11 +34,11 @@ def generate_train_list(orig_images_path, hazy_images_path):
 class DehazeLoader(data.Dataset):
 
     def __init__(self, orig_images_path, hazy_images_path, mode='train'):
-        self.train_list, self.val_list = generate_train_list(orig_images_path, hazy_images_path)
+        self.data_list = generate_train_list(orig_images_path, hazy_images_path)
 
         if mode == 'train':
-            self.data_list = self.train_list
-            print("Total train examples:", len(self.train_list))
+            # self.data_list = self.train_list
+            print("Total train examples:", len(self.data_list))
 
     def __getitem__(self, index):
         data_orig_path, data_hazy_path = self.data_list[index]

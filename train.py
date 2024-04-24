@@ -61,15 +61,13 @@ def train(config):
         print(f"epoch{epoch} finished!")
 
 
-
-
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser()
 
     # Input Parameters
-    parser.add_argument('--orig_images_path', type=str, default="Haze4K/test/gt/")
-    parser.add_argument('--hazy_images_path', type=str, default="Haze4K/test/haze/")
+    parser.add_argument('--orig_images_path', type=str, default="Haze4K/train/gt/")
+    parser.add_argument('--hazy_images_path', type=str, default="Haze4K/train/haze/")
     parser.add_argument('--lr', type=float, default=0.0001)
     parser.add_argument('--weight_decay', type=float, default=0.0001)
     parser.add_argument('--grad_clip_norm', type=float, default=0.1)
@@ -84,7 +82,5 @@ if __name__ == "__main__":
 
     if not os.path.exists(config_para.snapshots_folder):
         os.mkdir(config_para.snapshots_folder)
-    if not os.path.exists(config_para.sample_output_folder):
-        os.mkdir(config_para.sample_output_folder)
 
     train(config_para)
