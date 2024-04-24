@@ -1,3 +1,5 @@
+import os
+
 import cv2
 import torch
 import torch.utils.data as data
@@ -17,7 +19,13 @@ def generate_train_list(orig_images_path, hazy_images_path):
     haze_image_list = glob.glob(hazy_images_path + "*.png")
 
     for image in haze_image_list:
-        image = image.split("\\")[-1]  # 图片文件名
+        if os.name == 'posix':
+            # print("当前程序在 Linux 系统上运行")
+            image = image.split("/")[-1]  # 图片文件名
+        elif os.name == 'nt':
+            # print("当前程序在 Windows 系统上运行")
+            image = image.split("\\")[-1]  # 图片文件名
+
         key = image.split("_")[0] + ".png"  # 该图片对应的原图文件名
         # print(key)
         # if key in tmp_dict.keys():
@@ -43,6 +51,7 @@ class DehazeLoader(data.Dataset):
     def __getitem__(self, index):
         data_orig_path, data_hazy_path = self.data_list[index]
 
+        # print(f"{data_orig_path},{data_hazy_path}")
         # 通过路径获取图像
         data_orig = cv2.imread(data_orig_path)
         data_hazy = cv2.imread(data_hazy_path)
