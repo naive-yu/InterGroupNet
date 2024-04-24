@@ -45,7 +45,12 @@ def dehazeImage(my_net, haze_image_path, dehaze_path):
     dehaze_image = (dehaze_image * 255.0).astype(np.uint8)  # 将像素值转换为0-255范围内的整数
 
     # 构建保存路径
-    dehaze_file_name = haze_image_path.split('\\')[-1].split('_')[0] + '.png'
+    if os.name == 'posix':
+        # print("当前程序在 Linux 系统上运行")
+        dehaze_file_name = haze_image_path.split('/')[-1].split('_')[0] + '.png'
+    elif os.name == 'nt':
+        # print("当前程序在 Windows 系统上运行")
+        dehaze_file_name = haze_image_path.split('\\')[-1].split('_')[0] + '.png'   
     dehaze_file_path = os.path.join(dehaze_path, dehaze_file_name)
     # print(dehaze_file_path)
     # 保存图像
