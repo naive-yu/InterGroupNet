@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 import math
-import train2 as train
+import train3 as train
 import torch.nn.functional as F
 
 
@@ -28,7 +28,7 @@ class DehazeNet(nn.Module):
         x1 = self.relu(self.e_conv1(x))
         x2 = self.relu(self.e_conv2(x1))
 
-        concat1 = torch.cat((x1, x2), 1)
+        concat1 = torch.cat((x1, x2), 2)
         x3 = self.relu(self.e_conv3(concat1))
 
         concat2 = torch.cat((x2, x3), 1)

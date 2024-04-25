@@ -2,10 +2,10 @@ import datetime
 import torch
 import torchvision
 import torch.optim
-import net as net1
+import net1 as net1
 import net2 as net2
-import net as net3
-import net as net4
+import net3 as net3
+import net1 as net4
 import numpy as np
 import pandas as pd
 from PIL import Image
@@ -19,14 +19,15 @@ from skimage.metrics import structural_similarity as ssim
 from skimage.metrics import peak_signal_noise_ratio as psnr
 
 # 参数配置器
+dehaze_for_net_index = 2
 parser = argparse.ArgumentParser(description='Performance')
 parser.add_argument('--dehaze_dir', default='Haze4K/test/dehaze')
 parser.add_argument('--original_dir', default='Haze4K/test/gt')
 parser.add_argument('--haze_dir', default='Haze4K/test/haze')
-parser.add_argument('--sample_dir', default='samples/')
-parser.add_argument('--snapshot_model_dir_or_file', default='snapshots1/')
-parser.add_argument('--cuda_index', default=3)
-parser.add_argument('--result_file', default="result.xlsx")
+parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
+parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
+parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch0.pth')
+parser.add_argument('--cuda_index', default=0)
 
 config = parser.parse_args()
 
@@ -128,10 +129,9 @@ def analysis_out(file_path, DF):
     # cols = ['情况', '操作', '总收益', '出现次数', '平均收益', '总盈利', '盈利次数', '平均盈利', '胜率']
     try:
         if not os.path.exists(file_path):
-            DF.to_excel(file_path, sheet_name='sheet1', index=False)
+            DF.to_csv(file_path, index=False)
         else:
-            with pd.ExcelWriter(file_path, engine='openpyxl', mode='a') as writer:
-                DF.to_excel(writer, sheet_name='sheet1', index=False, header=False)
+            DF.to_csv(file_path, mode='a', header=False, index=False)
     except Exception as e:
         print(f"[{datetime.datetime.now()}] Warning!")
         raise e
@@ -144,6 +144,11 @@ if __name__ == '__main__':
     haze_dir = config.haze_dir
     result_file = config.result_file
     
+    # 确保目录存在
+    if not os.path.exists(dehaze_dir):
+        os.mkdir(dehaze_dir)
+    if not os.path.exists(config.sample_dir):
+        os.mkdir(config.sample_dir)
     # 导入快照模型
     net_num = int(snapshot_model_dir_or_file.split('/')[-2][-1])
     if net_num == 1:
@@ -163,21 +168,22 @@ if __name__ == '__main__':
             avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
             print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
         elif os.path.isdir(snapshot_model_dir_or_file):
-            df = pd.DataFrame(columns=['net', 'model', 'avg_psnr', 'avg_ssim'])
             for snapshot_model in os.listdir(snapshot_model_dir_or_file):
                 # print(snapshot_model)
+                df = pd.DataFrame(columns=['net', 'epoch', 'model', 'avg_psnr', 'avg_ssim'])
+                snapshot_model_index = snapshot_model.split('.')[0].split('h')[-1]
                 snapshot_model_file = os.path.join(snapshot_model_dir_or_file, snapshot_model)
                 runTest(dehaze_net, snapshot_model=snapshot_model_file)
-                # 分析结果并输出到excel文件
+                # 分析结果并输出到csv文件
                 avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
-                df.loc[len(df)] = {'net': f'net{net_num}' , 'model': snapshot_model, 'avg_psnr': avg_psnr, 'avg_ssim': avg_ssim}
+                df.loc[len(df)] = {'net': f'net{net_num}', 'epoch': snapshot_model_index, 'model': snapshot_model, 'avg_psnr': avg_psnr, 'avg_ssim': avg_ssim}
                 print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
                 # 测试专用
-                # if len(df) >= 3:
+                # if idx >= 2:
                 #     break
-            analysis_out(result_file, df)
+                analysis_out(result_file, df)
     except Exception as e:
-        print(f"[{datetime.datetime.now()}] Warning!")
+        print(f"[{datetime.datetime.now()}] Warning! net{net_num}")
         print(e)
 
 

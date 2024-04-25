@@ -5,7 +5,7 @@ import torch.optim
 import os
 import argparse
 import dataloader
-import net2 as net
+import net3 as net
 
 # import sys
 # import time
@@ -26,8 +26,8 @@ parser.add_argument('--train_batch_size', type=int, default=8)
 parser.add_argument('--num_workers', type=int, default=4)
 parser.add_argument('--display_iter', type=int, default=10)
 parser.add_argument('--snapshot_iter', type=int, default=200)
-parser.add_argument('--cuda_index', type=str, default=2)
-parser.add_argument('--snapshots_folder', type=str, default="snapshots2/")
+parser.add_argument('--cuda_index', type=str, default=3)
+parser.add_argument('--snapshots_folder', type=str, default="snapshots3/")
 
 config_para = parser.parse_args()
 cuda_index = config_para.cuda_index

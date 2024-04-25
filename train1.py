@@ -5,7 +5,7 @@ import torch.optim
 import os
 import argparse
 import dataloader
-import net
+import net1 as net
 
 # import sys
 # import time
