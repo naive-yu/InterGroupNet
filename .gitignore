@@ -4,6 +4,7 @@
 /__pycache__
 /记录.txt
 /Haze4K/test/dehaze/
+/snapshots1_0/
 /snapshots1/
 /snapshots2/
 /snapshots3/
@@ -13,3 +14,4 @@
 /samples2/
 /samples2/
 /generate_string.py
+/blank.txt

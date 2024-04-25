@@ -19,15 +19,16 @@ from skimage.metrics import structural_similarity as ssim
 from skimage.metrics import peak_signal_noise_ratio as psnr
 
 # 参数配置器
-dehaze_for_net_index = 2
+dehaze_for_net_index = 1
 parser = argparse.ArgumentParser(description='Performance')
 parser.add_argument('--dehaze_dir', default='Haze4K/test/dehaze')
 parser.add_argument('--original_dir', default='Haze4K/test/gt')
 parser.add_argument('--haze_dir', default='Haze4K/test/haze')
 parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
 parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
-parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch0.pth')
-parser.add_argument('--cuda_index', default=0)
+# parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch0.pth')
+parser.add_argument('--snapshot_model_dir_or_file', default='record-snapshots/record-net1-DehazeNet_epoch154.pth')
+parser.add_argument('--cuda_index', default=2)
 
 config = parser.parse_args()
 
@@ -39,10 +40,12 @@ cuda_index = config.cuda_index
 def dehazeImage(my_net, haze_image_path, dehaze_path):
     # 读取雾化图像
     data_haze = cv2.imread(haze_image_path)
+    
     # 将图像归一化到 [0, 1]
     if data_haze is None:
         print(f"[{datetime.datetime.now()}] Error: Unable to load image {haze_image_path}")
     data_haze = data_haze.astype(np.float32) / 255.0
+    data_haze = cv2.resize(data_haze, (640, 480), interpolation=cv2.INTER_LINEAR)
     # 调整图像的通道顺序，从 (height, width, channels) 变为 (channels, height, width)
     data_haze = np.transpose(data_haze, (2, 0, 1))
     # 将图像数据转换为PyTorch Tensor，并添加一个批次维度
@@ -83,23 +86,29 @@ def dataAnalysis(haze_path, origin_path, dehaze_path):
 
         # 读取原始图像和去雾后的图像
         # print(f"{origin_image_path}")
-        origin_image = cv2.imread(origin_image_path).astype(np.float32) / 255.0
-        dehaze_image = cv2.imread(dehaze_image_path).astype(np.float32) / 255.0
+        origin_image = cv2.imread(origin_image_path).astype(np.float32)/255.0
+        dehaze_image = cv2.imread(dehaze_image_path).astype(np.float32)/255.0
 
         # # 调整图像大小
         # (h, w, c) = origin_image.shape
         # dehaze_image = cv2.resize(dehaze_image, (w, h))  # 原图大小
 
+        # # 调整图像大小
+        # (h, w, c) = dehaze_image.shape
+        # origin_image = cv2.resize(origin_image, (w, h))  # 参考大小
+
         # 调整图像大小
-        (h, w, c) = dehaze_image.shape
-        origin_image = cv2.resize(origin_image, (w, h))  # 参考大小
+        (h, w) = origin_image.shape[:2]  # 获取原图的高度和宽度
+        dehaze_image = cv2.resize(dehaze_image, (w, h))  # 调整为原图大小
 
         # 计算评估指标
         score_psnr += psnr(origin_image, dehaze_image)
         score_ssim += ssim(origin_image, dehaze_image, multichannel=True, channel_axis=-1, data_range=1.0)
 
         # 保存图像
-        haze_image = cv2.imread(dehaze_image_path).astype(np.float32) / 255.0
+        haze_image = cv2.imread(haze_image_path).astype(np.float32)/255.0
+        
+        # print(f'{origin_image_path} {origin_image.shape} {dehaze_image.shape} {haze_image.shape}')
         if (idx + 1) % 10 == 0:
             im1 = F.to_tensor(origin_image).unsqueeze(0)
             im2 = F.to_tensor(dehaze_image).unsqueeze(0)
@@ -150,16 +159,20 @@ if __name__ == '__main__':
     if not os.path.exists(config.sample_dir):
         os.mkdir(config.sample_dir)
     # 导入快照模型
-    net_num = int(snapshot_model_dir_or_file.split('/')[-2][-1])
-    if net_num == 1:
+    net_num = snapshot_model_dir_or_file.split('/')[-2][-1]
+    if not net_num.isdigit():
         dehaze_net = net1.DehazeNet().cuda(cuda_index)
-    elif net_num == 2:
-        dehaze_net = net2.DehazeNet().cuda(cuda_index)
-    elif net_num == 3:
-        dehaze_net = net3.DehazeNet().cuda(cuda_index)
     else:
-        dehaze_net = net4.DehazeNet().cuda(cuda_index)
-    # 判断路径是目录还是文件
+        net_num = int(net_num)
+        if net_num == 1:
+            dehaze_net = net1.DehazeNet().cuda(cuda_index)
+        elif net_num == 2:
+            dehaze_net = net2.DehazeNet().cuda(cuda_index)
+        elif net_num == 3:
+            dehaze_net = net3.DehazeNet().cuda(cuda_index)
+        else:
+            dehaze_net = net4.DehazeNet().cuda(cuda_index)
+        # 判断路径是目录还是文件
     try:
         if os.path.isfile(snapshot_model_dir_or_file):
             # 单文件不使用表格记录结果

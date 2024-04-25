@@ -13,7 +13,7 @@ class DehazeNet(nn.Module):
 
         self.relu = nn.ReLU(inplace=True)
 
-        self.e_conv1 = nn.Conv2d(3, 9, 5, 1, 2, groups=3, bias=True, padding_mode='replicate')
+        self.e_conv1 = nn.Conv2d(3, 36, 5, 1, 2, groups=3, bias=True, padding_mode='replicate')
         self.e_conv2 = nn.Conv2d(3, 3, 5, 1, 2, bias=True, padding_mode='replicate')
         self.e_conv3 = nn.Conv2d(6, 3, 5, 1, 2, bias=True, padding_mode='replicate')
         self.e_conv4 = nn.Conv2d(6, 3, 5, 1, 2, bias=True, padding_mode='replicate')

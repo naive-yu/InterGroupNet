@@ -1,5 +1,4 @@
 import os
-
 import cv2
 import torch
 import torch.utils.data as data
@@ -57,8 +56,8 @@ class DehazeLoader(data.Dataset):
         data_hazy = cv2.imread(data_hazy_path)
 
         # 图像维度 480*640*3
-        data_orig = cv2.resize(data_orig, (480, 640), interpolation=cv2.INTER_LANCZOS4)
-        data_hazy = cv2.resize(data_hazy, (480, 640), interpolation=cv2.INTER_LANCZOS4) 
+        data_orig = cv2.resize(data_orig, (400, 400), interpolation=cv2.INTER_LANCZOS4)
+        data_hazy = cv2.resize(data_hazy, (400, 400), interpolation=cv2.INTER_LANCZOS4) 
         
         # # 图像维度 640*480*3
         # data_orig = cv2.resize(data_orig, (640, 480), interpolation=cv2.INTER_LANCZOS4)

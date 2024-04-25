@@ -5,7 +5,74 @@ import train3 as train
 import torch.nn.functional as F
 
 
-cuda_inedx = train.cuda_index
+# cuda_inedx = train.cuda_index
+
+# class DehazeNet(nn.Module):
+#     def __init__(self):
+#         super(DehazeNet, self).__init__()
+
+#         # 第一个分组卷积层
+#         self.conv1_1 = nn.Conv2d(3, 3, kernel_size=3, padding=1, groups=3, padding_mode='replicate')
+#         self.relu1_1 = nn.ReLU(inplace=True)
+#         self.conv1_2 = nn.Conv2d(32, 64, kernel_size=1)
+#         self.relu1_2 = nn.ReLU(inplace=True)
+#         self.pool1 = nn.MaxPool2d(kernel_size=2, stride=2)
+
+#         # 注意力模块
+#         self.attention1 = AttentionModule(64, 32)
+#         self.attention2 = AttentionModule(64, 16)
+
+#         # 第二个卷积层和池化层
+#         self.conv2 = nn.Conv2d(64, 128, kernel_size=3, padding=1)
+#         self.relu2 = nn.ReLU(inplace=True)
+#         self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
+
+#         # 上采样层和卷积层
+#         self.upsample = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
+#         self.conv3 = nn.Conv2d(128, 64, kernel_size=3, padding=1)
+#         self.relu3 = nn.ReLU(inplace=True)
+
+#         self.conv4 = nn.Conv2d(64, 3, kernel_size=3, padding=1)
+
+#     def forward(self, x):
+#         # 第一个分组卷积层和池化层
+#         x = self.pool1(self.relu1_2(self.conv1_2(self.relu1_1(self.conv1_1(x)))))
+
+#         # 注意力模块
+#         x = self.attention1(x)
+#         x = self.attention2(x)
+
+#         # 第二个卷积层和池化层
+#         x = self.pool2(self.relu2(self.conv2(x)))
+
+#         # 上采样和卷积
+#         x = self.upsample(x)
+#         x = self.relu3(self.conv3(x))
+
+#         # 最后的卷积层
+#         x = self.conv4(x)
+
+#         return x
+
+
+# class AttentionModule(nn.Module):
+#     def __init__(self, in_channels, out_channels):
+#         super(AttentionModule, self).__init__()
+
+#         self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size=1)
+#         self.sigmoid = nn.Sigmoid()
+
+#     def forward(self, x):
+#         # 使用全局平均池化获取注意力权重
+#         weights = self.sigmoid(self.conv1(torch.mean(x, dim=(2, 3), keepdim=True)))
+
+#         # 将注意力权重乘以输入特征图
+#         x = x * weights
+
+#         return x
+# # ===> Avg_PSNR: 18.6962 dB
+# # ===> Avg_SSIM: 0.8559  非边界填充
+
 class DehazeNet(nn.Module):
 
     def __init__(self):
@@ -13,7 +80,7 @@ class DehazeNet(nn.Module):
 
         self.relu = nn.ReLU(inplace=True)
 
-        self.e_conv1 = nn.Conv2d(3, 9, 5, 1, 2, groups=3, bias=True, padding_mode='replicate')
+        self.e_conv1 = nn.Conv2d(3, 3, 5, 1, 2, groups=3, bias=True, padding_mode='replicate')
         self.e_conv2 = nn.Conv2d(3, 3, 5, 1, 2, bias=True, padding_mode='replicate')
         self.e_conv3 = nn.Conv2d(6, 3, 5, 1, 2, bias=True, padding_mode='replicate')
         self.e_conv4 = nn.Conv2d(6, 3, 5, 1, 2, bias=True, padding_mode='replicate')
@@ -28,7 +95,7 @@ class DehazeNet(nn.Module):
         x1 = self.relu(self.e_conv1(x))
         x2 = self.relu(self.e_conv2(x1))
 
-        concat1 = torch.cat((x1, x2), 2)
+        concat1 = torch.cat((x1, x2), 1)
         x3 = self.relu(self.e_conv3(concat1))
 
         concat2 = torch.cat((x2, x3), 1)
