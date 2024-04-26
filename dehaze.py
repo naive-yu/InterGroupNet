@@ -26,9 +26,9 @@ parser.add_argument('--original_dir', default='Haze4K/test/gt')
 parser.add_argument('--haze_dir', default='Haze4K/test/haze')
 parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
 parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
-# parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch0.pth')
-parser.add_argument('--snapshot_model_dir_or_file', default='record-snapshots/record-net1-DehazeNet_epoch154.pth')
-parser.add_argument('--cuda_index', default=2)
+#parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
+parser.add_argument('--snapshot_model_dir_or_file', default='snapshots1/DehazeNet_epoch7.pth')
+parser.add_argument('--cuda_index', default=0)
 
 config = parser.parse_args()
 
@@ -45,7 +45,7 @@ def dehazeImage(my_net, haze_image_path, dehaze_path):
     if data_haze is None:
         print(f"[{datetime.datetime.now()}] Error: Unable to load image {haze_image_path}")
     data_haze = data_haze.astype(np.float32) / 255.0
-    data_haze = cv2.resize(data_haze, (640, 480), interpolation=cv2.INTER_LINEAR)
+    data_haze = cv2.resize(data_haze, (640, 480))
     # 调整图像的通道顺序，从 (height, width, channels) 变为 (channels, height, width)
     data_haze = np.transpose(data_haze, (2, 0, 1))
     # 将图像数据转换为PyTorch Tensor，并添加一个批次维度
@@ -99,7 +99,7 @@ def dataAnalysis(haze_path, origin_path, dehaze_path):
 
         # 调整图像大小
         (h, w) = origin_image.shape[:2]  # 获取原图的高度和宽度
-        dehaze_image = cv2.resize(dehaze_image, (w, h))  # 调整为原图大小
+        dehaze_image = cv2.resize(dehaze_image, (w, h), interpolation=cv2.INTER_LANCZOS4)  # 调整为原图大小
 
         # 计算评估指标
         score_psnr += psnr(origin_image, dehaze_image)

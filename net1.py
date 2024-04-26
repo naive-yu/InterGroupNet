@@ -77,27 +77,35 @@ class DehazeNet(nn.Module):
 
         self.relu = nn.ReLU(inplace=True)
 
-        self.e_conv1 = nn.Conv2d(3, 3, 5, 1, 2, groups=3, bias=True, padding_mode='replicate')
-        self.e_conv2 = nn.Conv2d(3, 3, 5, 1, 2, bias=True, padding_mode='replicate')
-        self.e_conv3 = nn.Conv2d(6, 3, 5, 1, 2, bias=True, padding_mode='replicate')
-        self.e_conv4 = nn.Conv2d(6, 3, 5, 1, 2, bias=True, padding_mode='replicate')
-        self.e_conv5 = nn.Conv2d(18, 3, 5, 1, 2, bias=True, padding_mode='replicate')
+        self.e_conv1 = nn.Conv2d(3, 6, 5, 1, 2, groups=3, bias=True, padding_mode='replicate') # 3,3
+        self.e_conv2 = nn.Conv2d(6, 3, 5, 1, 2, bias=True, padding_mode='replicate') # 3,3
+        self.e_conv3 = nn.Conv2d(9, 3, 5, 1, 2, bias=True) # 6,3
+        self.e_conv4 = nn.Conv2d(6, 3, 5, 1, 2, bias=True) # 6,3
+        self.e_conv5 = nn.Conv2d(21, 3, 5, 1, 2, bias=True) # 18,3
         self.attention = Attention2d(3, 3)
         self.spatial = SpatialOnlyBranch()
 
     def forward(self, x):
-        source = [x]
         xatt = self.attention.forward(x)
+        # print(f'xatt{xatt.shape}')
         xsatt = self.spatial.forward(x)
+        # print(f'xsatt{xsatt.shape}')
         x1 = self.relu(self.e_conv1(x))
+        # print(x1.shape)
+        
         x2 = self.relu(self.e_conv2(x1))
-
+        # print(x2.shape)
+        
         concat1 = torch.cat((x1, x2), 1)
+        # print(concat1.shape)
         x3 = self.relu(self.e_conv3(concat1))
+        # print(x3.shape)
 
         concat2 = torch.cat((x2, x3), 1)
+        # print(concat2.shape)
         x4 = self.relu(self.e_conv4(concat2))
-
+        # print(x4.shape)
+        
         # print(xatt.size())
         # print(x1.size())
         concat3 = torch.cat((x1, x2, x3, x4, xatt, xsatt), 1)
@@ -117,12 +125,18 @@ class Attention2d(nn.Module):
 
     def forward(self, x):
         x1 = self.avgpool(x)
+        # print(f'x1{x1.shape}')
         x1 = self.fc1(x1)
+        # print(f'x1{x1.shape}')
         x1 = self.relu(x1)
+        # print(f'x1{x1.shape}')
         x1 = self.fc2(x1)
+        # print(f'x1{x1.shape}')
         x1 = self.softmax(x1)
+        # print(f'x1{x1.shape}')
+        # print(x1)
         x = x * x1
-        return x + x1
+        return x #  x + x1
 
 
 class SpatialOnlyBranch(nn.Module):

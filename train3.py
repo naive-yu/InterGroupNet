@@ -4,7 +4,7 @@ import torchvision
 import torch.optim
 import os
 import argparse
-import dataloader2 as dataloader
+import dataloader
 import net3 as net
 
 # import sys
