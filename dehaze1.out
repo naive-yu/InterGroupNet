@@ -1,0 +1,202 @@
+[2024-04-27 11:11:49.019640] test start with snapshots1/DehazeNet_epoch0.pth
+[2024-04-27 11:12:24.275371] test end with snapshots1/DehazeNet_epoch0.pth
+[2024-04-27 11:13:59.608945] Avg_PSNR: 18.77841121891257 dB, Avg_SSIM: 0.8587221341938578
+[2024-04-27 11:13:59.634581] test start with snapshots1/DehazeNet_epoch99.pth
+[2024-04-27 11:14:34.516966] test end with snapshots1/DehazeNet_epoch99.pth
+[2024-04-27 11:16:09.155262] Avg_PSNR: 19.42067179495621 dB, Avg_SSIM: 0.8667320467733589
+[2024-04-27 11:16:09.180112] test start with snapshots1/DehazeNet_epoch92.pth
+[2024-04-27 11:16:44.232487] test end with snapshots1/DehazeNet_epoch92.pth
+[2024-04-27 11:18:18.962970] Avg_PSNR: 19.16922964092212 dB, Avg_SSIM: 0.8690473830599317
+[2024-04-27 11:18:18.990208] test start with snapshots1/DehazeNet_epoch100.pth
+[2024-04-27 11:18:55.217143] test end with snapshots1/DehazeNet_epoch100.pth
+[2024-04-27 11:20:30.565541] Avg_PSNR: 19.354822603070048 dB, Avg_SSIM: 0.867164415603395
+[2024-04-27 11:20:30.613315] test start with snapshots1/DehazeNet_epoch197.pth
+[2024-04-27 11:21:05.739348] test end with snapshots1/DehazeNet_epoch197.pth
+[2024-04-27 11:22:40.809843] Avg_PSNR: 19.1092655180675 dB, Avg_SSIM: 0.8557632936390235
+[2024-04-27 11:22:40.850889] test start with snapshots1/DehazeNet_epoch54.pth
+[2024-04-27 11:23:16.016078] test end with snapshots1/DehazeNet_epoch54.pth
+[2024-04-27 11:24:50.801515] Avg_PSNR: 18.60779779675815 dB, Avg_SSIM: 0.8517685937178824
+[2024-04-27 11:24:50.838513] test start with snapshots1/DehazeNet_epoch33.pth
+[2024-04-27 11:25:25.724388] test end with snapshots1/DehazeNet_epoch33.pth
+[2024-04-27 11:27:00.495076] Avg_PSNR: 19.16123346640487 dB, Avg_SSIM: 0.8682103795859963
+[2024-04-27 11:27:00.533748] test start with snapshots1/DehazeNet_epoch94.pth
+[2024-04-27 11:27:35.463553] test end with snapshots1/DehazeNet_epoch94.pth
+[2024-04-27 11:29:10.018021] Avg_PSNR: 19.352692311907514 dB, Avg_SSIM: 0.8709242580265565
+[2024-04-27 11:29:10.060030] test start with snapshots1/DehazeNet_epoch154.pth
+[2024-04-27 11:29:45.292762] test end with snapshots1/DehazeNet_epoch154.pth
+[2024-04-27 11:31:20.150249] Avg_PSNR: 19.59704522367137 dB, Avg_SSIM: 0.8658749884049433
+[2024-04-27 11:31:20.188321] test start with snapshots1/DehazeNet_epoch180.pth
+[2024-04-27 11:31:55.325973] test end with snapshots1/DehazeNet_epoch180.pth
+[2024-04-27 11:33:30.156266] Avg_PSNR: 19.73221953351156 dB, Avg_SSIM: 0.8648762075882203
+[2024-04-27 11:33:30.201463] test start with snapshots1/DehazeNet_epoch73.pth
+[2024-04-27 11:34:05.078858] test end with snapshots1/DehazeNet_epoch73.pth
+[2024-04-27 11:35:39.899190] Avg_PSNR: 19.29331521871964 dB, Avg_SSIM: 0.8700340539521328
+[2024-04-27 11:35:39.939567] test start with snapshots1/DehazeNet_epoch77.pth
+[2024-04-27 11:36:14.927265] test end with snapshots1/DehazeNet_epoch77.pth
+[2024-04-27 11:37:49.681223] Avg_PSNR: 19.395867670479372 dB, Avg_SSIM: 0.8671087288517606
+[2024-04-27 11:37:49.723842] test start with snapshots1/DehazeNet_epoch90.pth
+[2024-04-27 11:38:24.969200] test end with snapshots1/DehazeNet_epoch90.pth
+[2024-04-27 11:39:59.808525] Avg_PSNR: 19.367969839501672 dB, Avg_SSIM: 0.8704402657551775
+[2024-04-27 11:39:59.847837] test start with snapshots1/DehazeNet_epoch39.pth
+[2024-04-27 11:40:34.824166] test end with snapshots1/DehazeNet_epoch39.pth
+[2024-04-27 11:42:09.567819] Avg_PSNR: 19.292941954229857 dB, Avg_SSIM: 0.8679600401305195
+[2024-04-27 11:42:09.607981] test start with snapshots1/DehazeNet_epoch182.pth
+[2024-04-27 11:42:44.482899] test end with snapshots1/DehazeNet_epoch182.pth
+[2024-04-27 11:44:19.672847] Avg_PSNR: 19.785821575262155 dB, Avg_SSIM: 0.8636808179150487
+[2024-04-27 11:44:19.714084] test start with snapshots1/DehazeNet_epoch101.pth
+[2024-04-27 11:44:54.688901] test end with snapshots1/DehazeNet_epoch101.pth
+[2024-04-27 11:46:29.327895] Avg_PSNR: 19.59796426770485 dB, Avg_SSIM: 0.8657841303600861
+[2024-04-27 11:46:29.367288] test start with snapshots1/DehazeNet_epoch89.pth
+[2024-04-27 11:47:04.356905] test end with snapshots1/DehazeNet_epoch89.pth
+[2024-04-27 11:48:39.106961] Avg_PSNR: 19.13705787466852 dB, Avg_SSIM: 0.8675671938270217
+[2024-04-27 11:48:39.149015] test start with snapshots1/DehazeNet_epoch41.pth
+[2024-04-27 11:49:14.291998] test end with snapshots1/DehazeNet_epoch41.pth
+[2024-04-27 11:50:49.113634] Avg_PSNR: 19.098371652606893 dB, Avg_SSIM: 0.8665439675311658
+[2024-04-27 11:50:49.156702] test start with snapshots1/DehazeNet_epoch116.pth
+[2024-04-27 11:51:24.181761] test end with snapshots1/DehazeNet_epoch116.pth
+[2024-04-27 11:52:59.014736] Avg_PSNR: 19.660050722839213 dB, Avg_SSIM: 0.8671613055775728
+[2024-04-27 11:52:59.055243] test start with snapshots1/DehazeNet_epoch195.pth
+[2024-04-27 11:53:34.197160] test end with snapshots1/DehazeNet_epoch195.pth
+[2024-04-27 11:55:09.258526] Avg_PSNR: 19.44194017568424 dB, Avg_SSIM: 0.8666431750945947
+[2024-04-27 11:55:09.305373] test start with snapshots1/DehazeNet_epoch122.pth
+[2024-04-27 11:55:44.380591] test end with snapshots1/DehazeNet_epoch122.pth
+[2024-04-27 11:57:19.219746] Avg_PSNR: 19.122619077145657 dB, Avg_SSIM: 0.8582233999224895
+[2024-04-27 11:57:19.260845] test start with snapshots1/DehazeNet_epoch97.pth
+[2024-04-27 11:57:54.272075] test end with snapshots1/DehazeNet_epoch97.pth
+[2024-04-27 11:59:28.827566] Avg_PSNR: 19.163685118089713 dB, Avg_SSIM: 0.8670764092383618
+[2024-04-27 11:59:28.865471] test start with snapshots1/DehazeNet_epoch9.pth
+[2024-04-27 12:00:03.826429] test end with snapshots1/DehazeNet_epoch9.pth
+[2024-04-27 12:01:39.013235] Avg_PSNR: 18.604068798862624 dB, Avg_SSIM: 0.8584291883671017
+[2024-04-27 12:01:39.056326] test start with snapshots1/DehazeNet_epoch82.pth
+[2024-04-27 12:02:14.033551] test end with snapshots1/DehazeNet_epoch82.pth
+[2024-04-27 12:03:48.779332] Avg_PSNR: 18.83994763230247 dB, Avg_SSIM: 0.862901515865827
+[2024-04-27 12:03:48.822915] test start with snapshots1/DehazeNet_epoch48.pth
+[2024-04-27 12:04:23.704432] test end with snapshots1/DehazeNet_epoch48.pth
+[2024-04-27 12:05:58.483432] Avg_PSNR: 19.25236430893936 dB, Avg_SSIM: 0.8696810353061732
+[2024-04-27 12:05:58.522853] test start with snapshots1/DehazeNet_epoch103.pth
+[2024-04-27 12:06:33.577432] test end with snapshots1/DehazeNet_epoch103.pth
+[2024-04-27 12:08:08.253926] Avg_PSNR: 19.669369413571236 dB, Avg_SSIM: 0.8650052594995573
+[2024-04-27 12:08:08.292138] test start with snapshots1/DehazeNet_epoch136.pth
+[2024-04-27 12:08:43.447423] test end with snapshots1/DehazeNet_epoch136.pth
+[2024-04-27 12:10:18.027586] Avg_PSNR: 19.551169302009654 dB, Avg_SSIM: 0.8675409755416608
+[2024-04-27 12:10:18.065981] test start with snapshots1/DehazeNet_epoch26.pth
+[2024-04-27 12:10:52.976780] test end with snapshots1/DehazeNet_epoch26.pth
+[2024-04-27 12:12:28.066645] Avg_PSNR: 19.234541649191655 dB, Avg_SSIM: 0.8647671615296403
+[2024-04-27 12:12:28.108520] test start with snapshots1/DehazeNet_epoch148.pth
+[2024-04-27 12:13:03.089865] test end with snapshots1/DehazeNet_epoch148.pth
+[2024-04-27 12:14:38.051261] Avg_PSNR: 19.679955064071965 dB, Avg_SSIM: 0.8673940364765075
+[2024-04-27 12:14:38.091323] test start with snapshots1/DehazeNet_epoch146.pth
+[2024-04-27 12:15:13.121604] test end with snapshots1/DehazeNet_epoch146.pth
+[2024-04-27 12:16:47.978476] Avg_PSNR: 19.504255192649712 dB, Avg_SSIM: 0.8614446725089501
+[2024-04-27 12:16:48.016808] test start with snapshots1/DehazeNet_epoch45.pth
+[2024-04-27 12:17:23.052580] test end with snapshots1/DehazeNet_epoch45.pth
+[2024-04-27 12:18:57.782517] Avg_PSNR: 18.481800368314023 dB, Avg_SSIM: 0.8530313328613444
+[2024-04-27 12:18:57.824343] test start with snapshots1/DehazeNet_epoch161.pth
+[2024-04-27 12:19:32.839774] test end with snapshots1/DehazeNet_epoch161.pth
+[2024-04-27 12:21:09.701683] Avg_PSNR: 19.382676753716122 dB, Avg_SSIM: 0.859203216893357
+[2024-04-27 12:21:09.740650] test start with snapshots1/DehazeNet_epoch196.pth
+[2024-04-27 12:21:44.948309] test end with snapshots1/DehazeNet_epoch196.pth
+[2024-04-27 12:23:19.712578] Avg_PSNR: 19.595562491377127 dB, Avg_SSIM: 0.8637161100769855
+[2024-04-27 12:23:19.753406] test start with snapshots1/DehazeNet_epoch1.pth
+[2024-04-27 12:23:54.609230] test end with snapshots1/DehazeNet_epoch1.pth
+[2024-04-27 12:25:29.473309] Avg_PSNR: 18.9622787056978 dB, Avg_SSIM: 0.8648679796800574
+[2024-04-27 12:25:29.521134] test start with snapshots1/DehazeNet_epoch84.pth
+[2024-04-27 12:26:04.511056] test end with snapshots1/DehazeNet_epoch84.pth
+[2024-04-27 12:27:39.427859] Avg_PSNR: 19.242848004264403 dB, Avg_SSIM: 0.8702668457086487
+[2024-04-27 12:27:39.470427] test start with snapshots1/DehazeNet_epoch31.pth
+[2024-04-27 12:28:14.504448] test end with snapshots1/DehazeNet_epoch31.pth
+[2024-04-27 12:29:49.247566] Avg_PSNR: 18.918525732462864 dB, Avg_SSIM: 0.8647645811317632
+[2024-04-27 12:29:49.288648] test start with snapshots1/DehazeNet_epoch15.pth
+[2024-04-27 12:30:24.250044] test end with snapshots1/DehazeNet_epoch15.pth
+[2024-04-27 12:32:00.050161] Avg_PSNR: 19.149583786280264 dB, Avg_SSIM: 0.8682916521260967
+[2024-04-27 12:32:00.094137] test start with snapshots1/DehazeNet_epoch47.pth
+[2024-04-27 12:32:34.242216] test end with snapshots1/DehazeNet_epoch47.pth
+[2024-04-27 12:34:09.100449] Avg_PSNR: 19.19729901754069 dB, Avg_SSIM: 0.8691093046248013
+[2024-04-27 12:34:09.142648] test start with snapshots1/DehazeNet_epoch49.pth
+[2024-04-27 12:34:43.216764] test end with snapshots1/DehazeNet_epoch49.pth
+[2024-04-27 12:36:17.855529] Avg_PSNR: 19.356635542519108 dB, Avg_SSIM: 0.8690305255269345
+[2024-04-27 12:36:17.897278] test start with snapshots1/DehazeNet_epoch68.pth
+[2024-04-27 12:36:52.088661] test end with snapshots1/DehazeNet_epoch68.pth
+[2024-04-27 12:38:26.953588] Avg_PSNR: 19.298663663495176 dB, Avg_SSIM: 0.8704074180361699
+[2024-04-27 12:38:26.986897] test start with snapshots1/DehazeNet_epoch5.pth
+[2024-04-27 12:39:01.236773] test end with snapshots1/DehazeNet_epoch5.pth
+[2024-04-27 12:40:35.966515] Avg_PSNR: 19.12660281557102 dB, Avg_SSIM: 0.8644876328335831
+[2024-04-27 12:40:36.008667] test start with snapshots1/DehazeNet_epoch156.pth
+[2024-04-27 12:41:10.281679] test end with snapshots1/DehazeNet_epoch156.pth
+[2024-04-27 12:42:45.125865] Avg_PSNR: 19.677203881402583 dB, Avg_SSIM: 0.87034620556326
+[2024-04-27 12:42:45.164645] test start with snapshots1/DehazeNet_epoch50.pth
+[2024-04-27 12:43:19.269099] test end with snapshots1/DehazeNet_epoch50.pth
+[2024-04-27 12:44:54.346872] Avg_PSNR: 19.216099100464167 dB, Avg_SSIM: 0.8666286958350381
+[2024-04-27 12:44:54.392410] test start with snapshots1/DehazeNet_epoch128.pth
+[2024-04-27 12:45:28.597051] test end with snapshots1/DehazeNet_epoch128.pth
+[2024-04-27 12:47:03.675977] Avg_PSNR: 19.495144474446988 dB, Avg_SSIM: 0.8658604216088179
+[2024-04-27 12:47:03.714254] test start with snapshots1/DehazeNet_epoch76.pth
+[2024-04-27 12:47:37.877459] test end with snapshots1/DehazeNet_epoch76.pth
+[2024-04-27 12:49:12.826365] Avg_PSNR: 19.21369879821656 dB, Avg_SSIM: 0.869826231851087
+[2024-04-27 12:49:12.864423] test start with snapshots1/DehazeNet_epoch88.pth
+[2024-04-27 12:49:46.946675] test end with snapshots1/DehazeNet_epoch88.pth
+[2024-04-27 12:51:21.924725] Avg_PSNR: 19.37623722519633 dB, Avg_SSIM: 0.8700473000417365
+[2024-04-27 12:51:21.960426] test start with snapshots1/DehazeNet_epoch105.pth
+[2024-04-27 12:51:56.113123] test end with snapshots1/DehazeNet_epoch105.pth
+[2024-04-27 12:53:30.739212] Avg_PSNR: 19.609273973404623 dB, Avg_SSIM: 0.8664493128379502
+[2024-04-27 12:53:30.778764] test start with snapshots1/DehazeNet_epoch120.pth
+[2024-04-27 12:54:05.000801] test end with snapshots1/DehazeNet_epoch120.pth
+[2024-04-27 12:55:40.060488] Avg_PSNR: 19.59695831604589 dB, Avg_SSIM: 0.8667851998986229
+[2024-04-27 12:55:40.101165] test start with snapshots1/DehazeNet_epoch2.pth
+[2024-04-27 12:56:14.256592] test end with snapshots1/DehazeNet_epoch2.pth
+[2024-04-27 12:57:48.929999] Avg_PSNR: 18.83995057470831 dB, Avg_SSIM: 0.8561751739816802
+[2024-04-27 12:57:48.970986] test start with snapshots1/DehazeNet_epoch17.pth
+[2024-04-27 12:58:23.062135] test end with snapshots1/DehazeNet_epoch17.pth
+[2024-04-27 12:59:57.929694] Avg_PSNR: 19.203053684804058 dB, Avg_SSIM: 0.8675062147858279
+[2024-04-27 12:59:57.969010] test start with snapshots1/DehazeNet_epoch14.pth
+[2024-04-27 13:00:32.149391] test end with snapshots1/DehazeNet_epoch14.pth
+[2024-04-27 13:02:06.966753] Avg_PSNR: 19.122071755119705 dB, Avg_SSIM: 0.8671146660286794
+[2024-04-27 13:02:06.995155] test start with snapshots1/DehazeNet_epoch34.pth
+[2024-04-27 13:02:41.043998] test end with snapshots1/DehazeNet_epoch34.pth
+[2024-04-27 13:04:15.770549] Avg_PSNR: 19.2099091907584 dB, Avg_SSIM: 0.8688566841911689
+[2024-04-27 13:04:15.810579] test start with snapshots1/DehazeNet_epoch20.pth
+[2024-04-27 13:04:50.050766] test end with snapshots1/DehazeNet_epoch20.pth
+[2024-04-27 13:06:24.567552] Avg_PSNR: 19.057875280393404 dB, Avg_SSIM: 0.8615738583324217
+[2024-04-27 13:06:24.606204] test start with snapshots1/DehazeNet_epoch38.pth
+[2024-04-27 13:06:58.711374] test end with snapshots1/DehazeNet_epoch38.pth
+[2024-04-27 13:08:33.490137] Avg_PSNR: 18.731864229901035 dB, Avg_SSIM: 0.8621192819851012
+[2024-04-27 13:08:33.526886] test start with snapshots1/DehazeNet_epoch176.pth
+[2024-04-27 13:09:07.740262] test end with snapshots1/DehazeNet_epoch176.pth
+[2024-04-27 13:10:42.462148] Avg_PSNR: 19.739215613439633 dB, Avg_SSIM: 0.8682837234175839
+[2024-04-27 13:10:42.505297] test start with snapshots1/DehazeNet_epoch118.pth
+[2024-04-27 13:11:16.617441] test end with snapshots1/DehazeNet_epoch118.pth
+[2024-04-27 13:12:51.429538] Avg_PSNR: 19.642768814416147 dB, Avg_SSIM: 0.8684854035040803
+[2024-04-27 13:12:51.471842] test start with snapshots1/DehazeNet_epoch110.pth
+[2024-04-27 13:13:25.664835] test end with snapshots1/DehazeNet_epoch110.pth
+[2024-04-27 13:15:00.997457] Avg_PSNR: 19.1226564957963 dB, Avg_SSIM: 0.8606444892355195
+[2024-04-27 13:15:01.038294] test start with snapshots1/DehazeNet_epoch134.pth
+[2024-04-27 13:15:35.222154] test end with snapshots1/DehazeNet_epoch134.pth
+[2024-04-27 13:17:10.123746] Avg_PSNR: 19.739482199645877 dB, Avg_SSIM: 0.8661564933481553
+[2024-04-27 13:17:10.154095] test start with snapshots1/DehazeNet_epoch143.pth
+[2024-04-27 13:17:44.413874] test end with snapshots1/DehazeNet_epoch143.pth
+[2024-04-27 13:19:19.979605] Avg_PSNR: 19.66107013402708 dB, Avg_SSIM: 0.8661647107122434
+[2024-04-27 13:19:20.020663] test start with snapshots1/DehazeNet_epoch114.pth
+[2024-04-27 13:19:54.158933] test end with snapshots1/DehazeNet_epoch114.pth
+[2024-04-27 13:21:30.717232] Avg_PSNR: 19.412963725920665 dB, Avg_SSIM: 0.8646656987105812
+[2024-04-27 13:21:30.760658] test start with snapshots1/DehazeNet_epoch145.pth
+[2024-04-27 13:22:04.993661] test end with snapshots1/DehazeNet_epoch145.pth
+[2024-04-27 13:23:41.521330] Avg_PSNR: 19.49143043418647 dB, Avg_SSIM: 0.8657831734931957
+[2024-04-27 13:23:41.547742] test start with snapshots1/DehazeNet_epoch121.pth
+[2024-04-27 13:24:15.748675] test end with snapshots1/DehazeNet_epoch121.pth
+[2024-04-27 13:25:50.916511] Avg_PSNR: 19.585020970452543 dB, Avg_SSIM: 0.8632981552737106
+[2024-04-27 13:25:50.957730] test start with snapshots1/DehazeNet_epoch67.pth
+[2024-04-27 13:26:24.970102] test end with snapshots1/DehazeNet_epoch67.pth
+[2024-04-27 13:28:00.705864] Avg_PSNR: 19.1960957729917 dB, Avg_SSIM: 0.8701514407428177
+[2024-04-27 13:28:00.753092] test start with snapshots1/DehazeNet_epoch65.pth
+[2024-04-27 13:28:35.134572] test end with snapshots1/DehazeNet_epoch65.pth
+[2024-04-27 13:30:10.283386] Avg_PSNR: 19.017536498668967 dB, Avg_SSIM: 0.8589822901408338
+[2024-04-27 13:30:10.327169] test start with snapshots1/DehazeNet_epoch4.pth
+[2024-04-27 13:30:44.735215] test end with snapshots1/DehazeNet_epoch4.pth
+[2024-04-27 13:32:19.127416] Avg_PSNR: 19.028337088433634 dB, Avg_SSIM: 0.8659558816595992
+[2024-04-27 13:32:19.170962] test start with snapshots1/DehazeNet_epoch64.pth
+[2024-04-27 13:32:53.258590] test end with snapshots1/DehazeNet_epoch64.pth
+[2024-04-27 13:34:28.119937] Avg_PSNR: 19.269716760539584 dB, Avg_SSIM: 0.8696282757378359
+[2024-04-27 13:34:28.161194] test start with snapshots1/DehazeNet_epoch93.pth
+[2024-04-27 13:35:02.373524] test end with snapshots1/DehazeNet_epoch93.pth
+[2024-04-27 13:36:37.806724] Avg_PSNR: 18.454485054707234 dB, Avg_SSIM: 0.8582455128265931
+[2024-04-27 13:36:37.850409] test start with snapshots1/DehazeNet_epoch160.pth

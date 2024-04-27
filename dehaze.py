@@ -14,6 +14,7 @@ import argparse
 import os
 import cv2
 import torchvision.transforms.functional as F
+import torch.nn.functional as F2
 
 from skimage.metrics import structural_similarity as ssim
 from skimage.metrics import peak_signal_noise_ratio as psnr
@@ -26,8 +27,9 @@ parser.add_argument('--original_dir', default='Haze4K/test/gt')
 parser.add_argument('--haze_dir', default='Haze4K/test/haze')
 parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
 parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
-#parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
-parser.add_argument('--snapshot_model_dir_or_file', default='snapshots1/DehazeNet_epoch7.pth')
+# parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
+parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
+# parser.add_argument('--snapshot_model_dir_or_file', default='snapshots1/DehazeNet_epoch24.pth')
 parser.add_argument('--cuda_index', default=0)
 
 config = parser.parse_args()
@@ -93,15 +95,12 @@ def dataAnalysis(haze_path, origin_path, dehaze_path):
         # (h, w, c) = origin_image.shape
         # dehaze_image = cv2.resize(dehaze_image, (w, h))  # 原图大小
 
-        # # 调整图像大小
-        # (h, w, c) = dehaze_image.shape
-        # origin_image = cv2.resize(origin_image, (w, h))  # 参考大小
-
         # 调整图像大小
         (h, w) = origin_image.shape[:2]  # 获取原图的高度和宽度
         dehaze_image = cv2.resize(dehaze_image, (w, h), interpolation=cv2.INTER_LANCZOS4)  # 调整为原图大小
 
         # 计算评估指标
+
         score_psnr += psnr(origin_image, dehaze_image)
         score_ssim += ssim(origin_image, dehaze_image, multichannel=True, channel_axis=-1, data_range=1.0)
 
@@ -176,7 +175,7 @@ if __name__ == '__main__':
     try:
         if os.path.isfile(snapshot_model_dir_or_file):
             # 单文件不使用表格记录结果
-            runTest(dehaze_net, snapshot_model=snapshot_model_dir_or_file)
+            # runTest(dehaze_net, snapshot_model=snapshot_model_dir_or_file)
             # 分析结果
             avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
             print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
@@ -198,5 +197,6 @@ if __name__ == '__main__':
     except Exception as e:
         print(f"[{datetime.datetime.now()}] Warning! net{net_num}")
         print(e)
+        raise e
 
 
