@@ -27,8 +27,8 @@ parser.add_argument('--original_dir', default='Haze4K/test/gt')
 parser.add_argument('--haze_dir', default='Haze4K/test/haze')
 parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
 parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
-# parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
-parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
+parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
+# parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
 # parser.add_argument('--snapshot_model_dir_or_file', default='snapshots1/DehazeNet_epoch24.pth')
 parser.add_argument('--cuda_index', default=0)
 
@@ -175,12 +175,17 @@ if __name__ == '__main__':
     try:
         if os.path.isfile(snapshot_model_dir_or_file):
             # 单文件不使用表格记录结果
-            # runTest(dehaze_net, snapshot_model=snapshot_model_dir_or_file)
+            runTest(dehaze_net, snapshot_model=snapshot_model_dir_or_file)
             # 分析结果
             avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
             print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
         elif os.path.isdir(snapshot_model_dir_or_file):
+            exist_model = list(pd.read_csv(result_file)['model'])
+            # print(exist_model)
             for snapshot_model in os.listdir(snapshot_model_dir_or_file):
+                # print(snapshot_model)
+                if snapshot_model in exist_model:
+                    continue
                 # print(snapshot_model)
                 df = pd.DataFrame(columns=['net', 'epoch', 'model', 'avg_psnr', 'avg_ssim'])
                 snapshot_model_index = snapshot_model.split('.')[0].split('h')[-1]

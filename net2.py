@@ -3,6 +3,22 @@ import torch.nn as nn
 import math
 import torch.nn.functional as F
 
+class LearnableDropout(nn.Module):
+    def __init__(self, dropout_prob=0.5):
+        super(LearnableDropout, self).__init__()
+        self.dropout_prob = nn.Parameter(torch.tensor(dropout_prob))
+
+    def forward(self, x):
+        # print(self.dropout_prob)
+        # 训练阶段
+        if self.training:
+            dropout_mask = torch.bernoulli(1 - self.dropout_prob)
+            return x * dropout_mask / (1 - self.dropout_prob)  # 下一步删除分母
+        # 测试阶段
+        else:
+            return x
+
+
 
 class DehazeNet(nn.Module):
 
@@ -18,15 +34,24 @@ class DehazeNet(nn.Module):
         self.e_conv5 = nn.Conv2d(21, 3, 5, 1, 2, bias=True) # 18,3
         self.attention = Attention2d(3, 3)
         self.spatial = SpatialOnlyBranch()
+        
+        # self.dropout_layer1 = LearnableDropout(dropout_prob=0.98)
+        # self.dropout_layer2 = LearnableDropout(dropout_prob=0.98)
+        # self.dropout_layer3 = LearnableDropout(dropout_prob=0.98)
+        # self.dropout_layer4 = LearnableDropout(dropout_prob=0.98)
+        # self.dropout_layer5 = LearnableDropout(dropout_prob=0.98)
+        
 
     def forward(self, x):
         xatt = self.attention.forward(x)
+        # xatt = self.dropout_layer1(xatt)
         # print(f'xatt{xatt.shape}')
         xsatt = self.spatial.forward(x)
+        # xsatt = self.dropout_layer2(xsatt)
         # print(f'xsatt{xsatt.shape}')
         x1 = self.relu(self.e_conv1(x))
         # print(x1.shape)
-        
+        # x1 = self.dropout_layer3(x1)
         x2 = self.relu(self.e_conv2(x1))
         # print(x2.shape)
         
@@ -34,7 +59,7 @@ class DehazeNet(nn.Module):
         # print(concat1.shape)
         x3 = self.relu(self.e_conv3(concat1))
         # print(x3.shape)
-
+        # x3 = self.dropout_layer4(x3)
         concat2 = torch.cat((x2, x3), 1)
         # print(concat2.shape)
         x4 = self.relu(self.e_conv4(concat2))
@@ -42,6 +67,7 @@ class DehazeNet(nn.Module):
         
         # print(xatt.size())
         # print(x1.size())
+        # x4 = self.dropout_layer5(x4)
         concat3 = torch.cat((x1, x2, x3, x4, xatt, xsatt), 1)
         x5 = self.relu(self.e_conv5(concat3))
 
@@ -54,11 +80,11 @@ class Attention2d(nn.Module):
         self.relu = nn.ReLU(inplace=True)
         self.softmax = nn.Softmax(dim=1)
         self.avgpool = nn.AdaptiveAvgPool2d(1)
-        self.fc1 = nn.Conv2d(in_planes, K, 1, groups=3, padding_mode='replicate')
-        self.fc2 = nn.Conv2d(K, K, 1, groups=3, padding_mode='replicate')
+        self.fc1 = nn.Conv2d(in_planes, K, 1, )
+        self.fc2 = nn.Conv2d(K, K, 1, )
 
     def forward(self, x):
-        x1 = self.avgpool(x)
+        x1 = self.avgpool(x)  # 可以知道各个通道中最暗的通道
         # print(f'x1{x1.shape}')
         x1 = self.fc1(x1)
         # print(f'x1{x1.shape}')

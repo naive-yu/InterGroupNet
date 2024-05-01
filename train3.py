@@ -6,6 +6,7 @@ import os
 import argparse
 import dataloader
 import net3 as net
+from skimage.metrics import structural_similarity as ssim
 
 # import sys
 # import time
@@ -22,7 +23,7 @@ parser.add_argument('--lr', type=float, default=0.0001)
 parser.add_argument('--weight_decay', type=float, default=0.0001)
 parser.add_argument('--grad_clip_norm', type=float, default=0.1)
 parser.add_argument('--num_epochs', type=int, default=200)
-parser.add_argument('--train_batch_size', type=int, default=8)
+parser.add_argument('--train_batch_size', type=int, default=4)
 parser.add_argument('--num_workers', type=int, default=4)
 parser.add_argument('--display_iter', type=int, default=10)
 parser.add_argument('--snapshot_iter', type=int, default=200)
@@ -78,7 +79,6 @@ def train(config):
             f"{config.snapshots_folder}DehazeNet_epoch{str(epoch)}.pth",
         )
         print(f"epoch{epoch} finished!")
-
 
 
 if __name__ == "__main__":

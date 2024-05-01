@@ -45,7 +45,11 @@
     net1 copy 2.py batch_size = 4 原版 version1加通道，注意力不用加法（仍在运行dehaze找较好结果）
     [2024-04-27 13:52:55.635695] Avg_PSNR: 19.57026879088937 dB, Avg_SSIM: 0.8653976652324564
 
+    [2024-04-27 16:17:12.220361] test start with snapshots1/DehazeNet_epoch199.pth
+    [2024-04-27 16:17:49.333954] test end with snapshots1/DehazeNet_epoch199.pth
+    [2024-04-27 16:19:37.268586] Avg_PSNR: 19.840134845721987 dB, Avg_SSIM: 0.8661485987205748
+
 ### version3
     大改注意力机制
-    注意力机制卷积层采用边界填充
+    注意力机制卷积层分组卷积
     

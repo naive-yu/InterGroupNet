@@ -5,8 +5,7 @@ import torch.optim
 import os
 import argparse
 import dataloader
-import net1 as net
-from skimage.metrics import structural_similarity as ssim
+import net2 as net
 
 # import sys
 # import time
@@ -23,12 +22,12 @@ parser.add_argument('--lr', type=float, default=0.0001)
 parser.add_argument('--weight_decay', type=float, default=0.0001)
 parser.add_argument('--grad_clip_norm', type=float, default=0.1)
 parser.add_argument('--num_epochs', type=int, default=200)
-parser.add_argument('--train_batch_size', type=int, default=4)
+parser.add_argument('--train_batch_size', type=int, default=8)
 parser.add_argument('--num_workers', type=int, default=4)
 parser.add_argument('--display_iter', type=int, default=10)
 parser.add_argument('--snapshot_iter', type=int, default=200)
-parser.add_argument('--cuda_index', type=str, default=1)
-parser.add_argument('--snapshots_folder', type=str, default="snapshots1/")
+parser.add_argument('--cuda_index', type=str, default=2)
+parser.add_argument('--snapshots_folder', type=str, default="snapshots2/")
 
 config_para = parser.parse_args()
 cuda_index = config_para.cuda_index
@@ -50,7 +49,7 @@ def train(config):
     train_dataset = dataloader.DehazeLoader(config.orig_images_path, config.hazy_images_path)
     train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=config.train_batch_size, shuffle=True, num_workers=config.num_workers, pin_memory=True)
 
-    # criterion = nn.MSELoss().cuda(cuda_index)
+    criterion = nn.MSELoss().cuda(cuda_index)
     optimizer = torch.optim.Adam(dehaze_net.parameters(), lr=config.lr, weight_decay=config.weight_decay)
 
     dehaze_net.train()
@@ -63,8 +62,7 @@ def train(config):
 
             clean_image = dehaze_net(img_haze)
 
-            # loss = criterion(clean_image, img_orig)
-            loss = ssim(img_orig, clean_image, multichannel=True, channel_axis=-1, data_range=1.0)
+            loss = criterion(clean_image, img_orig)
 
             optimizer.zero_grad()
             loss.backward()
@@ -80,6 +78,7 @@ def train(config):
             f"{config.snapshots_folder}DehazeNet_epoch{str(epoch)}.pth",
         )
         print(f"epoch{epoch} finished!")
+
 
 
 if __name__ == "__main__":

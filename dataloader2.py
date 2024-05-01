@@ -55,6 +55,9 @@ class DehazeLoader(data.Dataset):
         data_orig = cv2.imread(data_orig_path)
         data_hazy = cv2.imread(data_hazy_path)
         
+        if random.randint(0, 1) == 1:
+            data_orig = np.flip(data_orig, axis=1)
+            data_hazy = np.flip(data_hazy, axis=1)
         # # 图像维度 640*480*3
         data_orig = cv2.resize(data_orig, (640, 480), interpolation=cv2.INTER_LANCZOS4)
         data_hazy = cv2.resize(data_hazy, (640, 480), interpolation=cv2.INTER_LANCZOS4)
