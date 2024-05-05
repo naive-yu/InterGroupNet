@@ -62,5 +62,8 @@
     [2024-05-04 23:40:45.799232] test start with snapshots3/DehazeNet_epoch42.pth
     [2024-05-04 23:41:35.399046] test end with snapshots3/DehazeNet_epoch42.pth
     [2024-05-04 23:42:29.296977] Avg_PSNR: 18.83234544079723 dB, Avg_SSIM: 0.8518585262298584
+
+    
+    5/5/14:32:first 500 pictures Avg_PSNR: 18.643848832341316 dB, Avg_SSIM: 0.8788447661399841
     
     
