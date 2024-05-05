@@ -64,6 +64,7 @@
     [2024-05-04 23:42:29.296977] Avg_PSNR: 18.83234544079723 dB, Avg_SSIM: 0.8518585262298584
 
     
-    5/5/14:32:first 500 pictures Avg_PSNR: 18.643848832341316 dB, Avg_SSIM: 0.8788447661399841
+    5/5/14:32:first 500 pictures submit version3.0 *** 9cbab9ca ***
+    Avg_PSNR: 18.643848832341316 dB, Avg_SSIM: 0.8788447661399841
     
     
