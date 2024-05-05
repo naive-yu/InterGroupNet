@@ -20,19 +20,20 @@ from skimage.metrics import structural_similarity as ssim
 from skimage.metrics import peak_signal_noise_ratio as psnr
 
 # 参数配置器
-dehaze_for_net_index = 1
+dehaze_for_net_index = 3
 parser = argparse.ArgumentParser(description='Performance')
 parser.add_argument('--dehaze_dir', default='Haze4K/test/dehaze')
 parser.add_argument('--original_dir', default='Haze4K/test/gt')
 parser.add_argument('--haze_dir', default='Haze4K/test/haze')
 parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
 parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
-parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
+# parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
 # parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
-# parser.add_argument('--snapshot_model_dir_or_file', default='snapshots1/DehazeNet_epoch24.pth')
+parser.add_argument('--snapshot_model_dir_or_file', default='snapshots3/DehazeNet_epoch26.pth')
 parser.add_argument('--cuda_index', default=0)
 
 config = parser.parse_args()
+test_length = 500
 
 # num_gpus = torch.cuda.device_count()
 # print(num_gpus)
@@ -42,12 +43,12 @@ cuda_index = config.cuda_index
 def dehazeImage(my_net, haze_image_path, dehaze_path):
     # 读取雾化图像
     data_haze = cv2.imread(haze_image_path)
-    
+
     # 将图像归一化到 [0, 1]
     if data_haze is None:
         print(f"[{datetime.datetime.now()}] Error: Unable to load image {haze_image_path}")
     data_haze = data_haze.astype(np.float32) / 255.0
-    data_haze = cv2.resize(data_haze, (640, 480))
+    # data_haze = cv2.resize(data_haze, (640, 480))
     # 调整图像的通道顺序，从 (height, width, channels) 变为 (channels, height, width)
     data_haze = np.transpose(data_haze, (2, 0, 1))
     # 将图像数据转换为PyTorch Tensor，并添加一个批次维度
@@ -62,13 +63,17 @@ def dehazeImage(my_net, haze_image_path, dehaze_path):
     dehaze_image = (dehaze_image * 255.0).astype(np.uint8)  # 将像素值转换为0-255范围内的整数
 
     # 构建保存路径
-    if os.name == 'posix':
+    dehaze_file_name = ''
+    if len(haze_image_path.split('_')) == 1:  # 对去雾图再去雾，图像路径改变
+        dehaze_file_name = haze_image_path.split('\\')[-1]
+    elif os.name == 'posix':
         # print("当前程序在 Linux 系统上运行")
         dehaze_file_name = haze_image_path.split('/')[-1].split('_')[0] + '.png'
     elif os.name == 'nt':
         # print("当前程序在 Windows 系统上运行")
         dehaze_file_name = haze_image_path.split('\\')[-1].split('_')[0] + '.png'
 
+    # print(f'w {dehaze_file_name}')
     dehaze_file_path = os.path.join(dehaze_path, dehaze_file_name)
     # print(dehaze_file_path)
     # 保存图像
@@ -79,40 +84,49 @@ def dehazeImage(my_net, haze_image_path, dehaze_path):
 def dataAnalysis(haze_path, origin_path, dehaze_path):
     score_psnr = 0
     score_ssim = 0
-    file_name_list = os.listdir(haze_path)
+    file_name_list = os.listdir(haze_path)[:test_length]  # 针对400*400
     for idx, file_name in enumerate(file_name_list):
         # 获取图像路径
         haze_image_path = os.path.join(haze_path, file_name)
-        origin_image_path = os.path.join(origin_path, file_name.split("_")[0] + '.png')
-        dehaze_image_path = os.path.join(dehaze_path, file_name.split("_")[0] + '.png')
+        if len(file_name.split("_")) == 1:
+            origin_image_path = os.path.join(origin_path, file_name)
+            dehaze_image_path = os.path.join(dehaze_path, file_name)
+        else:
+            origin_image_path = os.path.join(origin_path, file_name.split("_")[0] + '.png')
+            dehaze_image_path = os.path.join(dehaze_path, file_name.split("_")[0] + '.png')
 
         # 读取原始图像和去雾后的图像
         # print(f"{origin_image_path}")
-        origin_image = cv2.imread(origin_image_path).astype(np.float32)/255.0
-        dehaze_image = cv2.imread(dehaze_image_path).astype(np.float32)/255.0
+        origin_image = cv2.imread(origin_image_path).astype(np.float32) / 255.0
+        dehaze_image = cv2.imread(dehaze_image_path).astype(np.float32) / 255.0
 
         # # 调整图像大小
         # (h, w, c) = origin_image.shape
         # dehaze_image = cv2.resize(dehaze_image, (w, h))  # 原图大小
 
-        # 调整图像大小
-        (h, w) = origin_image.shape[:2]  # 获取原图的高度和宽度
-        dehaze_image = cv2.resize(dehaze_image, (w, h), interpolation=cv2.INTER_LANCZOS4)  # 调整为原图大小
+        # # 调整图像大小
+        # (h, w) = origin_image.shape[:2]  # 获取原图的高度和宽度
+        # dehaze_image = cv2.resize(dehaze_image, (w, h), interpolation=cv2.INTER_LANCZOS4)  # 调整为原图大小
 
         # 计算评估指标
-
         score_psnr += psnr(origin_image, dehaze_image)
         score_ssim += ssim(origin_image, dehaze_image, multichannel=True, channel_axis=-1, data_range=1.0)
 
         # 保存图像
-        haze_image = cv2.imread(haze_image_path).astype(np.float32)/255.0
-        
+        haze_image = cv2.imread(haze_image_path).astype(np.float32) / 255.0
+
+        # # 仅用于循环去雾测试
+        # if haze_image.shape[:2] != (h, w):
+        #     haze_image = cv2.resize(haze_image, (w, h), interpolation=cv2.INTER_LANCZOS4)
+        # 仅用于循环去雾测试
+
         # print(f'{origin_image_path} {origin_image.shape} {dehaze_image.shape} {haze_image.shape}')
         if (idx + 1) % 10 == 0:
             im1 = F.to_tensor(origin_image).unsqueeze(0)
             im2 = F.to_tensor(dehaze_image).unsqueeze(0)
             im3 = F.to_tensor(haze_image).unsqueeze(0)
             combined_image = torch.cat((im1, im2, im3), dim=0)
+            torch.save(combined_image, 'tensor.pth')
             torchvision.utils.save_image(combined_image, config.sample_dir + str(idx + 1) + ".jpg")
 
     avg_score_psnr = score_psnr / len(file_name_list)
@@ -122,19 +136,21 @@ def dataAnalysis(haze_path, origin_path, dehaze_path):
 
 def runTest(net, snapshot_model):
     # 测试模式
-    net.load_state_dict(torch.load(snapshot_model))
+    net.load_state_dict(torch.load(snapshot_model, map_location=f'cuda:{cuda_index}'))
     net.eval()
     print(f"[{datetime.datetime.now()}] test start with {snapshot_model}")
     with torch.no_grad():
         # print(glob.glob(f"{haze_dir}/*"))
-        for image in glob.glob(f"{haze_dir}/*"):
-            dehazeImage(net, image, dehaze_dir)
+        for idx, image in enumerate(sorted(glob.glob(f"{haze_dir}/*"), key=lambda name: int(name.split('\\')[-1].split('/')[-1].split('.')[0].split('_')[0]))):
+            if idx < test_length:
+                dehazeImage(net, image, dehaze_dir)
+            # # 仅测试使用
+            # break
     print(f"[{datetime.datetime.now()}] test end with {snapshot_model}")
 
 
 def analysis_out(file_path, DF):
     # pd.DataFrame(result).to_excel(util.stock_files_dataAnalysis_path, sheet_name='sheet1', index=False)
-    # cols = ['情况', '操作', '总收益', '出现次数', '平均收益', '总盈利', '盈利次数', '平均盈利', '胜率']
     try:
         if not os.path.exists(file_path):
             DF.to_csv(file_path, index=False)
@@ -144,6 +160,7 @@ def analysis_out(file_path, DF):
         print(f"[{datetime.datetime.now()}] Warning!")
         raise e
 
+
 if __name__ == '__main__':
     # 读取参数
     snapshot_model_dir_or_file = config.snapshot_model_dir_or_file
@@ -151,7 +168,7 @@ if __name__ == '__main__':
     original_dir = config.original_dir
     haze_dir = config.haze_dir
     result_file = config.result_file
-    
+
     # 确保目录存在
     if not os.path.exists(dehaze_dir):
         os.mkdir(dehaze_dir)
@@ -182,7 +199,7 @@ if __name__ == '__main__':
         elif os.path.isdir(snapshot_model_dir_or_file):
             exist_model = list(pd.read_csv(result_file)['model'])
             # print(exist_model)
-            for snapshot_model in os.listdir(snapshot_model_dir_or_file):
+            for snapshot_model in sorted(os.listdir(snapshot_model_dir_or_file), key=lambda name: int(name.split('.')[0][15:])):
                 # print(snapshot_model)
                 if snapshot_model in exist_model:
                     continue
@@ -193,7 +210,8 @@ if __name__ == '__main__':
                 runTest(dehaze_net, snapshot_model=snapshot_model_file)
                 # 分析结果并输出到csv文件
                 avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
-                df.loc[len(df)] = {'net': f'net{net_num}', 'epoch': snapshot_model_index, 'model': snapshot_model, 'avg_psnr': avg_psnr, 'avg_ssim': avg_ssim}
+                df.loc[len(df)] = {'net': f'net{net_num}', 'epoch': snapshot_model_index, 'model': snapshot_model, 'avg_psnr': avg_psnr,
+                                   'avg_ssim': avg_ssim}
                 print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
                 # 测试专用
                 # if idx >= 2:
@@ -203,5 +221,3 @@ if __name__ == '__main__':
         print(f"[{datetime.datetime.now()}] Warning! net{net_num}")
         print(e)
         raise e
-
-

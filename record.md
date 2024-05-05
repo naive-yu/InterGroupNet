@@ -42,7 +42,7 @@
     [2024-04-26 21:13:03.705762] Avg_PSNR: 19.162622620001997 dB, Avg_SSIM: 0.8673404486575047
 
 
-    net1 copy 2.py batch_size = 4 原版 version1加通道，注意力不用加法（仍在运行dehaze找较好结果）
+    net1 copy 2.py batch_size = 4 原版 version1加通道，注意力不用加法, 重新训练结果放入snapshots1 copy文件夹（仍在运行dehaze找较好结果）
     [2024-04-27 13:52:55.635695] Avg_PSNR: 19.57026879088937 dB, Avg_SSIM: 0.8653976652324564
 
     [2024-04-27 16:17:12.220361] test start with snapshots1/DehazeNet_epoch199.pth
@@ -52,4 +52,15 @@
 ### version3
     大改注意力机制
     注意力机制卷积层分组卷积
+    NET3
+    D:\Anaconda\python.exe D:\pythonFile\InterGroupNet\dehaze.py 
+    [2024-05-04 20:52:02.019988] test start with snapshots3/DehazeNet_epoch50.pth
+    [2024-05-04 20:52:14.884324] test end with snapshots3/DehazeNet_epoch50.pth
+    [2024-05-04 20:53:07.092281] Avg_PSNR: 16.77854178735921 dB, Avg_SSIM: 0.8108847352564335
+
+    21:56:加x9
+    [2024-05-04 23:40:45.799232] test start with snapshots3/DehazeNet_epoch42.pth
+    [2024-05-04 23:41:35.399046] test end with snapshots3/DehazeNet_epoch42.pth
+    [2024-05-04 23:42:29.296977] Avg_PSNR: 18.83234544079723 dB, Avg_SSIM: 0.8518585262298584
+    
     

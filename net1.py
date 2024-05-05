@@ -20,16 +20,16 @@ import torch.nn.functional as F
 #         self.attention2 = AttentionModule(64, 16)
 #
 #         # 第二个卷积层和池化层
-#         self.conv2 = nn.Conv2d(64, 128, kernel_size=3, padding=1)
+#         self.conv12 = nn.Conv2d(64, 128, kernel_size=3, padding=1)
 #         self.relu2 = nn.ReLU(inplace=True)
 #         self.pool2 = nn.MaxPool2d(kernel_size=2, stride=2)
 #
 #         # 上采样层和卷积层
 #         self.upsample = nn.Upsample(scale_factor=2, mode='bilinear', align_corners=True)
-#         self.conv3 = nn.Conv2d(128, 64, kernel_size=3, padding=1)
+#         self.conv6 = nn.Conv2d(128, 64, kernel_size=3, padding=1)
 #         self.relu3 = nn.ReLU(inplace=True)
 #
-#         self.conv4 = nn.Conv2d(64, 3, kernel_size=3, padding=1)
+#         self.conv3 = nn.Conv2d(64, 3, kernel_size=3, padding=1)
 #
 #     def forward(self, x):
 #         # 第一个分组卷积层和池化层
@@ -40,14 +40,14 @@ import torch.nn.functional as F
 #         x = self.attention2(x)
 #
 #         # 第二个卷积层和池化层
-#         x = self.pool2(self.relu2(self.conv2(x)))
+#         x = self.pool2(self.relu2(self.conv12(x)))
 #
 #         # 上采样和卷积
 #         x = self.upsample(x)
-#         x = self.relu3(self.conv3(x))
+#         x = self.relu3(self.conv6(x))
 #
 #         # 最后的卷积层
-#         x = self.conv4(x)
+#         x = self.conv3(x)
 #
 #         return x
 #
@@ -56,12 +56,12 @@ import torch.nn.functional as F
 #     def __init__(self, in_channels, out_channels):
 #         super(AttentionModule, self).__init__()
 #
-#         self.conv1 = nn.Conv2d(in_channels, out_channels, kernel_size=1)
+#         self.conv18 = nn.Conv2d(in_channels, out_channels, kernel_size=1)
 #         self.sigmoid = nn.Sigmoid()
 #
 #     def forward(self, x):
 #         # 使用全局平均池化获取注意力权重
-#         weights = self.sigmoid(self.conv1(torch.mean(x, dim=(2, 3), keepdim=True)))
+#         weights = self.sigmoid(self.conv18(torch.mean(x, in_channel=(2, 3), keepdim=True)))
 #
 #         # 将注意力权重乘以输入特征图
 #         x = x * weights
@@ -249,7 +249,7 @@ class LocalityChannelAttention(nn.Module):
 #     def __init__(self, in_planes, K, ):
 #         super(attention2d, self).__init__()
 #         self.relu = nn.ReLU(inplace=True)
-#         self.softmax = nn.Softmax(dim=1)
+#         self.softmax = nn.Softmax(in_channel=1)
 #         self.avgpool = nn.AdaptiveAvgPool2d(1)
 #         self.fc1 = nn.Conv2d(in_planes, K, 1, )
 #         self.fc2 = nn.Conv2d(K, K, 1, )
@@ -309,12 +309,12 @@ class LocalityChannelAttention(nn.Module):
 #
 #
 # class LocalityChannelAttention(nn.Module):
-#     def __init__(self, dim=3, winsize=8):
+#     def __init__(self, in_channel=3, winsize=8):
 #         super(LocalityChannelAttention, self).__init__()
 #         self.mlp = nn.Sequential(
-#             nn.Conv2d(dim, dim, kernel_size=1, bias=False),
+#             nn.Conv2d(in_channel, in_channel, kernel_size=1, bias=False),
 #             nn.ReLU(inplace=True),
-#             nn.Conv2d(dim, dim, kernel_size=1, bias=False)
+#             nn.Conv2d(in_channel, in_channel, kernel_size=1, bias=False)
 #         )
 #         self.win_pool = nn.AvgPool2d(kernel_size=winsize, stride=winsize // 2)
 #         # self.gate = nn.Sigmoid()

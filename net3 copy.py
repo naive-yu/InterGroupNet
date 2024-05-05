@@ -57,7 +57,7 @@ class DehazeNet(nn.Module):
 #     def __init__(self, in_planes, K, ):
 #         super(Attention2d, self).__init__()
 #         self.relu = nn.ReLU(inplace=True)
-#         self.softmax = nn.Softmax(dim=1)
+#         self.softmax = nn.Softmax(in_channel=1)
 #         self.avgpool = nn.AdaptiveAvgPool2d(1)
 #         self.fc1 = nn.Conv2d(in_planes, K, 1, )
 #         self.fc2 = nn.Conv2d(K, K, 1, )
@@ -116,12 +116,12 @@ class DehazeNet(nn.Module):
 
 
 # class LocalityChannelAttention(nn.Module):
-#     def __init__(self, dim=3, winsize=8):
+#     def __init__(self, in_channel=3, winsize=8):
 #         super(LocalityChannelAttention, self).__init__()
 #         self.mlp = nn.Sequential(
-#             nn.Conv2d(dim, dim, kernel_size=1, bias=False),
+#             nn.Conv2d(in_channel, in_channel, kernel_size=1, bias=False),
 #             nn.ReLU(inplace=True),
-#             nn.Conv2d(dim, dim, kernel_size=1, bias=False)
+#             nn.Conv2d(in_channel, in_channel, kernel_size=1, bias=False)
 #         )
 #         self.win_pool = nn.AvgPool2d(kernel_size=winsize, stride=winsize // 2)
 

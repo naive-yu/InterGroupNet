@@ -13,10 +13,11 @@ random.seed(1143)
 def generate_train_list(orig_images_path, hazy_images_path):
     # 训练集
     # print(f"{orig_images_path},{hazy_images_path}")
-    train_list = []
+    train_list1 = []
+    train_list2 = []
     tmp_dict = {}
-    haze_image_list = glob.glob(hazy_images_path + "*.png")
-
+    haze_image_list = sorted(glob.glob(hazy_images_path + "*.png"), key=lambda name: int(name.split('\\')[-1].split('/')[-1].split('.')[0].split('_')[0]))
+    # print(haze_image_list)
     for image in haze_image_list:
         if os.name == 'posix':
             # print("当前程序在 Linux 系统上运行")
@@ -30,12 +31,15 @@ def generate_train_list(orig_images_path, hazy_images_path):
         # if key in tmp_dict.keys():
         tmp_dict[key] = image
 
-    for key in tmp_dict.keys():
-        train_list.append([orig_images_path + key, hazy_images_path + tmp_dict[key]])
-
-    random.shuffle(train_list)
-
-    return train_list
+    for idx, key in enumerate(tmp_dict.keys()):
+        # print(key)
+        if idx < 1500:
+            train_list1.append([orig_images_path + key, hazy_images_path + tmp_dict[key]])
+        else:
+            train_list2.append([orig_images_path + key, hazy_images_path + tmp_dict[key]])
+    random.shuffle(train_list1)
+    random.shuffle(train_list2)
+    return train_list1
 
 
 class DehazeLoader(data.Dataset):
@@ -55,9 +59,9 @@ class DehazeLoader(data.Dataset):
         data_orig = cv2.imread(data_orig_path)
         data_hazy = cv2.imread(data_hazy_path)
         
-        # # 图像维度 640*480*3
-        data_orig = cv2.resize(data_orig, (640, 480), interpolation=cv2.INTER_LANCZOS4)
-        data_hazy = cv2.resize(data_hazy, (640, 480), interpolation=cv2.INTER_LANCZOS4)
+        # 图像维度 640*480*3
+        # data_orig = cv2.resize(data_orig, (640, 480), interpolation=cv2.INTER_LANCZOS4)
+        # data_hazy = cv2.resize(data_hazy, (640, 480), interpolation=cv2.INTER_LANCZOS4)
 
         data_orig = data_orig / 255.0
         data_hazy = data_hazy / 255.0
