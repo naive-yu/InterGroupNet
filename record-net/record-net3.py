@@ -17,13 +17,13 @@ class DehazeNet(nn.Module):
         # 创建指数级增长的卷积核注意力
         # win_index = 1
         # patch_size = 3 ^ 2 * win_index ^ 2
-        # self.global_conv = AttentionConv(3, 24, 1, 1)
-        # self.max_pool = nn.AdaptiveMaxPool2d(1)
-        self.conv18 = AttentionConv(3, 18, 1, 1)
-        self.conv12 = AttentionConv(3, 12, 1, 1)
-        self.conv9 = AttentionConv(3, 9, 1, 1)
-        self.conv6 = AttentionConv(3, 6, 1, 1)
-        self.conv3 = AttentionConv(3, 3, 1, 1)
+        # self.global_avg_pool = AttentionConv(3, 24, 1, 1)
+        # self.global_max_pool = nn.AdaptiveMaxPool2d(1)
+        self.conv18 = AttentionConv(3, 18)
+        self.conv12 = AttentionConv(3, 12)
+        self.conv9 = AttentionConv(3, 9)
+        self.conv6 = AttentionConv(3, 6)
+        self.conv3 = AttentionConv(3, 3)
         self.conv0 = nn.Conv2d(15, 3, 5, 1, 2, bias=True)
         # 创建指数级增长的卷积核注意力
 
@@ -31,8 +31,8 @@ class DehazeNet(nn.Module):
         # b, c, h, w = x.shape
         # print(x.shape)
         # 4 * 3 * 480 * 640
-        # x0 = self.relu(self.global_conv(x))
-        # x0 = self.max_pool(x0.view(x.shape[0], 3, -1)).unsqueeze(-1)
+        # x0 = self.relu(self.global_avg_pool(x))
+        # x0 = self.global_max_pool(x0.view(x.shape[0], 3, -1)).unsqueeze(-1)
         # print(x0.shape)
         # x18 = self.relu(self.conv18(x))
         # # print(x18.shape)
@@ -58,10 +58,11 @@ class DehazeNet(nn.Module):
         # print(x0.shape)
         # return self.relu(x * x0 + x0*(1 - x0))
         return self.relu((x * x0) + (1 - x0))
+        # return self.relu(x * x0)  # 很烂
 
 
 class AttentionConv(nn.Module):
-    def __init__(self, in_channel, window_size, qk_scale=1, num_heads=1):
+    def __init__(self, in_channel, window_size, num_heads=1, qk_scale=1, qkv_bias=True):
         super().__init__()
         assert window_size % 3 == 0  # win_size需为三的倍数
         self.in_channel = in_channel

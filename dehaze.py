@@ -4,7 +4,7 @@ import torchvision
 import torch.optim
 import net1 as net1
 import net2 as net2
-import net3 as net3
+import record as net3
 import net1 as net4
 import numpy as np
 import pandas as pd
@@ -20,20 +20,26 @@ from skimage.metrics import structural_similarity as ssim
 from skimage.metrics import peak_signal_noise_ratio as psnr
 
 # 参数配置器
-dehaze_for_net_index = 3
+dehaze_for_net_index = 2
 parser = argparse.ArgumentParser(description='Performance')
-parser.add_argument('--dehaze_dir', default='Haze4K/test/dehaze')
-parser.add_argument('--original_dir', default='Haze4K/test/gt')
-parser.add_argument('--haze_dir', default='Haze4K/test/haze')
+# 拟合程度验证
+parser.add_argument('--dehaze_dir', default='Haze4K/train/dehaze')
+parser.add_argument('--original_dir', default='Haze4K/train/gt')
+parser.add_argument('--haze_dir', default='Haze4K/train/haze')
+# 普通测试与泛化测试
+# parser.add_argument('--dehaze_dir', default='Haze4K/test/dehaze')
+# parser.add_argument('--original_dir', default='Haze4K/test/gt')
+# parser.add_argument('--haze_dir', default='Haze4K/test/haze')
 parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
 parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
 # parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
 # parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
-parser.add_argument('--snapshot_model_dir_or_file', default='snapshots3/DehazeNet_epoch26.pth')
+parser.add_argument('--snapshot_model_dir_or_file', default='snapshots2/DehazeNet_epoch198.pth')
+# parser.add_argument('--snapshot_model_dir_or_file', default='snapshots3-version3/DehazeNet_epoch34.pth')
 parser.add_argument('--cuda_index', default=0)
 
 config = parser.parse_args()
-test_length = 500
+test_length = 1500
 
 # num_gpus = torch.cuda.device_count()
 # print(num_gpus)
@@ -81,19 +87,20 @@ def dehazeImage(my_net, haze_image_path, dehaze_path):
     cv2.imwrite(dehaze_file_path, dehaze_image)
 
 
-def dataAnalysis(haze_path, origin_path, dehaze_path):
+def dataAnalysis(haze_dir, original_dir, dehaze_dir):
     score_psnr = 0
-    score_ssim = 0
-    file_name_list = os.listdir(haze_path)[:test_length]  # 针对400*400
+    score_ssim = 0  # 针对400*400
+    file_name_list = sorted(os.listdir(haze_dir), key=lambda name: int(name.split('.')[0].split('_')[0]))[:test_length]
+    # print(file_name_list)
     for idx, file_name in enumerate(file_name_list):
         # 获取图像路径
-        haze_image_path = os.path.join(haze_path, file_name)
+        haze_image_path = os.path.join(haze_dir, file_name)
         if len(file_name.split("_")) == 1:
-            origin_image_path = os.path.join(origin_path, file_name)
-            dehaze_image_path = os.path.join(dehaze_path, file_name)
+            origin_image_path = os.path.join(original_dir, file_name)
+            dehaze_image_path = os.path.join(dehaze_dir, file_name)
         else:
-            origin_image_path = os.path.join(origin_path, file_name.split("_")[0] + '.png')
-            dehaze_image_path = os.path.join(dehaze_path, file_name.split("_")[0] + '.png')
+            origin_image_path = os.path.join(original_dir, file_name.split("_")[0] + '.png')
+            dehaze_image_path = os.path.join(dehaze_dir, file_name.split("_")[0] + '.png')
 
         # 读取原始图像和去雾后的图像
         # print(f"{origin_image_path}")
@@ -126,7 +133,7 @@ def dataAnalysis(haze_path, origin_path, dehaze_path):
             im2 = F.to_tensor(dehaze_image).unsqueeze(0)
             im3 = F.to_tensor(haze_image).unsqueeze(0)
             combined_image = torch.cat((im1, im2, im3), dim=0)
-            torch.save(combined_image, 'tensor.pth')
+            # torch.save(combined_image, 'tensor.pth')
             torchvision.utils.save_image(combined_image, config.sample_dir + str(idx + 1) + ".jpg")
 
     avg_score_psnr = score_psnr / len(file_name_list)
@@ -197,7 +204,9 @@ if __name__ == '__main__':
             avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
             print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
         elif os.path.isdir(snapshot_model_dir_or_file):
-            exist_model = list(pd.read_csv(result_file)['model'])
+            exist_model = []
+            if os.path.exists(result_file):
+                exist_model = list(pd.read_csv(result_file)['model'])
             # print(exist_model)
             for snapshot_model in sorted(os.listdir(snapshot_model_dir_or_file), key=lambda name: int(name.split('.')[0][15:])):
                 # print(snapshot_model)

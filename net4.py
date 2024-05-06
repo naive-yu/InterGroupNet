@@ -8,22 +8,7 @@ from torch.nn.init import trunc_normal_
 torch.set_printoptions(profile="full")
 
 
-class DehazeNet(nn.Module):
-    def __init__(self):
-        super().__init__()
-
-        # 创建指数级增长的卷积核注意力
-        # win_index = 1
-        # patch_size = 3 ^ 2 * win_index ^ 2
-        self.conv1 = MyConv(3, 6, 1, 1)
-        # 创建指数级增长的卷积核注意力
-
-    def forward(self, x):
-        x1 = self.conv1(x)
-        return x + x1
-
-
-class MyConv(nn.Module):
+class AttentionConv(nn.Module):
     def __init__(self, in_channel, window_size, qk_scale=1, num_heads=1):
         super().__init__()
         assert window_size % 3 == 0  # win_size需为三的倍数
@@ -168,17 +153,7 @@ class MyConv(nn.Module):
 # output = my_conv1(my_input)
 # print()
 
-
-import numpy as np
-import torch
-import torch.nn as nn
-import math
-import torch.nn.functional as F
-from torch.nn.init import trunc_normal_
-
-torch.set_printoptions(profile="full")
 cuda_index = 0
-
 
 class DehazeNet(nn.Module):
     def __init__(self):

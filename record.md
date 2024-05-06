@@ -1,5 +1,6 @@
 ## 测试记录
-
+    雾图水平
+    [2024-05-05 20:06:52.979633] Avg_PSNR: 17.08376834398991 dB, Avg_SSIM: 0.8276328193247319
 ### version 1
 
     1. 第一层卷积层为分组卷积，所有卷积层为边界填充（仅第一层边界填充）
@@ -65,6 +66,23 @@
 
     
     5/5/14:32:first 500 pictures submit version3.0 *** 9cbab9ca ***
-    Avg_PSNR: 18.643848832341316 dB, Avg_SSIM: 0.8788447661399841
+    详见result3.csv 保存在snapshots3-version3.0
+    net3,34,DehazeNet_epoch34.pth,18.76292264248695,0.8803929291963577
+
+    [2024-05-05 17:12:31.025952] test start with snapshots2/DehazeNet_epoch12.pth
+    [2024-05-05 17:12:50.101495] test end with snapshots2/DehazeNet_epoch12.pth
+    [2024-05-05 17:13:06.041401] Avg_PSNR: 18.557426890024708 dB, Avg_SSIM: 0.8718973098993301
+    之后需要关注的3点：残差网络，多头注意力，相对位置改善
+
+    D:\Anaconda\python.exe D:\pythonFile\InterGroupNet\dehaze.py 
+    [2024-05-06 00:13:27.886060] test start with snapshots2/DehazeNet_epoch158.pth
+    [2024-05-06 00:14:10.667272] test end with snapshots2/DehazeNet_epoch158.pth
+    [2024-05-06 00:14:24.098362] Avg_PSNR: 19.00836200499259 dB, Avg_SSIM: 0.883252209186554
     
-    
+    record-result2.csv 前500
+    net2,198,DehazeNet_epoch198.pth,19.135995795382243,0.8830249757766724  
+    前1500(不同尺寸泛化)：Avg_PSNR: 19.336173125425443 dB, Avg_SSIM: 0.8639760804474353
+    拟合1500：Avg_PSNR: 19.704309846832924 dB, Avg_SSIM: 0.8826771590709687
+    net2,184,DehazeNet_epoch184.pth,19.089449619884494,0.8856727446317673
+    前1500(不同尺寸泛化)：Avg_PSNR: 18.969806954009965 dB, Avg_SSIM: 0.8621244140267372
+    拟合1500：Avg_PSNR: 19.67469587178321 dB, Avg_SSIM: 0.8852835761308671
