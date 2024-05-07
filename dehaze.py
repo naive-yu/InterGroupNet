@@ -27,8 +27,8 @@ parser.add_argument('--original_dir', default='Haze4K/test/gt')
 parser.add_argument('--haze_dir', default='Haze4K/test/haze')
 parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
 parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
-parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
-# parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
+# parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
+parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
 # parser.add_argument('--snapshot_model_dir_or_file', default='snapshots1/DehazeNet_epoch24.pth')
 parser.add_argument('--cuda_index', default=0)
 
@@ -127,7 +127,7 @@ def runTest(net, snapshot_model):
     print(f"[{datetime.datetime.now()}] test start with {snapshot_model}")
     with torch.no_grad():
         # print(glob.glob(f"{haze_dir}/*"))
-        for image in glob.glob(f"{haze_dir}/*"):
+        for image in glob.glob(f"{haze_dir}/*")[0:1]:
             dehazeImage(net, image, dehaze_dir)
     print(f"[{datetime.datetime.now()}] test end with {snapshot_model}")
 

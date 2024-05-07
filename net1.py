@@ -111,7 +111,7 @@ class DehazeNet(nn.Module):
         concat3 = torch.cat((x1, x2, x3, x4, xatt, xsatt), 1)
         x5 = self.relu(self.e_conv5(concat3))
 
-        return self.relu((x5 * x) - x5 + 1)
+        return self.relu((x5 * x) - x5 + 1)  # 认为全局大气光值就是1，只估计了x5怎么乘，模型本身缺陷明显
 
 
 class Attention2d(nn.Module):
@@ -125,17 +125,23 @@ class Attention2d(nn.Module):
 
     def forward(self, x):
         x1 = self.avgpool(x)
+        print(x1)
         # print(f'x1{x1.shape}')
         x1 = self.fc1(x1)
         # print(f'x1{x1.shape}')
+        print(x1)
         x1 = self.relu(x1)
+        print(x1)
         # print(f'x1{x1.shape}')
         x1 = self.fc2(x1)
+        print(x1)
         # print(f'x1{x1.shape}')
         x1 = self.softmax(x1)
+        print(x1)
         # print(f'x1{x1.shape}')
         # print(x1)
         x = x * x1
+        print(x)
         return x #  x + x1
 
 
