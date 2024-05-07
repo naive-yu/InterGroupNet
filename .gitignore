@@ -6,11 +6,10 @@
 /Haze4K/test/dehaze/
 /snapshots1_0/
 /snapshots1/
-/snapshots2/
+/snapshots2-version3.1/
 /snapshots3/
 /snapshots4/
 /samples1/
-/samples2/
 /samples2/
 /generate_string.py
 /blank.txt
@@ -19,4 +18,6 @@
 /samples3/
 /result3.csv
 /snapshots3-version3/
-/snapshots3-version3/
+/data/dehaze/
+/data/
+/data.zip

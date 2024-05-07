@@ -2,10 +2,10 @@ import datetime
 import torch
 import torchvision
 import torch.optim
-import net1 as net1
+import net2 as net1
 import net2 as net2
 import record as net3
-import net1 as net4
+import net4 as net4
 import numpy as np
 import pandas as pd
 from PIL import Image
@@ -23,23 +23,26 @@ from skimage.metrics import peak_signal_noise_ratio as psnr
 dehaze_for_net_index = 2
 parser = argparse.ArgumentParser(description='Performance')
 # 拟合程度验证
-parser.add_argument('--dehaze_dir', default='Haze4K/train/dehaze')
-parser.add_argument('--original_dir', default='Haze4K/train/gt')
-parser.add_argument('--haze_dir', default='Haze4K/train/haze')
+# parser.add_argument('--dehaze_dir', default='Haze4K/train/dehaze')
+# parser.add_argument('--original_dir', default='Haze4K/train/gt')
+# parser.add_argument('--haze_dir', default='Haze4K/train/haze')
 # 普通测试与泛化测试
 # parser.add_argument('--dehaze_dir', default='Haze4K/test/dehaze')
 # parser.add_argument('--original_dir', default='Haze4K/test/gt')
 # parser.add_argument('--haze_dir', default='Haze4K/test/haze')
+parser.add_argument('--dehaze_dir', default='data/dehaze')
+parser.add_argument('--original_dir', default='data/images')
+parser.add_argument('--haze_dir', default='data/data')
 parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
 parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
 # parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
 # parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
-parser.add_argument('--snapshot_model_dir_or_file', default='snapshots2/DehazeNet_epoch198.pth')
-# parser.add_argument('--snapshot_model_dir_or_file', default='snapshots3-version3/DehazeNet_epoch34.pth')
+# parser.add_argument('--snapshot_model_dir_or_file', default='snapshots2/DehazeNet_epoch137.pth')
+parser.add_argument('--snapshot_model_dir_or_file', default='record-snapshots/DehazeNet_epoch198.pth')
 parser.add_argument('--cuda_index', default=0)
 
 config = parser.parse_args()
-test_length = 1500
+test_length = 3000
 
 # num_gpus = torch.cuda.device_count()
 # print(num_gpus)
@@ -90,7 +93,7 @@ def dehazeImage(my_net, haze_image_path, dehaze_path):
 def dataAnalysis(haze_dir, original_dir, dehaze_dir):
     score_psnr = 0
     score_ssim = 0  # 针对400*400
-    file_name_list = sorted(os.listdir(haze_dir), key=lambda name: int(name.split('.')[0].split('_')[0]))[:test_length]
+    file_name_list = sorted(os.listdir(haze_dir)[:-1], key=lambda name: int(name.split('.')[0].split('_')[0]))[:test_length]
     # print(file_name_list)
     for idx, file_name in enumerate(file_name_list):
         # 获取图像路径
@@ -199,7 +202,7 @@ if __name__ == '__main__':
     try:
         if os.path.isfile(snapshot_model_dir_or_file):
             # 单文件不使用表格记录结果
-            runTest(dehaze_net, snapshot_model=snapshot_model_dir_or_file)
+            # runTest(dehaze_net, snapshot_model=snapshot_model_dir_or_file)
             # 分析结果
             avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
             print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
