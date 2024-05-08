@@ -58,8 +58,8 @@ def train(config):
     optimizer = torch.optim.Adam(dehaze_net.parameters(), lr=config.lr, weight_decay=config.weight_decay)
 
     dehaze_net.train()
-    train_list = []
     for epoch in range(config.num_epochs):
+        train_list = []
         for (img_orig, img_haze) in train_loader1:
             train_list.append((img_orig, img_haze))
         # print(len(train_list))

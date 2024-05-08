@@ -10,11 +10,10 @@ import random
 random.seed(1143)
 
 
-def generate_train_list(orig_images_path, hazy_images_path):
+def generate_train_list(orig_images_path, hazy_images_path, type):
     # 训练集
     # print(f"{orig_images_path},{hazy_images_path}")
-    train_list1 = []
-    train_list2 = []
+    train_list = []
     tmp_dict = {}
     haze_image_list = sorted(glob.glob(hazy_images_path + "*.png"), key=lambda name: int(name.split('\\')[-1].split('/')[-1].split('.')[0].split('_')[0]))
     # print(haze_image_list)
@@ -31,21 +30,19 @@ def generate_train_list(orig_images_path, hazy_images_path):
         # if key in tmp_dict.keys():
         tmp_dict[key] = image
 
+    start_end = [(0, 1500), (1500, 3000)]
     for idx, key in enumerate(tmp_dict.keys()):
         # print(key)
-        if idx < 1500:
-            train_list1.append([orig_images_path + key, hazy_images_path + tmp_dict[key]])
-        else:
-            train_list2.append([orig_images_path + key, hazy_images_path + tmp_dict[key]])
-    random.shuffle(train_list1)
-    random.shuffle(train_list2)
-    return train_list1
+        if start_end[type][0] <= idx < start_end[type][1]:
+            train_list.append([orig_images_path + key, hazy_images_path + tmp_dict[key]])
+    random.shuffle(train_list)
+    return train_list
 
 
 class DehazeLoader(data.Dataset):
 
-    def __init__(self, orig_images_path, hazy_images_path, mode='train'):
-        self.data_list = generate_train_list(orig_images_path, hazy_images_path)
+    def __init__(self, orig_images_path, hazy_images_path, type, mode='train'):
+        self.data_list = generate_train_list(orig_images_path, hazy_images_path, type)
 
         if mode == 'train':
             # self.data_list = self.train_list
@@ -69,7 +66,7 @@ class DehazeLoader(data.Dataset):
         # 转换为PyTorch Tensor，图像维度 3*640*480
         data_orig = torch.from_numpy(data_orig.transpose(2, 0, 1)).float()
         data_hazy = torch.from_numpy(data_hazy.transpose(2, 0, 1)).float()
-
+        
         return data_orig, data_hazy
 
     def __len__(self):

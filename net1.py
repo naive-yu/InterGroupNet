@@ -6,7 +6,7 @@ import torch.nn.functional as F
 from torch.nn.init import trunc_normal_
 
 torch.set_printoptions(profile="full")
-cuda_index = 0
+cuda_index = 1
 
 
 class DehazeNet(nn.Module):
@@ -33,10 +33,35 @@ class DehazeNet(nn.Module):
         b, c, h, w = x.shape
         # print(x.shape)
         # 2 * 3 * 480 * 640
-        x_g = self.softmax(self.global_avg_pool((1-x).view(b, c, -1))).unsqueeze(-1)
+        x_g = self.softmax(self.global_avg_pool((1 - x).view(b, c, -1))).unsqueeze(-1)
         # print(x_g.shape)  # 2 * 3 * 1 * 1
-        x_g = self.global_max_pool((x * x_g).view(b, -1)).unsqueeze(-1).unsqueeze(-1)
+        x_g = self.global_max_pool((x * x_g).reshape(b, 1, -1)).unsqueeze(-1)
         # print(x_g.shape)
+
+        # x18 = self.relu(self.conv18(x))
+        # # print(x18.shape)
+        # x12 = self.relu(self.conv12(x18))
+        # # print(x12.shape)
+        # x9 = self.relu(self.conv9(x12))
+        # # print(x9.shape)
+        # x6 = self.relu(self.conv6(x9))
+        # # print(x6.shape)
+        # x3 = self.relu(self.conv3(x6))
+        # print(x3.shape)  # 训练后期出现问题
+
+        # x3 = self.relu(self.conv3(x))
+        # # print(x3.shape)
+        # x6 = self.relu(self.conv6(x3))
+        # # print(x6.shape)
+        # x9 = self.relu(self.conv9(x6))
+        # # print(x9.shape)
+        # x12 = self.relu(self.conv12(x9))
+        # # print(x12.shape)
+        # x15 = self.relu(self.conv15(x12))
+        # # print(x15.shape)
+        # # x18 = self.relu(self.conv18(x15))
+        # # print(x18.shape)
+        # x0 = self.relu(self.conv0(torch.cat([x15, x12, x9, x6, x3], dim=1)))
 
         x3 = self.conv3(x)
         # print(x3.shape)
@@ -56,13 +81,6 @@ class DehazeNet(nn.Module):
         # return self.relu(x * x0 + x0*(1 - x0))
         return self.relu((x * x0) + (x_g - x0))
         # return self.relu(x * x0)  # 很烂
-
-class Basic_Layer(nn.Module):
-    def __init__(self):
-        super().__init__()
-
-    def forward(self):
-        pass
 
 
 class AttentionConv(nn.Module):
@@ -121,7 +139,7 @@ class AttentionConv(nn.Module):
              down_patch_position.unsqueeze(0),
              bottom_right_patch_position.unsqueeze(0)
              ], dim=0
-        ).cuda(cuda_index)
+        ).view(9, -1).cuda(cuda_index)
         # print(merge_position.shape)
         # print(merge_position.view(9,-1))
         self.relative_position_bias = merge_position
@@ -134,15 +152,16 @@ class AttentionConv(nn.Module):
         x1 = x
         b, c, h, w = x1.shape
         # print(x1)
-        padding_h = ((self.patch_size * (1 + h // self.patch_size) - h) % self.patch_size) // 2
-        padding_w = ((self.patch_size * (1 + w // self.patch_size) - w) % self.patch_size) // 2
+        # h,w不整除patch_size，默认放在上侧和左侧
+        padding_h = (self.patch_size * (1 + h // self.patch_size) - h) % self.patch_size
+        padding_w = (self.patch_size * (1 + w // self.patch_size) - w) % self.patch_size
         # print(f'padding_w{padding_w}, padding_h{padding_h}')
-        x1 = F.pad(x1, (self.patch_size + padding_w, self.patch_size + padding_w, self.patch_size + padding_h, self.patch_size + padding_h),
-                   mode='constant')
+        # 边界patch填充
+        x1 = F.pad(x1, (self.patch_size + padding_w, self.patch_size, self.patch_size + padding_h, self.patch_size), mode='reflect')
         # print(x1.shape)
         # 类似卷积核
-        x1 = torch.unfold_copy(x1, 2, self.window_size, self.patch_size)  # 沿h维度展开
-        x1 = torch.unfold_copy(x1, 3, self.window_size, self.patch_size)  # 沿w维度展开
+        x1 = x1.unfold(2, self.window_size, self.patch_size)  # 沿h维度展开
+        x1 = x1.unfold(3, self.window_size, self.patch_size)  # 沿w维度展开
         # print(f'unfold{x1.shape}')
         num_h = x1.shape[2]
         num_w = x1.shape[3]
@@ -155,14 +174,15 @@ class AttentionConv(nn.Module):
         # 将窗口分块3*3,每块patch*patch
         x1 = x1.view(-1, self.in_channel, 3, self.patch_size, 3, self.patch_size).permute(0, 2, 4, 1, 3, 5).contiguous()
         # print(f'w {x1.shape}')
-        x1 = x1.view(-1, 9, self.in_channel, self.patch_size, self.patch_size).view(-1, 9, self.in_channel * self.patch_size * self.patch_size)
+        x1 = x1.view(-1, 9, self.in_channel, self.patch_size * self.patch_size).view(-1, 9, self.in_channel * self.patch_size * self.patch_size)
         # print(x1.shape)
         qkv = self.qkv(x1)
         # print(qkv.shape)
-        if self.num_heads > 1:
-            qkv = qkv.reshape(-1, self.num_heads, self.in_channel // self.num_heads, self.window_size * self.window_size).permute(2, 0, 3, 1, 4)
-        qkv = qkv.view(-1, 9, 3, self.in_channel, self.patch_size, self.patch_size).permute(0, 3, 2, 1, 4,
-                                                                                            5)  # 将channel放置到前面  # .contiguous().view(-1, )
+        qkv = qkv.view(-1, 9, 3, self.in_channel, self.patch_size * self.patch_size).permute(0, 3, 2, 1, 4)
+        # (b*windows_num)*9*(qkv)*in_channel*patch_size*patch_size
+        # if self.num_heads > 1:
+        #     qkv = qkv.view(-1, self.num_heads, self.in_channel // self.num_heads, self.patch_size * self.patch_size).permute(2, 0, 3, 1, 4)
+        # 将channel放置到前面  # .contiguous().view(-1, )
         # 32760*9*3*3*6*6 -> 32760*C(3)*3*9*6*6
         # print(qkv.shape)
         # q, k, v = qkv[:,:,0,:,:,:], qkv[:,:,1,:,:,:], qkv[:,:,2,:,:,:]
@@ -170,14 +190,14 @@ class AttentionConv(nn.Module):
         # print(q.shape)
 
         # 对q做处理
-        # 选择第三维的第一个矩阵
+        # 选择第三维的第四个矩阵
         # 0 1 2
         # 3 4 5
         # 6 7 8
-        core_q = q[:, :, 4, :, :]
+        core_q = q[:, :, 4, :]
         # print(core_q)
         # 使用 repeat 方法复制第一个矩阵，并覆盖整个第三维的数据
-        q = core_q.unsqueeze(2).repeat(1, 1, 9, 1, 1)
+        q = core_q.unsqueeze(2).repeat(1, 1, 9, 1)
         # print(q)
         # print(q.shape)
 
@@ -195,24 +215,22 @@ class AttentionConv(nn.Module):
         # print(attention_output.shape)
         # attention_output = torch.randn(4, 3, 2, 2)
         # print(attention_output)
-        attention_output = attention_output.view(b, -1, 3, self.patch_size, self.patch_size).permute(0, 2, 1, 3, 4).contiguous().view(b, 3, num_h,
-                                                                                                                                      num_w,
-                                                                                                                                      self.patch_size,
-                                                                                                                                      self.patch_size).permute(
-            0, 1, 2, 4, 3, 5).contiguous().view(b, 3, num_h * self.patch_size, -1)
+        attention_output = attention_output.view(b, -1, self.in_channel, self.patch_size, self.patch_size).permute(0, 2, 1, 3, 4).contiguous()
+        attention_output = attention_output.view(b, self.in_channel, num_h, num_w, self.patch_size, self.patch_size).permute(0, 1, 2, 4, 3, 5).contiguous()
+        attention_output = attention_output.view(b, self.in_channel, num_h * self.patch_size, -1)
         # print(attention_output.shape)
         # 裁剪恢复图像 padding值可能为0
-        end_h = attention_output.shape[-2] - padding_h
-        end_w = attention_output.shape[-1] - padding_w
-
-        attention_output = attention_output[:, :, padding_h:end_h, padding_w:end_w]
+        # end_h = attention_output.shape[-2] - padding_h
+        # end_w = attention_output.shape[-1] - padding_w
+        attention_output = attention_output[:, :, padding_h:, padding_w:]
 
         # print(attention_output)
         return attention_output
 
-# my_conv1 = AttentionConv(3, 6).cuda(cuda_index)
-# my_input = torch.randn(1, 3, 8, 8, requires_grad=True).cuda(cuda_index)
-# # my_conv1 = AttentionConv(3, 3, 1)
-# # my_input = torch.randn(1, 3, 4, 4, requires_grad=True)
-# print(my_input.shape)
+
+# my_conv1 = AttentionConv(3, 9).cuda(cuda_index)
+# my_input = torch.randn(1, 3, 400, 400, requires_grad=True).cuda(cuda_index)
+# # # my_conv1 = AttentionConv(3, 3, 1)
+# # # my_input = torch.randn(1, 3, 4, 4, requires_grad=True)
+# # print(my_input.shape)
 # output = my_conv1(my_input)

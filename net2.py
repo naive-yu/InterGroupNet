@@ -6,7 +6,7 @@ import torch.nn.functional as F
 from torch.nn.init import trunc_normal_
 
 torch.set_printoptions(profile="full")
-cuda_index = 0
+cuda_index = 2
 
 
 class DehazeNet(nn.Module):
@@ -35,7 +35,7 @@ class DehazeNet(nn.Module):
         # 2 * 3 * 480 * 640
         x_g = self.softmax(self.global_avg_pool((1 - x).view(b, c, -1))).unsqueeze(-1)
         # print(x_g.shape)  # 2 * 3 * 1 * 1
-        x_g = self.global_max_pool((x * x_g).reshape(b, -1)).unsqueeze(-1).unsqueeze(-1)
+        x_g = self.global_max_pool((x * x_g).reshape(b, 1, -1)).unsqueeze(-1)
         # print(x_g.shape)
 
         # x18 = self.relu(self.conv18(x))
@@ -160,8 +160,8 @@ class AttentionConv(nn.Module):
         x1 = F.pad(x1, (self.patch_size + padding_w, self.patch_size, self.patch_size + padding_h, self.patch_size), mode='reflect')
         # print(x1.shape)
         # 类似卷积核
-        x1 = torch.unfold_copy(x1, 2, self.window_size, self.patch_size)  # 沿h维度展开
-        x1 = torch.unfold_copy(x1, 3, self.window_size, self.patch_size)  # 沿w维度展开
+        x1 = x1.unfold(2, self.window_size, self.patch_size)  # 沿h维度展开
+        x1 = x1.unfold(3, self.window_size, self.patch_size)  # 沿w维度展开
         # print(f'unfold{x1.shape}')
         num_h = x1.shape[2]
         num_w = x1.shape[3]

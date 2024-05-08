@@ -3,6 +3,7 @@ import torch.nn as nn
 import torchvision
 import torch.optim
 import os
+import random
 import argparse
 import dataloader
 import net1 as net
@@ -22,7 +23,7 @@ parser.add_argument('--lr', type=float, default=0.0001)
 parser.add_argument('--weight_decay', type=float, default=0.0001)
 parser.add_argument('--grad_clip_norm', type=float, default=0.1)
 parser.add_argument('--num_epochs', type=int, default=200)
-parser.add_argument('--train_batch_size', type=int, default=4)
+parser.add_argument('--train_batch_size', type=int, default=2)
 parser.add_argument('--num_workers', type=int, default=4)
 parser.add_argument('--display_iter', type=int, default=10)
 parser.add_argument('--snapshot_iter', type=int, default=200)
@@ -33,10 +34,13 @@ config_para = parser.parse_args()
 cuda_index = config_para.cuda_index
 torch.cuda.empty_cache()
 
+
 def weights_init(m):
     class_name = m.__class__.__name__
-    if class_name.find('Conv') != -1:
+    if class_name.find('conv0') != -1:
         m.weight.data.normal_(0.0, 0.02)
+    elif class_name.find('conv') != -1:
+        m.qkv.weight.data.normal_(0.0, 0.02)
     elif class_name.find('BatchNorm') != -1:
         m.weight.data.normal_(1.0, 0.02)
         m.bias.data.fill_(0)
@@ -46,17 +50,25 @@ def train(config):
     dehaze_net = net.DehazeNet().cuda(cuda_index)
     dehaze_net.apply(weights_init)
 
-    train_dataset = dataloader.DehazeLoader(config.orig_images_path, config.hazy_images_path)
-    train_loader = torch.utils.data.DataLoader(train_dataset, batch_size=config.train_batch_size, shuffle=True, num_workers=config.num_workers, pin_memory=True)
+    train_dataset1 = dataloader.DehazeLoader(config.orig_images_path, config.hazy_images_path, 0)
+    train_dataset2 = dataloader.DehazeLoader(config.orig_images_path, config.hazy_images_path, 1)
+    train_loader1 = torch.utils.data.DataLoader(train_dataset1, batch_size=config.train_batch_size, shuffle=False, num_workers=config.num_workers, pin_memory=True)
+    train_loader2 = torch.utils.data.DataLoader(train_dataset2, batch_size=config.train_batch_size, shuffle=False, num_workers=config.num_workers, pin_memory=True)
 
     criterion = nn.MSELoss().cuda(cuda_index)
     optimizer = torch.optim.Adam(dehaze_net.parameters(), lr=config.lr, weight_decay=config.weight_decay)
 
     dehaze_net.train()
-
+    train_list = []
+    for (img_orig, img_haze) in train_loader1:
+        train_list.append((img_orig, img_haze))
+    # print(len(train_list))
+    for (img_orig, img_haze) in train_loader2:
+        train_list.append((img_orig, img_haze))
     for epoch in range(config.num_epochs):
-        for index, (img_orig, img_haze) in enumerate(train_loader):
-
+        random.shuffle(train_list)
+        # print(len(train_list))
+        for index, (img_orig, img_haze) in enumerate(train_list):
             img_orig = img_orig.cuda(cuda_index)
             img_haze = img_haze.cuda(cuda_index)
 
