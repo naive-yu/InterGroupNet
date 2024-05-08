@@ -6,11 +6,6 @@ import torch.nn.functional as F
 from torch.nn.init import trunc_normal_
 
 torch.set_printoptions(profile="full")
-cuda_index = 3
-
-from torch.nn.init import trunc_normal_
-
-torch.set_printoptions(profile="full")
 cuda_index = 0
 
 
