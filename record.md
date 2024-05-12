@@ -90,3 +90,15 @@
     NYU
     D:\Anaconda\python.exe D:\pythonFile\InterGroupNet\dehaze.py 
     [2024-05-07 19:13:03.458309] Avg_PSNR: 19.724768315908353 dB, Avg_SSIM: 0.8640415560603142
+
+
+    (InterGroupNet) (pytorch)ytchen@GPU-Server:~/InterGroupNet$ python dehaze.py
+    [2024-05-08 21:16:43.932582] test start with snapshots2/DehazeNet_epoch124.pth
+
+    [2024-05-08 21:23:12.705454] test end with snapshots2/DehazeNet_epoch124.pth
+    [2024-05-08 21:28:16.056110] Avg_PSNR: 19.805699186907436 dB, Avg_SSIM: 0.8780186198261747
+    (InterGroupNet) (pytorch)ytchen@GPU-Server:~/InterGroupNet$ 
+    (InterGroupNet) (pytorch)ytchen@GPU-Server:~/InterGroupNet$ python dehaze.py
+    [2024-05-08 21:29:32.930755] test start with snapshots2/DehazeNet_epoch124.pth
+    [2024-05-08 21:31:41.862099] test end with snapshots2/DehazeNet_epoch124.pth
+    [2024-05-08 21:33:23.937240] Avg_PSNR: 19.389304151089597 dB, Avg_SSIM: 0.876581600001147

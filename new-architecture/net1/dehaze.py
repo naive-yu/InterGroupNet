@@ -1,53 +1,64 @@
 import datetime
 import torch
-import torchvision
+# import torchvision
 import torch.optim
-import net1 as net1
-import net2 as net2
-import record as net3
-import net4 as net4
+import net1
 import numpy as np
 import pandas as pd
-from PIL import Image
+# from PIL import Image
 import glob
 import argparse
 import os
-import cv2
 import torchvision.transforms.functional as F
 import torch.nn.functional as F2
 
 from skimage.metrics import structural_similarity as ssim
 from skimage.metrics import peak_signal_noise_ratio as psnr
-
+import faulthandler
+import cv2
+# 在import之后直接添加以下启用代码即可
+faulthandler.enable()
 # 参数配置器
-dehaze_for_net_index = 1
+# dehaze_for_net_index = 1
 parser = argparse.ArgumentParser(description='Performance')
 # 拟合程度验证
-# parser.add_argument('--dehaze_dir', default='Haze4K/train/dehaze')
-# parser.add_argument('--original_dir', default='Haze4K/train/gt')
-# parser.add_argument('--haze_dir', default='Haze4K/train/haze')
+parser.add_argument('--dehaze_dir', default='new-architecture/net1/Haze4K/train/dehaze')
+parser.add_argument('--original_dir', default='new-architecture/net1/Haze4K/train/gt')
+parser.add_argument('--haze_dir', default='new-architecture/net1/Haze4K/train/haze')
+parser.add_argument('--result_file', default=f'new-architecture/net1/result1-0.csv')
+parser.add_argument('--test_length', default=3000)
+# nohup python new-architecture/net1/dehaze.py  >> new-architecture/net1/dehaze-5-10-net1-0.out &
+# PID 13458 14403
+
 # 普通测试与泛化测试
-parser.add_argument('--dehaze_dir', default='Haze4K/test/dehaze')
-parser.add_argument('--original_dir', default='Haze4K/test/gt')
-parser.add_argument('--haze_dir', default='Haze4K/test/haze')
-# parser.add_argument('--dehaze_dir', default='data/dehaze')
-# parser.add_argument('--original_dir', default='data/images')
-# parser.add_argument('--haze_dir', default='data/data')
-parser.add_argument('--sample_dir', default=f'samples{dehaze_for_net_index}/')
-parser.add_argument('--result_file', default=f'result{dehaze_for_net_index}.csv')
-parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/')
-# parser.add_argument('--snapshot_model_dir_or_file', default=f'snapshots{dehaze_for_net_index}/DehazeNet_epoch199.pth')
-# parser.add_argument('--snapshot_model_dir_or_file', default='snapshots1/DehazeNet_epoch123.pth')
-# parser.add_argument('--snapshot_model_dir_or_file', default='record-snapshots/DehazeNet_epoch198.pth')
-# parser.add_argument('--cuda_index', default=1)
+# parser.add_argument('--dehaze_dir', default='new-architecture/net1/Haze4K/test/dehaze')
+# parser.add_argument('--original_dir', default='new-architecture/net1/Haze4K/test/gt')
+# parser.add_argument('--haze_dir', default='new-architecture/net1/Haze4K/test/haze')
+# parser.add_argument('--result_file', default=f'new-architecture/net1/result1-1.csv')
+# parser.add_argument('--test_length', default=1000)
+# nohup python new-architecture/net1/dehaze.py  >> new-architecture/net1/dehaze-5-10-net1-1.out &
+
+# parser.add_argument('--dehaze_dir', default='new-architecture/net1/data/dehaze')
+# parser.add_argument('--original_dir', default='new-architecture/net1/data/images')
+# parser.add_argument('--haze_dir', default='new-architecture/net1/data/data')
+# parser.add_argument('--result_file', default='new-architecture/net1/result1-2.csv')
+# parser.add_argument('--test_length', default=3000)
+# nohup python new-architecture/net1/dehaze.py  >> new-architecture/net1/dehaze-5-10-net1-2.out &
+
+parser.add_argument('--sample_dir', default='new-architecture/net1/samples1/')
+parser.add_argument('--snapshot_model_dir_or_file', default='new-architecture/net1/snapshots1/DehazeNet_epoch31.pth')
+# parser.add_argument('--snapshot_model_dir_or_file', default=f'new-architecture/net1/snapshots1/DehazeNet_epoch199.pth')
+# parser.add_argument('--snapshot_model_dir_or_file', default='new-architecture/net1/snapshots1/DehazeNet_epoch123.pth')
+# parser.add_argument('--snapshot_model_dir_or_file', default='new-architecture/net1/record-snapshots1/DehazeNet_epoch198.pth')
+parser.add_argument('--cuda_index', default=1)
 
 config = parser.parse_args()
-test_length = 1000
-
+# print(config)
 # num_gpus = torch.cuda.device_count()
 # print(num_gpus)
 # cuda_index = config.cuda_index
-cuda_index = dehaze_for_net_index
+test_length = config.test_length
+cuda_index = config.cuda_index
 
 def dehazeImage(my_net, haze_image_path, dehaze_path):
     # 读取雾化图像
@@ -130,6 +141,7 @@ def dataAnalysis(haze_dir, original_dir, dehaze_dir):
         #     haze_image = cv2.resize(haze_image, (w, h), interpolation=cv2.INTER_LANCZOS4)
         # 仅用于循环去雾测试
 
+        # 写样本
         # print(f'{origin_image_path} {origin_image.shape} {dehaze_image.shape} {haze_image.shape}')
         # if (idx + 1) % 10 == 0:
         #     im1 = F.to_tensor(origin_image).unsqueeze(0)
@@ -185,20 +197,9 @@ if __name__ == '__main__':
     if not os.path.exists(config.sample_dir):
         os.mkdir(config.sample_dir)
     # 导入快照模型
-    net_num = snapshot_model_dir_or_file.split('/')[-2][-1]
-    if not net_num.isdigit():
-        dehaze_net = net1.DehazeNet().cuda(cuda_index)
-    else:
-        net_num = int(net_num)
-        if net_num == 1:
-            dehaze_net = net1.DehazeNet().cuda(cuda_index)
-        elif net_num == 2:
-            dehaze_net = net2.DehazeNet().cuda(cuda_index)
-        elif net_num == 3:
-            dehaze_net = net3.DehazeNet().cuda(cuda_index)
-        else:
-            dehaze_net = net4.DehazeNet().cuda(cuda_index)
-        # 判断路径是目录还是文件
+
+    dehaze_net = net1.DehazeNet().cuda(cuda_index)
+    # 判断路径是目录还是文件
     try:
         if os.path.isfile(snapshot_model_dir_or_file):
             # 单文件不使用表格记录结果
@@ -210,7 +211,7 @@ if __name__ == '__main__':
             exist_model = []
             if os.path.exists(result_file):
                 exist_model = list(pd.read_csv(result_file)['model'])
-            # print(exist_model)
+            print(f'[{datetime.datetime.now()}] exist_model:{exist_model}')
             for snapshot_model in sorted(os.listdir(snapshot_model_dir_or_file), key=lambda name: int(name.split('.')[0][15:])):
                 # print(snapshot_model)
                 if snapshot_model in exist_model:
@@ -222,14 +223,15 @@ if __name__ == '__main__':
                 runTest(dehaze_net, snapshot_model=snapshot_model_file)
                 # 分析结果并输出到csv文件
                 avg_psnr, avg_ssim = dataAnalysis(haze_dir, original_dir, dehaze_dir)
-                df.loc[len(df)] = {'net': f'net{net_num}', 'epoch': snapshot_model_index, 'model': snapshot_model, 'avg_psnr': avg_psnr,
+                df.loc[len(df)] = {'net': f'net2', 'epoch': snapshot_model_index, 'model': snapshot_model, 'avg_psnr': avg_psnr,
                                    'avg_ssim': avg_ssim}
                 print(f"[{datetime.datetime.now()}] Avg_PSNR: {avg_psnr} dB, Avg_SSIM: {avg_ssim}")
                 # 测试专用
                 # if idx >= 2:
                 #     break
                 analysis_out(result_file, df)
+        else:
+            print(f"[{datetime.datetime.now()}] Warning! snapshots is not dir or file!")
     except Exception as e:
-        print(f"[{datetime.datetime.now()}] Warning! net{net_num}")
-        print(e)
+        print(f"[{datetime.datetime.now()}] Warning! {e}")
         raise e

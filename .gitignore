@@ -1,3 +1,12 @@
+/new-architecture/net3/Haze4K
+/new-architecture/net3/samples3
+/new-architecture/net3/snapshots3
+/new-architecture/net2/Haze4K
+/new-architecture/net2/snapshots2
+/new-architecture/net2/samples2
+/new-architecture/net1/Haze4K
+/new-architecture/net1/snapshots1
+/new-architecture/net1/samples1
 /.idea
 /net注释.txt
 /test_images(1).zip
@@ -17,6 +26,7 @@
 /net1 copy 2.py
 /samples3/
 /result3.csv
+/snapshots2
 /snapshots3-version3/
 /data/dehaze/
 /data/
@@ -65,3 +75,9 @@ snapshots2/DehazeNet_epoch40.pth
 snapshots2/DehazeNet_epoch41.pth
 snapshots2/DehazeNet_epoch42.pth
 snapshots2/DehazeNet_epoch43.pth
+Haze4K/train/dehaze/
+snapshots2/
+new-architecture/net3/__pycache__/
+new-architecture/net2/__pycache__/
+new-architecture/net1/__pycache__/
+snapshots1 copy/

@@ -6,9 +6,8 @@ import os
 import random
 import argparse
 import dataloader
-import net2 as net
+import net3 as net
 
-random.seed(413)
 # import sys
 # import time
 # import torch.backends.cudnn as cudnn
@@ -18,8 +17,8 @@ random.seed(413)
 parser = argparse.ArgumentParser()
 
 # Input Parameters
-parser.add_argument('--orig_images_path', type=str, default="Haze4K/train/gt/")
-parser.add_argument('--hazy_images_path', type=str, default="Haze4K/train/haze/")
+parser.add_argument('--orig_images_path', type=str, default="new-architecture/net2/train2.pyHaze4K/train/gt/")
+parser.add_argument('--hazy_images_path', type=str, default="new-architecture/net2/train2.pyHaze4K/train/haze/")
 parser.add_argument('--lr', type=float, default=0.0001)
 parser.add_argument('--weight_decay', type=float, default=0.0001)
 parser.add_argument('--grad_clip_norm', type=float, default=0.1)
@@ -28,8 +27,8 @@ parser.add_argument('--train_batch_size', type=int, default=2)
 parser.add_argument('--num_workers', type=int, default=4)
 parser.add_argument('--display_iter', type=int, default=10)
 parser.add_argument('--snapshot_iter', type=int, default=200)
-parser.add_argument('--cuda_index', type=str, default=2)
-parser.add_argument('--snapshots_folder', type=str, default="snapshots2/")
+parser.add_argument('--cuda_index', type=str, default=3)
+parser.add_argument('--snapshots_folder', type=str, default="new-architecture/net2/train2.pynapshots3/")
 
 config_para = parser.parse_args()
 cuda_index = config_para.cuda_index

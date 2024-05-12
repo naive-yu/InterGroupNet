@@ -1,14 +1,16 @@
 import torch
 import torch.nn as nn
-import torchvision
+# import torchvision
 import torch.optim
 import os
 import random
 import argparse
 import dataloader
-import net2 as net
-
-random.seed(413)
+import net1 as net
+# import faulthandler
+# # 在import之后直接添加以下启用代码即可
+# faulthandler.enable()
+# 后边正常写你的代码
 # import sys
 # import time
 # import torch.backends.cudnn as cudnn
@@ -18,18 +20,18 @@ random.seed(413)
 parser = argparse.ArgumentParser()
 
 # Input Parameters
-parser.add_argument('--orig_images_path', type=str, default="Haze4K/train/gt/")
-parser.add_argument('--hazy_images_path', type=str, default="Haze4K/train/haze/")
+parser.add_argument('--orig_images_path', type=str, default="new-architecture/net1/Haze4K/train/gt/")
+parser.add_argument('--hazy_images_path', type=str, default="new-architecture/net1/Haze4K/train/haze/")
 parser.add_argument('--lr', type=float, default=0.0001)
 parser.add_argument('--weight_decay', type=float, default=0.0001)
 parser.add_argument('--grad_clip_norm', type=float, default=0.1)
 parser.add_argument('--num_epochs', type=int, default=200)
 parser.add_argument('--train_batch_size', type=int, default=2)
-parser.add_argument('--num_workers', type=int, default=4)
+parser.add_argument('--num_workers', type=int, default=2)
 parser.add_argument('--display_iter', type=int, default=10)
 parser.add_argument('--snapshot_iter', type=int, default=200)
-parser.add_argument('--cuda_index', type=str, default=2)
-parser.add_argument('--snapshots_folder', type=str, default="snapshots2/")
+parser.add_argument('--cuda_index', type=str, default=1)
+parser.add_argument('--snapshots_folder', type=str, default="new-architecture/net1/snapshots1/")
 
 config_para = parser.parse_args()
 cuda_index = config_para.cuda_index

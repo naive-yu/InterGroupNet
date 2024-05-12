@@ -1,0 +1,601 @@
+[2024-05-10 15:54:50.338076] exist_model:[]
+[2024-05-10 15:54:50.341265] test start with new-architecture/net2/snapshots2/DehazeNet_epoch0.pth
+[2024-05-10 15:58:49.331746] test end with new-architecture/net2/snapshots2/DehazeNet_epoch0.pth
+[2024-05-10 16:03:40.477278] Avg_PSNR: 17.029776713407333 dB, Avg_SSIM: 0.6049981401955616
+[2024-05-10 16:03:40.496513] test start with new-architecture/net2/snapshots2/DehazeNet_epoch1.pth
+[2024-05-10 16:07:52.789436] test end with new-architecture/net2/snapshots2/DehazeNet_epoch1.pth
+[2024-05-10 16:12:43.677984] Avg_PSNR: 19.370711802886706 dB, Avg_SSIM: 0.8181877131659255
+[2024-05-10 16:12:43.687475] test start with new-architecture/net2/snapshots2/DehazeNet_epoch2.pth
+[2024-05-10 16:16:59.209318] test end with new-architecture/net2/snapshots2/DehazeNet_epoch2.pth
+[2024-05-10 16:21:48.033038] Avg_PSNR: 19.587329717833594 dB, Avg_SSIM: 0.8426458812745741
+[2024-05-10 16:21:48.049585] test start with new-architecture/net2/snapshots2/DehazeNet_epoch3.pth
+[2024-05-10 16:26:05.114463] test end with new-architecture/net2/snapshots2/DehazeNet_epoch3.pth
+[2024-05-10 16:30:50.569069] Avg_PSNR: 19.505662442871945 dB, Avg_SSIM: 0.8519110918124543
+[2024-05-10 16:30:50.572733] test start with new-architecture/net2/snapshots2/DehazeNet_epoch4.pth
+[2024-05-10 16:35:09.913622] test end with new-architecture/net2/snapshots2/DehazeNet_epoch4.pth
+[2024-05-10 16:39:58.938986] Avg_PSNR: 19.64725257099645 dB, Avg_SSIM: 0.8567878701321957
+[2024-05-10 16:39:58.943180] test start with new-architecture/net2/snapshots2/DehazeNet_epoch5.pth
+[2024-05-10 16:44:17.918760] test end with new-architecture/net2/snapshots2/DehazeNet_epoch5.pth
+[2024-05-10 16:49:04.027900] Avg_PSNR: 19.650691013234017 dB, Avg_SSIM: 0.8606339327769901
+[2024-05-10 16:49:04.050356] test start with new-architecture/net2/snapshots2/DehazeNet_epoch6.pth
+[2024-05-10 16:53:22.861599] test end with new-architecture/net2/snapshots2/DehazeNet_epoch6.pth
+[2024-05-10 16:57:45.535846] Avg_PSNR: 19.68738904395406 dB, Avg_SSIM: 0.8614296768756261
+[2024-05-10 16:57:45.552623] test start with new-architecture/net2/snapshots2/DehazeNet_epoch7.pth
+[2024-05-10 17:01:59.879378] test end with new-architecture/net2/snapshots2/DehazeNet_epoch7.pth
+[2024-05-10 17:05:45.904914] Avg_PSNR: 19.628015309067337 dB, Avg_SSIM: 0.858322383593066
+[2024-05-10 17:05:45.908236] test start with new-architecture/net2/snapshots2/DehazeNet_epoch8.pth
+[2024-05-10 17:10:00.654950] test end with new-architecture/net2/snapshots2/DehazeNet_epoch8.pth
+[2024-05-10 17:13:49.964296] Avg_PSNR: 19.620841799541555 dB, Avg_SSIM: 0.8648923777389145
+[2024-05-10 17:13:49.983019] test start with new-architecture/net2/snapshots2/DehazeNet_epoch9.pth
+[2024-05-10 17:18:15.034034] test end with new-architecture/net2/snapshots2/DehazeNet_epoch9.pth
+[2024-05-10 17:22:54.529232] Avg_PSNR: 19.837182097903913 dB, Avg_SSIM: 0.864558576553732
+[2024-05-10 17:22:54.535061] test start with new-architecture/net2/snapshots2/DehazeNet_epoch10.pth
+[2024-05-10 17:27:20.625107] test end with new-architecture/net2/snapshots2/DehazeNet_epoch10.pth
+[2024-05-10 17:32:03.624718] Avg_PSNR: 19.473046041760735 dB, Avg_SSIM: 0.8654685917100178
+[2024-05-10 17:32:03.634340] test start with new-architecture/net2/snapshots2/DehazeNet_epoch11.pth
+[2024-05-10 17:36:33.056289] test end with new-architecture/net2/snapshots2/DehazeNet_epoch11.pth
+[2024-05-10 17:41:11.405482] Avg_PSNR: 19.85989078918127 dB, Avg_SSIM: 0.8621066962432448
+[2024-05-10 17:41:11.409057] test start with new-architecture/net2/snapshots2/DehazeNet_epoch12.pth
+[2024-05-10 17:45:39.058060] test end with new-architecture/net2/snapshots2/DehazeNet_epoch12.pth
+[2024-05-10 17:50:17.182705] Avg_PSNR: 19.795925672998226 dB, Avg_SSIM: 0.8668569045668644
+[2024-05-10 17:50:17.201195] test start with new-architecture/net2/snapshots2/DehazeNet_epoch13.pth
+[2024-05-10 17:54:49.132409] test end with new-architecture/net2/snapshots2/DehazeNet_epoch13.pth
+[2024-05-10 17:59:29.675465] Avg_PSNR: 19.74095257428983 dB, Avg_SSIM: 0.8675759915373015
+[2024-05-10 17:59:29.694506] test start with new-architecture/net2/snapshots2/DehazeNet_epoch14.pth
+[2024-05-10 18:03:55.990467] test end with new-architecture/net2/snapshots2/DehazeNet_epoch14.pth
+[2024-05-10 18:08:38.603050] Avg_PSNR: 19.592539937113422 dB, Avg_SSIM: 0.8654141082152321
+[2024-05-10 18:08:38.621014] test start with new-architecture/net2/snapshots2/DehazeNet_epoch15.pth
+[2024-05-10 18:13:07.217404] test end with new-architecture/net2/snapshots2/DehazeNet_epoch15.pth
+[2024-05-10 18:17:42.801504] Avg_PSNR: 19.73096092608862 dB, Avg_SSIM: 0.8645106038179903
+[2024-05-10 18:17:42.822416] test start with new-architecture/net2/snapshots2/DehazeNet_epoch16.pth
+[2024-05-10 18:22:09.900497] test end with new-architecture/net2/snapshots2/DehazeNet_epoch16.pth
+[2024-05-10 18:26:52.902317] Avg_PSNR: 19.855816000506337 dB, Avg_SSIM: 0.868134217953515
+[2024-05-10 18:26:52.924414] test start with new-architecture/net2/snapshots2/DehazeNet_epoch17.pth
+[2024-05-10 18:31:21.766504] test end with new-architecture/net2/snapshots2/DehazeNet_epoch17.pth
+[2024-05-10 18:36:04.577285] Avg_PSNR: 19.850858305083875 dB, Avg_SSIM: 0.864117375221917
+[2024-05-10 18:36:04.598157] test start with new-architecture/net2/snapshots2/DehazeNet_epoch18.pth
+[2024-05-10 18:40:33.525847] test end with new-architecture/net2/snapshots2/DehazeNet_epoch18.pth
+[2024-05-10 18:45:10.745161] Avg_PSNR: 19.780636627687127 dB, Avg_SSIM: 0.8686323636728511
+[2024-05-10 18:45:10.766569] test start with new-architecture/net2/snapshots2/DehazeNet_epoch19.pth
+[2024-05-10 18:49:34.640139] test end with new-architecture/net2/snapshots2/DehazeNet_epoch19.pth
+[2024-05-10 18:54:22.492368] Avg_PSNR: 19.792977865188515 dB, Avg_SSIM: 0.869699962221014
+[2024-05-10 18:54:22.512722] test start with new-architecture/net2/snapshots2/DehazeNet_epoch20.pth
+[2024-05-10 18:58:41.057811] test end with new-architecture/net2/snapshots2/DehazeNet_epoch20.pth
+[2024-05-10 19:03:35.192148] Avg_PSNR: 19.546376101173344 dB, Avg_SSIM: 0.8688773233400022
+[2024-05-10 19:03:35.214196] test start with new-architecture/net2/snapshots2/DehazeNet_epoch21.pth
+[2024-05-10 19:08:03.407522] test end with new-architecture/net2/snapshots2/DehazeNet_epoch21.pth
+[2024-05-10 19:12:51.133734] Avg_PSNR: 19.857711673003408 dB, Avg_SSIM: 0.8687473259476194
+[2024-05-10 19:12:51.154780] test start with new-architecture/net2/snapshots2/DehazeNet_epoch22.pth
+[2024-05-10 19:17:21.858800] test end with new-architecture/net2/snapshots2/DehazeNet_epoch22.pth
+[2024-05-10 19:22:09.994011] Avg_PSNR: 19.70428805192573 dB, Avg_SSIM: 0.8706521475243545
+[2024-05-10 19:22:09.999869] test start with new-architecture/net2/snapshots2/DehazeNet_epoch23.pth
+[2024-05-10 19:26:37.229070] test end with new-architecture/net2/snapshots2/DehazeNet_epoch23.pth
+[2024-05-10 19:31:18.038014] Avg_PSNR: 19.87394529256613 dB, Avg_SSIM: 0.867522652942604
+[2024-05-10 19:31:18.041839] test start with new-architecture/net2/snapshots2/DehazeNet_epoch24.pth
+[2024-05-10 19:35:46.267331] test end with new-architecture/net2/snapshots2/DehazeNet_epoch24.pth
+[2024-05-10 19:40:38.855274] Avg_PSNR: 19.8581305564833 dB, Avg_SSIM: 0.8682131939885933
+[2024-05-10 19:40:38.873011] test start with new-architecture/net2/snapshots2/DehazeNet_epoch25.pth
+[2024-05-10 19:45:06.775305] test end with new-architecture/net2/snapshots2/DehazeNet_epoch25.pth
+[2024-05-10 19:49:50.441340] Avg_PSNR: 19.785490219152038 dB, Avg_SSIM: 0.8631620521086699
+[2024-05-10 19:49:50.460204] test start with new-architecture/net2/snapshots2/DehazeNet_epoch26.pth
+[2024-05-10 19:54:18.821950] test end with new-architecture/net2/snapshots2/DehazeNet_epoch26.pth
+[2024-05-10 19:59:06.303525] Avg_PSNR: 19.865780291179327 dB, Avg_SSIM: 0.8711171345279073
+[2024-05-10 19:59:06.321271] test start with new-architecture/net2/snapshots2/DehazeNet_epoch27.pth
+[2024-05-10 20:03:30.885987] test end with new-architecture/net2/snapshots2/DehazeNet_epoch27.pth
+[2024-05-10 20:07:59.377490] Avg_PSNR: 19.868025291376785 dB, Avg_SSIM: 0.866428051433312
+[2024-05-10 20:07:59.382854] test start with new-architecture/net2/snapshots2/DehazeNet_epoch28.pth
+[2024-05-10 20:12:26.517467] test end with new-architecture/net2/snapshots2/DehazeNet_epoch28.pth
+[2024-05-10 20:17:05.142449] Avg_PSNR: 19.728838225804445 dB, Avg_SSIM: 0.8709504639418691
+[2024-05-10 20:17:05.150806] test start with new-architecture/net2/snapshots2/DehazeNet_epoch29.pth
+[2024-05-10 20:21:30.321538] test end with new-architecture/net2/snapshots2/DehazeNet_epoch29.pth
+[2024-05-10 20:26:12.576881] Avg_PSNR: 19.754193537165612 dB, Avg_SSIM: 0.8718323294283271
+[2024-05-10 20:26:12.595211] test start with new-architecture/net2/snapshots2/DehazeNet_epoch30.pth
+[2024-05-10 20:30:29.904142] test end with new-architecture/net2/snapshots2/DehazeNet_epoch30.pth
+[2024-05-10 20:34:57.767832] Avg_PSNR: 19.94439251994653 dB, Avg_SSIM: 0.8689957545792591
+[2024-05-10 20:34:57.785904] test start with new-architecture/net2/snapshots2/DehazeNet_epoch31.pth
+[2024-05-10 20:39:15.663194] test end with new-architecture/net2/snapshots2/DehazeNet_epoch31.pth
+[2024-05-10 20:43:04.323571] Avg_PSNR: 19.82762446539875 dB, Avg_SSIM: 0.8723724298216415
+[2024-05-10 20:43:04.341212] test start with new-architecture/net2/snapshots2/DehazeNet_epoch32.pth
+[2024-05-10 20:47:22.150834] test end with new-architecture/net2/snapshots2/DehazeNet_epoch32.pth
+[2024-05-10 20:51:09.126246] Avg_PSNR: 19.787121484836245 dB, Avg_SSIM: 0.8710036668013477
+[2024-05-10 20:51:09.143240] test start with new-architecture/net2/snapshots2/DehazeNet_epoch33.pth
+[2024-05-10 20:55:25.472618] test end with new-architecture/net2/snapshots2/DehazeNet_epoch33.pth
+[2024-05-10 20:59:12.697318] Avg_PSNR: 19.608369925073063 dB, Avg_SSIM: 0.8717841805617544
+[2024-05-10 20:59:12.713486] test start with new-architecture/net2/snapshots2/DehazeNet_epoch34.pth
+[2024-05-10 21:03:28.838298] test end with new-architecture/net2/snapshots2/DehazeNet_epoch34.pth
+[2024-05-10 21:07:30.066670] Avg_PSNR: 19.760579066874975 dB, Avg_SSIM: 0.8707154968274597
+[2024-05-10 21:07:30.083868] test start with new-architecture/net2/snapshots2/DehazeNet_epoch35.pth
+[2024-05-10 21:11:50.185610] test end with new-architecture/net2/snapshots2/DehazeNet_epoch35.pth
+[2024-05-10 21:16:22.075406] Avg_PSNR: 19.890591777205994 dB, Avg_SSIM: 0.8734484301503002
+[2024-05-10 21:16:22.080217] test start with new-architecture/net2/snapshots2/DehazeNet_epoch36.pth
+[2024-05-10 21:20:43.934560] test end with new-architecture/net2/snapshots2/DehazeNet_epoch36.pth
+[2024-05-10 21:25:17.925080] Avg_PSNR: 19.883545078315667 dB, Avg_SSIM: 0.8729581528005699
+[2024-05-10 21:25:17.930323] test start with new-architecture/net2/snapshots2/DehazeNet_epoch37.pth
+[2024-05-10 21:29:41.399277] test end with new-architecture/net2/snapshots2/DehazeNet_epoch37.pth
+[2024-05-10 21:34:15.624020] Avg_PSNR: 19.36745919158908 dB, Avg_SSIM: 0.8659439984561206
+[2024-05-10 21:34:15.640498] test start with new-architecture/net2/snapshots2/DehazeNet_epoch38.pth
+[2024-05-10 21:38:31.022092] test end with new-architecture/net2/snapshots2/DehazeNet_epoch38.pth
+[2024-05-10 21:42:18.769650] Avg_PSNR: 19.83695534419308 dB, Avg_SSIM: 0.871489092672853
+[2024-05-10 21:42:18.773154] test start with new-architecture/net2/snapshots2/DehazeNet_epoch39.pth
+[2024-05-10 21:46:37.234039] test end with new-architecture/net2/snapshots2/DehazeNet_epoch39.pth
+[2024-05-10 21:50:25.832433] Avg_PSNR: 19.946756403907504 dB, Avg_SSIM: 0.8672451048383875
+[2024-05-10 21:50:25.848843] test start with new-architecture/net2/snapshots2/DehazeNet_epoch40.pth
+[2024-05-10 21:54:41.795458] test end with new-architecture/net2/snapshots2/DehazeNet_epoch40.pth
+[2024-05-10 21:58:30.560680] Avg_PSNR: 19.849328191236697 dB, Avg_SSIM: 0.8726731713969297
+[2024-05-10 21:58:30.564463] test start with new-architecture/net2/snapshots2/DehazeNet_epoch41.pth
+[2024-05-10 22:02:44.743780] test end with new-architecture/net2/snapshots2/DehazeNet_epoch41.pth
+[2024-05-10 22:06:33.462832] Avg_PSNR: 19.83525868411565 dB, Avg_SSIM: 0.8720057255210539
+[2024-05-10 22:06:33.466816] test start with new-architecture/net2/snapshots2/DehazeNet_epoch42.pth
+[2024-05-10 22:10:46.811310] test end with new-architecture/net2/snapshots2/DehazeNet_epoch42.pth
+[2024-05-10 22:14:36.205580] Avg_PSNR: 19.921312296892886 dB, Avg_SSIM: 0.8690444039737991
+[2024-05-10 22:14:36.208930] test start with new-architecture/net2/snapshots2/DehazeNet_epoch43.pth
+[2024-05-10 22:18:47.989675] test end with new-architecture/net2/snapshots2/DehazeNet_epoch43.pth
+[2024-05-10 22:22:37.970056] Avg_PSNR: 19.837234563962394 dB, Avg_SSIM: 0.8729313635138441
+[2024-05-10 22:22:37.988460] test start with new-architecture/net2/snapshots2/DehazeNet_epoch44.pth
+[2024-05-10 22:26:47.136082] test end with new-architecture/net2/snapshots2/DehazeNet_epoch44.pth
+[2024-05-10 22:30:36.460465] Avg_PSNR: 19.8823319896089 dB, Avg_SSIM: 0.871777778051026
+[2024-05-10 22:30:36.468726] test start with new-architecture/net2/snapshots2/DehazeNet_epoch45.pth
+[2024-05-10 22:34:43.588774] test end with new-architecture/net2/snapshots2/DehazeNet_epoch45.pth
+[2024-05-10 22:38:33.979254] Avg_PSNR: 19.767231080687317 dB, Avg_SSIM: 0.8733646460635219
+[2024-05-10 22:38:33.996636] test start with new-architecture/net2/snapshots2/DehazeNet_epoch46.pth
+[2024-05-10 22:42:44.543580] test end with new-architecture/net2/snapshots2/DehazeNet_epoch46.pth
+[2024-05-10 22:46:33.871607] Avg_PSNR: 19.82904046651127 dB, Avg_SSIM: 0.8738969588784545
+[2024-05-10 22:46:33.889723] test start with new-architecture/net2/snapshots2/DehazeNet_epoch47.pth
+[2024-05-10 22:50:40.135901] test end with new-architecture/net2/snapshots2/DehazeNet_epoch47.pth
+[2024-05-10 22:54:28.466353] Avg_PSNR: 19.983498801130665 dB, Avg_SSIM: 0.870548132867883
+[2024-05-10 22:54:28.470016] test start with new-architecture/net2/snapshots2/DehazeNet_epoch48.pth
+[2024-05-10 22:58:35.206431] test end with new-architecture/net2/snapshots2/DehazeNet_epoch48.pth
+[2024-05-10 23:02:23.797377] Avg_PSNR: 19.922201771238058 dB, Avg_SSIM: 0.8737119156525667
+[2024-05-10 23:02:23.813913] test start with new-architecture/net2/snapshots2/DehazeNet_epoch49.pth
+[2024-05-10 23:06:30.320691] test end with new-architecture/net2/snapshots2/DehazeNet_epoch49.pth
+[2024-05-10 23:10:17.516757] Avg_PSNR: 19.90354149831306 dB, Avg_SSIM: 0.8742671258034568
+[2024-05-10 23:10:17.533189] test start with new-architecture/net2/snapshots2/DehazeNet_epoch50.pth
+[2024-05-10 23:14:21.136180] test end with new-architecture/net2/snapshots2/DehazeNet_epoch50.pth
+[2024-05-10 23:18:02.285208] Avg_PSNR: 19.967624737311542 dB, Avg_SSIM: 0.8701200509973668
+[2024-05-10 23:18:02.288540] test start with new-architecture/net2/snapshots2/DehazeNet_epoch51.pth
+[2024-05-10 23:22:05.678472] test end with new-architecture/net2/snapshots2/DehazeNet_epoch51.pth
+[2024-05-10 23:25:47.844472] Avg_PSNR: 19.632084537122584 dB, Avg_SSIM: 0.8715960350323614
+[2024-05-10 23:25:47.860745] test start with new-architecture/net2/snapshots2/DehazeNet_epoch52.pth
+[2024-05-10 23:29:52.385866] test end with new-architecture/net2/snapshots2/DehazeNet_epoch52.pth
+[2024-05-10 23:33:34.401778] Avg_PSNR: 19.864951230112354 dB, Avg_SSIM: 0.8738876281876928
+[2024-05-10 23:33:34.405494] test start with new-architecture/net2/snapshots2/DehazeNet_epoch53.pth
+[2024-05-10 23:37:40.116971] test end with new-architecture/net2/snapshots2/DehazeNet_epoch53.pth
+[2024-05-10 23:41:21.646560] Avg_PSNR: 19.70393521512703 dB, Avg_SSIM: 0.8722603784258582
+[2024-05-10 23:41:21.661732] test start with new-architecture/net2/snapshots2/DehazeNet_epoch54.pth
+[2024-05-10 23:45:28.990550] test end with new-architecture/net2/snapshots2/DehazeNet_epoch54.pth
+[2024-05-10 23:49:11.470520] Avg_PSNR: 19.98189110923644 dB, Avg_SSIM: 0.8729339369279856
+[2024-05-10 23:49:11.488303] test start with new-architecture/net2/snapshots2/DehazeNet_epoch55.pth
+[2024-05-10 23:53:18.800639] test end with new-architecture/net2/snapshots2/DehazeNet_epoch55.pth
+[2024-05-10 23:57:01.008510] Avg_PSNR: 19.634642862622897 dB, Avg_SSIM: 0.8712852604789072
+[2024-05-10 23:57:01.025771] test start with new-architecture/net2/snapshots2/DehazeNet_epoch56.pth
+[2024-05-11 00:01:06.298146] test end with new-architecture/net2/snapshots2/DehazeNet_epoch56.pth
+[2024-05-11 00:04:48.250836] Avg_PSNR: 19.56453936873741 dB, Avg_SSIM: 0.8719130520941457
+[2024-05-11 00:04:48.254457] test start with new-architecture/net2/snapshots2/DehazeNet_epoch57.pth
+[2024-05-11 00:08:54.996830] test end with new-architecture/net2/snapshots2/DehazeNet_epoch57.pth
+[2024-05-11 00:12:37.573374] Avg_PSNR: 19.932748532399394 dB, Avg_SSIM: 0.8739016022074815
+[2024-05-11 00:12:37.589381] test start with new-architecture/net2/snapshots2/DehazeNet_epoch58.pth
+[2024-05-11 00:16:43.177195] test end with new-architecture/net2/snapshots2/DehazeNet_epoch58.pth
+[2024-05-11 00:20:25.421620] Avg_PSNR: 19.841539197432812 dB, Avg_SSIM: 0.8746662940848625
+[2024-05-11 00:20:25.424914] test start with new-architecture/net2/snapshots2/DehazeNet_epoch59.pth
+[2024-05-11 00:24:30.655381] test end with new-architecture/net2/snapshots2/DehazeNet_epoch59.pth
+[2024-05-11 00:28:12.595099] Avg_PSNR: 19.957273309647128 dB, Avg_SSIM: 0.8724581972485027
+[2024-05-11 00:28:12.598733] test start with new-architecture/net2/snapshots2/DehazeNet_epoch60.pth
+[2024-05-11 00:32:19.974399] test end with new-architecture/net2/snapshots2/DehazeNet_epoch60.pth
+[2024-05-11 00:36:02.268058] Avg_PSNR: 19.979635536048654 dB, Avg_SSIM: 0.8740572180597732
+[2024-05-11 00:36:02.272171] test start with new-architecture/net2/snapshots2/DehazeNet_epoch61.pth
+[2024-05-11 00:40:06.668081] test end with new-architecture/net2/snapshots2/DehazeNet_epoch61.pth
+[2024-05-11 00:43:48.830458] Avg_PSNR: 19.839648848082483 dB, Avg_SSIM: 0.8745380175256777
+[2024-05-11 00:43:48.847832] test start with new-architecture/net2/snapshots2/DehazeNet_epoch62.pth
+[2024-05-11 00:47:53.100393] test end with new-architecture/net2/snapshots2/DehazeNet_epoch62.pth
+[2024-05-11 00:51:34.444271] Avg_PSNR: 19.842492805444063 dB, Avg_SSIM: 0.873529487697233
+[2024-05-11 00:51:34.447875] test start with new-architecture/net2/snapshots2/DehazeNet_epoch63.pth
+[2024-05-11 00:55:39.589556] test end with new-architecture/net2/snapshots2/DehazeNet_epoch63.pth
+[2024-05-11 00:59:21.621316] Avg_PSNR: 19.82598245268833 dB, Avg_SSIM: 0.8707830013832119
+[2024-05-11 00:59:21.638931] test start with new-architecture/net2/snapshots2/DehazeNet_epoch64.pth
+[2024-05-11 01:03:26.528738] test end with new-architecture/net2/snapshots2/DehazeNet_epoch64.pth
+[2024-05-11 01:07:08.506871] Avg_PSNR: 19.91468564929781 dB, Avg_SSIM: 0.8742267479098372
+[2024-05-11 01:07:08.510244] test start with new-architecture/net2/snapshots2/DehazeNet_epoch65.pth
+[2024-05-11 01:11:13.102906] test end with new-architecture/net2/snapshots2/DehazeNet_epoch65.pth
+[2024-05-11 01:14:54.714184] Avg_PSNR: 19.921727059202592 dB, Avg_SSIM: 0.8732947864883063
+[2024-05-11 01:14:54.732493] test start with new-architecture/net2/snapshots2/DehazeNet_epoch66.pth
+[2024-05-11 01:18:59.850736] test end with new-architecture/net2/snapshots2/DehazeNet_epoch66.pth
+[2024-05-11 01:22:40.945115] Avg_PSNR: 19.964977058320947 dB, Avg_SSIM: 0.8716600833435224
+[2024-05-11 01:22:40.963410] test start with new-architecture/net2/snapshots2/DehazeNet_epoch67.pth
+[2024-05-11 01:25:55.046157] test end with new-architecture/net2/snapshots2/DehazeNet_epoch67.pth
+[2024-05-11 01:29:28.800046] Avg_PSNR: 19.82688471226665 dB, Avg_SSIM: 0.8744219621347165
+[2024-05-11 01:29:28.822338] test start with new-architecture/net2/snapshots2/DehazeNet_epoch68.pth
+[2024-05-11 01:32:42.445608] test end with new-architecture/net2/snapshots2/DehazeNet_epoch68.pth
+[2024-05-11 01:36:15.686699] Avg_PSNR: 19.84449393091669 dB, Avg_SSIM: 0.8734026625081673
+[2024-05-11 01:36:15.709838] test start with new-architecture/net2/snapshots2/DehazeNet_epoch69.pth
+[2024-05-11 01:39:29.620189] test end with new-architecture/net2/snapshots2/DehazeNet_epoch69.pth
+[2024-05-11 01:43:03.416793] Avg_PSNR: 19.641900408893726 dB, Avg_SSIM: 0.873473395811156
+[2024-05-11 01:43:03.435615] test start with new-architecture/net2/snapshots2/DehazeNet_epoch70.pth
+[2024-05-11 01:46:16.050394] test end with new-architecture/net2/snapshots2/DehazeNet_epoch70.pth
+[2024-05-11 01:49:49.651580] Avg_PSNR: 20.01082422282819 dB, Avg_SSIM: 0.8693620930536066
+[2024-05-11 01:49:49.674376] test start with new-architecture/net2/snapshots2/DehazeNet_epoch71.pth
+[2024-05-11 01:53:01.191610] test end with new-architecture/net2/snapshots2/DehazeNet_epoch71.pth
+[2024-05-11 01:56:34.279932] Avg_PSNR: 19.928909348128926 dB, Avg_SSIM: 0.8746447635615178
+[2024-05-11 01:56:34.304024] test start with new-architecture/net2/snapshots2/DehazeNet_epoch72.pth
+[2024-05-11 01:59:45.806238] test end with new-architecture/net2/snapshots2/DehazeNet_epoch72.pth
+[2024-05-11 02:03:19.646345] Avg_PSNR: 19.960918621295765 dB, Avg_SSIM: 0.8744101574636373
+[2024-05-11 02:03:19.665055] test start with new-architecture/net2/snapshots2/DehazeNet_epoch73.pth
+[2024-05-11 02:06:31.332252] test end with new-architecture/net2/snapshots2/DehazeNet_epoch73.pth
+[2024-05-11 02:10:04.985641] Avg_PSNR: 19.939017285422214 dB, Avg_SSIM: 0.8736789816218481
+[2024-05-11 02:10:05.008217] test start with new-architecture/net2/snapshots2/DehazeNet_epoch74.pth
+[2024-05-11 02:13:16.717216] test end with new-architecture/net2/snapshots2/DehazeNet_epoch74.pth
+[2024-05-11 02:16:49.824358] Avg_PSNR: 19.708030059782722 dB, Avg_SSIM: 0.8731286299351892
+[2024-05-11 02:16:49.846036] test start with new-architecture/net2/snapshots2/DehazeNet_epoch75.pth
+[2024-05-11 02:20:02.835547] test end with new-architecture/net2/snapshots2/DehazeNet_epoch75.pth
+[2024-05-11 02:23:36.557656] Avg_PSNR: 20.017277964572735 dB, Avg_SSIM: 0.8740451457839125
+[2024-05-11 02:23:36.575787] test start with new-architecture/net2/snapshots2/DehazeNet_epoch76.pth
+[2024-05-11 02:26:49.106546] test end with new-architecture/net2/snapshots2/DehazeNet_epoch76.pth
+[2024-05-11 02:30:22.730096] Avg_PSNR: 19.927779796601328 dB, Avg_SSIM: 0.8735785133920538
+[2024-05-11 02:30:22.749005] test start with new-architecture/net2/snapshots2/DehazeNet_epoch77.pth
+[2024-05-11 02:33:35.648918] test end with new-architecture/net2/snapshots2/DehazeNet_epoch77.pth
+[2024-05-11 02:37:08.744400] Avg_PSNR: 19.794103442613583 dB, Avg_SSIM: 0.8757034018958716
+[2024-05-11 02:37:08.761921] test start with new-architecture/net2/snapshots2/DehazeNet_epoch78.pth
+[2024-05-11 02:40:20.348530] test end with new-architecture/net2/snapshots2/DehazeNet_epoch78.pth
+[2024-05-11 02:43:54.068452] Avg_PSNR: 19.925050245926023 dB, Avg_SSIM: 0.8658460936235484
+[2024-05-11 02:43:54.087053] test start with new-architecture/net2/snapshots2/DehazeNet_epoch79.pth
+[2024-05-11 02:47:05.448351] test end with new-architecture/net2/snapshots2/DehazeNet_epoch79.pth
+[2024-05-11 02:50:39.009698] Avg_PSNR: 19.938926258948925 dB, Avg_SSIM: 0.8667680707403961
+[2024-05-11 02:50:39.027127] test start with new-architecture/net2/snapshots2/DehazeNet_epoch80.pth
+[2024-05-11 02:53:50.766963] test end with new-architecture/net2/snapshots2/DehazeNet_epoch80.pth
+[2024-05-11 02:57:23.975503] Avg_PSNR: 19.787021384334974 dB, Avg_SSIM: 0.8756125767793843
+[2024-05-11 02:57:23.993619] test start with new-architecture/net2/snapshots2/DehazeNet_epoch81.pth
+[2024-05-11 03:00:35.642871] test end with new-architecture/net2/snapshots2/DehazeNet_epoch81.pth
+[2024-05-11 03:04:09.333086] Avg_PSNR: 19.984924504695005 dB, Avg_SSIM: 0.8738132776737849
+[2024-05-11 03:04:09.355225] test start with new-architecture/net2/snapshots2/DehazeNet_epoch82.pth
+[2024-05-11 03:07:21.034171] test end with new-architecture/net2/snapshots2/DehazeNet_epoch82.pth
+[2024-05-11 03:10:54.622323] Avg_PSNR: 19.908609001548612 dB, Avg_SSIM: 0.8734276506077174
+[2024-05-11 03:10:54.640586] test start with new-architecture/net2/snapshots2/DehazeNet_epoch83.pth
+[2024-05-11 03:14:06.346880] test end with new-architecture/net2/snapshots2/DehazeNet_epoch83.pth
+[2024-05-11 03:17:39.476051] Avg_PSNR: 19.80733213532487 dB, Avg_SSIM: 0.874432188862759
+[2024-05-11 03:17:39.494742] test start with new-architecture/net2/snapshots2/DehazeNet_epoch84.pth
+[2024-05-11 03:20:51.182038] test end with new-architecture/net2/snapshots2/DehazeNet_epoch84.pth
+[2024-05-11 03:24:24.925100] Avg_PSNR: 19.972394394553877 dB, Avg_SSIM: 0.8760481298208316
+[2024-05-11 03:24:24.943924] test start with new-architecture/net2/snapshots2/DehazeNet_epoch85.pth
+[2024-05-11 03:27:36.471319] test end with new-architecture/net2/snapshots2/DehazeNet_epoch85.pth
+[2024-05-11 03:31:10.098570] Avg_PSNR: 19.89515016120493 dB, Avg_SSIM: 0.874866461596834
+[2024-05-11 03:31:10.118282] test start with new-architecture/net2/snapshots2/DehazeNet_epoch86.pth
+[2024-05-11 03:34:21.742807] test end with new-architecture/net2/snapshots2/DehazeNet_epoch86.pth
+[2024-05-11 03:37:54.738057] Avg_PSNR: 20.03702609714459 dB, Avg_SSIM: 0.8743600272047158
+[2024-05-11 03:37:54.757882] test start with new-architecture/net2/snapshots2/DehazeNet_epoch87.pth
+[2024-05-11 03:41:06.333012] test end with new-architecture/net2/snapshots2/DehazeNet_epoch87.pth
+[2024-05-11 03:44:40.068747] Avg_PSNR: 19.951090826426988 dB, Avg_SSIM: 0.8755914679206424
+[2024-05-11 03:44:40.087207] test start with new-architecture/net2/snapshots2/DehazeNet_epoch88.pth
+[2024-05-11 03:47:51.600929] test end with new-architecture/net2/snapshots2/DehazeNet_epoch88.pth
+[2024-05-11 03:51:25.392876] Avg_PSNR: 19.976463540669688 dB, Avg_SSIM: 0.8752490585448146
+[2024-05-11 03:51:25.419491] test start with new-architecture/net2/snapshots2/DehazeNet_epoch89.pth
+[2024-05-11 03:54:36.949281] test end with new-architecture/net2/snapshots2/DehazeNet_epoch89.pth
+[2024-05-11 03:58:10.038878] Avg_PSNR: 19.736285770439657 dB, Avg_SSIM: 0.8758833815889304
+[2024-05-11 03:58:10.057796] test start with new-architecture/net2/snapshots2/DehazeNet_epoch90.pth
+[2024-05-11 04:01:21.616136] test end with new-architecture/net2/snapshots2/DehazeNet_epoch90.pth
+[2024-05-11 04:04:55.453432] Avg_PSNR: 19.16265408183501 dB, Avg_SSIM: 0.8658517932903771
+[2024-05-11 04:04:55.472038] test start with new-architecture/net2/snapshots2/DehazeNet_epoch91.pth
+[2024-05-11 04:08:07.047960] test end with new-architecture/net2/snapshots2/DehazeNet_epoch91.pth
+[2024-05-11 04:11:40.733013] Avg_PSNR: 19.83303412448983 dB, Avg_SSIM: 0.8750003144100293
+[2024-05-11 04:11:40.751611] test start with new-architecture/net2/snapshots2/DehazeNet_epoch92.pth
+[2024-05-11 04:14:52.366105] test end with new-architecture/net2/snapshots2/DehazeNet_epoch92.pth
+[2024-05-11 04:18:25.485789] Avg_PSNR: 20.02167490273781 dB, Avg_SSIM: 0.872945832804705
+[2024-05-11 04:18:25.503104] test start with new-architecture/net2/snapshots2/DehazeNet_epoch93.pth
+[2024-05-11 04:21:37.048570] test end with new-architecture/net2/snapshots2/DehazeNet_epoch93.pth
+[2024-05-11 04:25:10.861291] Avg_PSNR: 19.93680244216895 dB, Avg_SSIM: 0.8761279820183508
+[2024-05-11 04:25:10.879079] test start with new-architecture/net2/snapshots2/DehazeNet_epoch94.pth
+[2024-05-11 04:28:22.377729] test end with new-architecture/net2/snapshots2/DehazeNet_epoch94.pth
+[2024-05-11 04:31:56.144462] Avg_PSNR: 19.87293114640842 dB, Avg_SSIM: 0.8753354667464508
+[2024-05-11 04:31:56.164200] test start with new-architecture/net2/snapshots2/DehazeNet_epoch95.pth
+[2024-05-11 04:35:07.390065] test end with new-architecture/net2/snapshots2/DehazeNet_epoch95.pth
+[2024-05-11 04:38:40.535555] Avg_PSNR: 19.561234111221385 dB, Avg_SSIM: 0.8723745693481537
+[2024-05-11 04:38:40.554042] test start with new-architecture/net2/snapshots2/DehazeNet_epoch96.pth
+[2024-05-11 04:41:51.919891] test end with new-architecture/net2/snapshots2/DehazeNet_epoch96.pth
+[2024-05-11 04:45:25.674835] Avg_PSNR: 19.862263657030006 dB, Avg_SSIM: 0.8757222459967353
+[2024-05-11 04:45:25.699032] test start with new-architecture/net2/snapshots2/DehazeNet_epoch97.pth
+[2024-05-11 04:48:36.907065] test end with new-architecture/net2/snapshots2/DehazeNet_epoch97.pth
+[2024-05-11 04:52:10.635947] Avg_PSNR: 20.046054580199268 dB, Avg_SSIM: 0.872686253791652
+[2024-05-11 04:52:10.654175] test start with new-architecture/net2/snapshots2/DehazeNet_epoch98.pth
+[2024-05-11 04:55:22.239346] test end with new-architecture/net2/snapshots2/DehazeNet_epoch98.pth
+[2024-05-11 04:58:55.450418] Avg_PSNR: 19.936649664734713 dB, Avg_SSIM: 0.876063507968245
+[2024-05-11 04:58:55.470045] test start with new-architecture/net2/snapshots2/DehazeNet_epoch99.pth
+[2024-05-11 05:02:07.001451] test end with new-architecture/net2/snapshots2/DehazeNet_epoch99.pth
+[2024-05-11 05:05:40.733715] Avg_PSNR: 19.790644052611373 dB, Avg_SSIM: 0.8735096160969602
+[2024-05-11 05:05:40.752973] test start with new-architecture/net2/snapshots2/DehazeNet_epoch100.pth
+[2024-05-11 05:08:52.354599] test end with new-architecture/net2/snapshots2/DehazeNet_epoch100.pth
+[2024-05-11 05:12:26.032142] Avg_PSNR: 20.01254214799184 dB, Avg_SSIM: 0.8753567239211852
+[2024-05-11 05:12:26.053548] test start with new-architecture/net2/snapshots2/DehazeNet_epoch101.pth
+[2024-05-11 05:15:37.536738] test end with new-architecture/net2/snapshots2/DehazeNet_epoch101.pth
+[2024-05-11 05:19:10.672790] Avg_PSNR: 20.037160223409103 dB, Avg_SSIM: 0.872373847384658
+[2024-05-11 05:19:10.692274] test start with new-architecture/net2/snapshots2/DehazeNet_epoch102.pth
+[2024-05-11 05:22:21.949282] test end with new-architecture/net2/snapshots2/DehazeNet_epoch102.pth
+[2024-05-11 05:25:55.735418] Avg_PSNR: 20.002168656903436 dB, Avg_SSIM: 0.8751242652600032
+[2024-05-11 05:25:55.757747] test start with new-architecture/net2/snapshots2/DehazeNet_epoch103.pth
+[2024-05-11 05:29:07.193003] test end with new-architecture/net2/snapshots2/DehazeNet_epoch103.pth
+[2024-05-11 05:32:40.820856] Avg_PSNR: 19.6881285998935 dB, Avg_SSIM: 0.8738714643679845
+[2024-05-11 05:32:40.839420] test start with new-architecture/net2/snapshots2/DehazeNet_epoch104.pth
+[2024-05-11 05:35:52.306305] test end with new-architecture/net2/snapshots2/DehazeNet_epoch104.pth
+[2024-05-11 05:39:25.389190] Avg_PSNR: 20.037578481731884 dB, Avg_SSIM: 0.8710761562551248
+[2024-05-11 05:39:25.407057] test start with new-architecture/net2/snapshots2/DehazeNet_epoch105.pth
+[2024-05-11 05:42:36.808010] test end with new-architecture/net2/snapshots2/DehazeNet_epoch105.pth
+[2024-05-11 05:46:10.565875] Avg_PSNR: 19.522963537314645 dB, Avg_SSIM: 0.869975376920169
+[2024-05-11 05:46:10.589362] test start with new-architecture/net2/snapshots2/DehazeNet_epoch106.pth
+[2024-05-11 05:49:22.029179] test end with new-architecture/net2/snapshots2/DehazeNet_epoch106.pth
+[2024-05-11 05:52:55.614529] Avg_PSNR: 19.899820131509816 dB, Avg_SSIM: 0.8764685633362194
+[2024-05-11 05:52:55.633905] test start with new-architecture/net2/snapshots2/DehazeNet_epoch107.pth
+[2024-05-11 05:56:07.292833] test end with new-architecture/net2/snapshots2/DehazeNet_epoch107.pth
+[2024-05-11 05:59:40.387925] Avg_PSNR: 20.045088615654095 dB, Avg_SSIM: 0.8749466691564901
+[2024-05-11 05:59:40.409304] test start with new-architecture/net2/snapshots2/DehazeNet_epoch108.pth
+[2024-05-11 06:02:51.957820] test end with new-architecture/net2/snapshots2/DehazeNet_epoch108.pth
+[2024-05-11 06:06:25.634585] Avg_PSNR: 19.656081807059756 dB, Avg_SSIM: 0.8702792508397829
+[2024-05-11 06:06:25.654262] test start with new-architecture/net2/snapshots2/DehazeNet_epoch109.pth
+[2024-05-11 06:09:37.260912] test end with new-architecture/net2/snapshots2/DehazeNet_epoch109.pth
+[2024-05-11 06:13:10.811607] Avg_PSNR: 20.013041961952055 dB, Avg_SSIM: 0.8753670000779545
+[2024-05-11 06:13:10.830367] test start with new-architecture/net2/snapshots2/DehazeNet_epoch110.pth
+[2024-05-11 06:16:22.625644] test end with new-architecture/net2/snapshots2/DehazeNet_epoch110.pth
+[2024-05-11 06:19:55.635441] Avg_PSNR: 19.81035227619928 dB, Avg_SSIM: 0.8749617431393542
+[2024-05-11 06:19:55.653725] test start with new-architecture/net2/snapshots2/DehazeNet_epoch111.pth
+[2024-05-11 06:23:07.356747] test end with new-architecture/net2/snapshots2/DehazeNet_epoch111.pth
+[2024-05-11 06:26:42.379618] Avg_PSNR: 19.9452423171219 dB, Avg_SSIM: 0.8763770029798433
+[2024-05-11 06:26:42.387975] test start with new-architecture/net2/snapshots2/DehazeNet_epoch112.pth
+[2024-05-11 06:29:54.122221] test end with new-architecture/net2/snapshots2/DehazeNet_epoch112.pth
+[2024-05-11 06:33:27.783046] Avg_PSNR: 19.831860709135416 dB, Avg_SSIM: 0.8755950147050665
+[2024-05-11 06:33:27.804856] test start with new-architecture/net2/snapshots2/DehazeNet_epoch113.pth
+[2024-05-11 06:36:39.380576] test end with new-architecture/net2/snapshots2/DehazeNet_epoch113.pth
+[2024-05-11 06:40:12.355205] Avg_PSNR: 20.017122183638982 dB, Avg_SSIM: 0.8746315031975418
+[2024-05-11 06:40:12.378028] test start with new-architecture/net2/snapshots2/DehazeNet_epoch114.pth
+[2024-05-11 06:43:23.963834] test end with new-architecture/net2/snapshots2/DehazeNet_epoch114.pth
+[2024-05-11 06:46:57.785604] Avg_PSNR: 19.855188307512304 dB, Avg_SSIM: 0.8767017879141057
+[2024-05-11 06:46:57.802732] test start with new-architecture/net2/snapshots2/DehazeNet_epoch115.pth
+[2024-05-11 06:50:09.262835] test end with new-architecture/net2/snapshots2/DehazeNet_epoch115.pth
+[2024-05-11 06:53:42.914380] Avg_PSNR: 19.182154687143363 dB, Avg_SSIM: 0.8689133898939201
+[2024-05-11 06:53:42.934439] test start with new-architecture/net2/snapshots2/DehazeNet_epoch116.pth
+[2024-05-11 06:56:54.545669] test end with new-architecture/net2/snapshots2/DehazeNet_epoch116.pth
+[2024-05-11 07:00:27.745049] Avg_PSNR: 19.901437329276675 dB, Avg_SSIM: 0.8763098257130167
+[2024-05-11 07:00:27.767385] test start with new-architecture/net2/snapshots2/DehazeNet_epoch117.pth
+[2024-05-11 07:03:39.196479] test end with new-architecture/net2/snapshots2/DehazeNet_epoch117.pth
+[2024-05-11 07:07:12.917802] Avg_PSNR: 19.979153534458167 dB, Avg_SSIM: 0.8754276021415689
+[2024-05-11 07:07:12.935218] test start with new-architecture/net2/snapshots2/DehazeNet_epoch118.pth
+[2024-05-11 07:10:24.064835] test end with new-architecture/net2/snapshots2/DehazeNet_epoch118.pth
+[2024-05-11 07:13:57.756276] Avg_PSNR: 20.058077618963438 dB, Avg_SSIM: 0.8745177888739065
+[2024-05-11 07:13:57.775889] test start with new-architecture/net2/snapshots2/DehazeNet_epoch119.pth
+[2024-05-11 07:17:09.345335] test end with new-architecture/net2/snapshots2/DehazeNet_epoch119.pth
+[2024-05-11 07:20:42.420200] Avg_PSNR: 19.007450367178777 dB, Avg_SSIM: 0.863459364558586
+[2024-05-11 07:20:42.432683] test start with new-architecture/net2/snapshots2/DehazeNet_epoch120.pth
+[2024-05-11 07:23:53.987685] test end with new-architecture/net2/snapshots2/DehazeNet_epoch120.pth
+[2024-05-11 07:27:27.612966] Avg_PSNR: 20.032293191821918 dB, Avg_SSIM: 0.8743202170358971
+[2024-05-11 07:27:27.634684] test start with new-architecture/net2/snapshots2/DehazeNet_epoch121.pth
+[2024-05-11 07:30:39.175538] test end with new-architecture/net2/snapshots2/DehazeNet_epoch121.pth
+[2024-05-11 07:34:14.053482] Avg_PSNR: 19.68876593019974 dB, Avg_SSIM: 0.8747366545457926
+[2024-05-11 07:34:14.072037] test start with new-architecture/net2/snapshots2/DehazeNet_epoch122.pth
+[2024-05-11 07:37:25.688857] test end with new-architecture/net2/snapshots2/DehazeNet_epoch122.pth
+[2024-05-11 07:40:58.661093] Avg_PSNR: 19.980530658995832 dB, Avg_SSIM: 0.876161177621837
+[2024-05-11 07:40:58.679448] test start with new-architecture/net2/snapshots2/DehazeNet_epoch123.pth
+[2024-05-11 07:44:10.031865] test end with new-architecture/net2/snapshots2/DehazeNet_epoch123.pth
+[2024-05-11 07:47:43.665959] Avg_PSNR: 19.886894028240125 dB, Avg_SSIM: 0.8765888599484474
+[2024-05-11 07:47:43.688439] test start with new-architecture/net2/snapshots2/DehazeNet_epoch124.pth
+[2024-05-11 07:50:55.155468] test end with new-architecture/net2/snapshots2/DehazeNet_epoch124.pth
+[2024-05-11 07:54:28.785670] Avg_PSNR: 19.78931097174538 dB, Avg_SSIM: 0.8763001690152566
+[2024-05-11 07:54:28.804129] test start with new-architecture/net2/snapshots2/DehazeNet_epoch125.pth
+[2024-05-11 07:57:40.164404] test end with new-architecture/net2/snapshots2/DehazeNet_epoch125.pth
+[2024-05-11 08:01:13.283544] Avg_PSNR: 19.985103372201742 dB, Avg_SSIM: 0.8759683611473269
+[2024-05-11 08:01:13.302601] test start with new-architecture/net2/snapshots2/DehazeNet_epoch126.pth
+[2024-05-11 08:04:24.745038] test end with new-architecture/net2/snapshots2/DehazeNet_epoch126.pth
+[2024-05-11 08:07:58.493764] Avg_PSNR: 19.750869866486862 dB, Avg_SSIM: 0.8761714435331263
+[2024-05-11 08:07:58.515254] test start with new-architecture/net2/snapshots2/DehazeNet_epoch127.pth
+[2024-05-11 08:11:09.870475] test end with new-architecture/net2/snapshots2/DehazeNet_epoch127.pth
+[2024-05-11 08:14:43.437727] Avg_PSNR: 19.83863271774047 dB, Avg_SSIM: 0.8768084728248757
+[2024-05-11 08:14:43.460633] test start with new-architecture/net2/snapshots2/DehazeNet_epoch128.pth
+[2024-05-11 08:17:55.008637] test end with new-architecture/net2/snapshots2/DehazeNet_epoch128.pth
+[2024-05-11 08:21:27.953647] Avg_PSNR: 20.06153093656061 dB, Avg_SSIM: 0.8745408934448193
+[2024-05-11 08:21:27.971316] test start with new-architecture/net2/snapshots2/DehazeNet_epoch129.pth
+[2024-05-11 08:24:39.656797] test end with new-architecture/net2/snapshots2/DehazeNet_epoch129.pth
+[2024-05-11 08:28:13.251757] Avg_PSNR: 19.746036777046726 dB, Avg_SSIM: 0.8752460118014243
+[2024-05-11 08:28:13.270175] test start with new-architecture/net2/snapshots2/DehazeNet_epoch130.pth
+[2024-05-11 08:31:24.521245] test end with new-architecture/net2/snapshots2/DehazeNet_epoch130.pth
+[2024-05-11 08:34:58.151366] Avg_PSNR: 20.02471138016274 dB, Avg_SSIM: 0.8755083355199261
+[2024-05-11 08:34:58.171018] test start with new-architecture/net2/snapshots2/DehazeNet_epoch131.pth
+[2024-05-11 08:38:09.865490] test end with new-architecture/net2/snapshots2/DehazeNet_epoch131.pth
+[2024-05-11 08:41:42.909823] Avg_PSNR: 19.890588475397568 dB, Avg_SSIM: 0.8770430090328819
+[2024-05-11 08:41:42.932982] test start with new-architecture/net2/snapshots2/DehazeNet_epoch132.pth
+[2024-05-11 08:44:54.687023] test end with new-architecture/net2/snapshots2/DehazeNet_epoch132.pth
+[2024-05-11 08:48:28.465639] Avg_PSNR: 19.98068291602485 dB, Avg_SSIM: 0.8769841698675642
+[2024-05-11 08:48:28.487214] test start with new-architecture/net2/snapshots2/DehazeNet_epoch133.pth
+[2024-05-11 08:51:40.041868] test end with new-architecture/net2/snapshots2/DehazeNet_epoch133.pth
+[2024-05-11 08:55:13.734079] Avg_PSNR: 19.871093935776454 dB, Avg_SSIM: 0.877236028449382
+[2024-05-11 08:55:13.752300] test start with new-architecture/net2/snapshots2/DehazeNet_epoch134.pth
+[2024-05-11 08:58:25.311576] test end with new-architecture/net2/snapshots2/DehazeNet_epoch134.pth
+[2024-05-11 09:01:58.945598] Avg_PSNR: 20.074949019021766 dB, Avg_SSIM: 0.8750561084915058
+[2024-05-11 09:01:58.963901] test start with new-architecture/net2/snapshots2/DehazeNet_epoch135.pth
+[2024-05-11 09:05:10.995555] test end with new-architecture/net2/snapshots2/DehazeNet_epoch135.pth
+[2024-05-11 09:08:45.241062] Avg_PSNR: 20.0693319756272 dB, Avg_SSIM: 0.8744152584704767
+[2024-05-11 09:08:45.259608] test start with new-architecture/net2/snapshots2/DehazeNet_epoch136.pth
+[2024-05-11 09:11:56.732508] test end with new-architecture/net2/snapshots2/DehazeNet_epoch136.pth
+[2024-05-11 09:15:30.866187] Avg_PSNR: 19.686840061714967 dB, Avg_SSIM: 0.8750819869242576
+[2024-05-11 09:15:30.881329] test start with new-architecture/net2/snapshots2/DehazeNet_epoch137.pth
+[2024-05-11 09:18:42.319099] test end with new-architecture/net2/snapshots2/DehazeNet_epoch137.pth
+[2024-05-11 09:22:15.609910] Avg_PSNR: 20.063373421186125 dB, Avg_SSIM: 0.8741785657529078
+[2024-05-11 09:22:15.627510] test start with new-architecture/net2/snapshots2/DehazeNet_epoch138.pth
+[2024-05-11 09:25:27.583341] test end with new-architecture/net2/snapshots2/DehazeNet_epoch138.pth
+[2024-05-11 09:29:48.009959] Avg_PSNR: 19.89960177490049 dB, Avg_SSIM: 0.8767845596262279
+[2024-05-11 09:29:48.032237] test start with new-architecture/net2/snapshots2/DehazeNet_epoch139.pth
+[2024-05-11 09:33:07.419275] test end with new-architecture/net2/snapshots2/DehazeNet_epoch139.pth
+[2024-05-11 09:37:27.121112] Avg_PSNR: 20.01991496763544 dB, Avg_SSIM: 0.8762020917386363
+[2024-05-11 09:37:27.146337] test start with new-architecture/net2/snapshots2/DehazeNet_epoch140.pth
+[2024-05-11 09:40:46.367698] test end with new-architecture/net2/snapshots2/DehazeNet_epoch140.pth
+[2024-05-11 09:45:05.210263] Avg_PSNR: 20.062986221433373 dB, Avg_SSIM: 0.8742759970177328
+[2024-05-11 09:45:05.231455] test start with new-architecture/net2/snapshots2/DehazeNet_epoch141.pth
+[2024-05-11 09:48:23.945095] test end with new-architecture/net2/snapshots2/DehazeNet_epoch141.pth
+[2024-05-11 09:52:44.158923] Avg_PSNR: 19.95760793351796 dB, Avg_SSIM: 0.877153247396085
+[2024-05-11 09:52:44.177891] test start with new-architecture/net2/snapshots2/DehazeNet_epoch142.pth
+[2024-05-11 09:55:58.465940] test end with new-architecture/net2/snapshots2/DehazeNet_epoch142.pth
+[2024-05-11 10:00:19.400948] Avg_PSNR: 19.93667612191098 dB, Avg_SSIM: 0.8768837345604421
+[2024-05-11 10:00:19.422542] test start with new-architecture/net2/snapshots2/DehazeNet_epoch143.pth
+[2024-05-11 10:03:47.646733] test end with new-architecture/net2/snapshots2/DehazeNet_epoch143.pth
+[2024-05-11 10:08:37.436583] Avg_PSNR: 19.93394694928136 dB, Avg_SSIM: 0.8762360707884354
+[2024-05-11 10:08:37.455715] test start with new-architecture/net2/snapshots2/DehazeNet_epoch144.pth
+[2024-05-11 10:12:05.275278] test end with new-architecture/net2/snapshots2/DehazeNet_epoch144.pth
+[2024-05-11 10:16:52.960915] Avg_PSNR: 19.9891061976485 dB, Avg_SSIM: 0.8771839568359767
+[2024-05-11 10:16:52.983546] test start with new-architecture/net2/snapshots2/DehazeNet_epoch145.pth
+[2024-05-11 10:20:21.620720] test end with new-architecture/net2/snapshots2/DehazeNet_epoch145.pth
+[2024-05-11 10:25:11.648464] Avg_PSNR: 20.077296141005128 dB, Avg_SSIM: 0.8751980318709904
+[2024-05-11 10:25:11.672971] test start with new-architecture/net2/snapshots2/DehazeNet_epoch146.pth
+[2024-05-11 10:28:40.452444] test end with new-architecture/net2/snapshots2/DehazeNet_epoch146.pth
+[2024-05-11 10:33:26.166158] Avg_PSNR: 19.936699597237983 dB, Avg_SSIM: 0.8769296806190124
+[2024-05-11 10:33:26.190272] test start with new-architecture/net2/snapshots2/DehazeNet_epoch147.pth
+[2024-05-11 10:36:54.011417] test end with new-architecture/net2/snapshots2/DehazeNet_epoch147.pth
+[2024-05-11 10:41:43.293717] Avg_PSNR: 20.015749638053645 dB, Avg_SSIM: 0.8763863856035616
+[2024-05-11 10:41:43.313890] test start with new-architecture/net2/snapshots2/DehazeNet_epoch148.pth
+[2024-05-11 10:45:12.599803] test end with new-architecture/net2/snapshots2/DehazeNet_epoch148.pth
+[2024-05-11 10:49:59.128415] Avg_PSNR: 19.756383201893385 dB, Avg_SSIM: 0.8761921275969782
+[2024-05-11 10:49:59.150930] test start with new-architecture/net2/snapshots2/DehazeNet_epoch149.pth
+[2024-05-11 10:53:27.430436] test end with new-architecture/net2/snapshots2/DehazeNet_epoch149.pth
+[2024-05-11 10:58:15.295268] Avg_PSNR: 19.942090449476233 dB, Avg_SSIM: 0.8771636364518821
+[2024-05-11 10:58:15.316754] test start with new-architecture/net2/snapshots2/DehazeNet_epoch150.pth
+[2024-05-11 11:01:38.927088] test end with new-architecture/net2/snapshots2/DehazeNet_epoch150.pth
+[2024-05-11 11:05:21.476878] Avg_PSNR: 19.633301248314584 dB, Avg_SSIM: 0.8733005885403726
+[2024-05-11 11:05:21.498699] test start with new-architecture/net2/snapshots2/DehazeNet_epoch151.pth
+[2024-05-11 11:08:44.765106] test end with new-architecture/net2/snapshots2/DehazeNet_epoch151.pth
+[2024-05-11 11:13:25.968435] Avg_PSNR: 19.963573717042728 dB, Avg_SSIM: 0.87573147949953
+[2024-05-11 11:13:25.997231] test start with new-architecture/net2/snapshots2/DehazeNet_epoch152.pth
+[2024-05-11 11:16:52.223717] test end with new-architecture/net2/snapshots2/DehazeNet_epoch152.pth
+[2024-05-11 11:21:10.648676] Avg_PSNR: 19.992753161192752 dB, Avg_SSIM: 0.8769786787673051
+[2024-05-11 11:21:10.669587] test start with new-architecture/net2/snapshots2/DehazeNet_epoch153.pth
+[2024-05-11 11:24:33.104150] test end with new-architecture/net2/snapshots2/DehazeNet_epoch153.pth
+[2024-05-11 11:28:59.559569] Avg_PSNR: 20.028613815162608 dB, Avg_SSIM: 0.8756774156123012
+[2024-05-11 11:28:59.579195] test start with new-architecture/net2/snapshots2/DehazeNet_epoch154.pth
+[2024-05-11 11:32:19.685952] test end with new-architecture/net2/snapshots2/DehazeNet_epoch154.pth
+[2024-05-11 11:36:42.559420] Avg_PSNR: 19.734218604910428 dB, Avg_SSIM: 0.8770288400309767
+[2024-05-11 11:36:42.582623] test start with new-architecture/net2/snapshots2/DehazeNet_epoch155.pth
+[2024-05-11 11:40:04.856990] test end with new-architecture/net2/snapshots2/DehazeNet_epoch155.pth
+[2024-05-11 11:44:32.849760] Avg_PSNR: 20.02743183071136 dB, Avg_SSIM: 0.8705659424634566
+[2024-05-11 11:44:32.872644] test start with new-architecture/net2/snapshots2/DehazeNet_epoch156.pth
+[2024-05-11 11:47:52.988902] test end with new-architecture/net2/snapshots2/DehazeNet_epoch156.pth
+[2024-05-11 11:52:17.222943] Avg_PSNR: 20.042299949979522 dB, Avg_SSIM: 0.8767946660021775
+[2024-05-11 11:52:17.242165] test start with new-architecture/net2/snapshots2/DehazeNet_epoch157.pth
+[2024-05-11 11:55:37.198218] test end with new-architecture/net2/snapshots2/DehazeNet_epoch157.pth
+[2024-05-11 11:59:54.847061] Avg_PSNR: 19.999523176992994 dB, Avg_SSIM: 0.873166319965402
+[2024-05-11 11:59:54.867263] test start with new-architecture/net2/snapshots2/DehazeNet_epoch158.pth
+[2024-05-11 12:03:19.784667] test end with new-architecture/net2/snapshots2/DehazeNet_epoch158.pth
+[2024-05-11 12:07:37.132574] Avg_PSNR: 19.92429957736071 dB, Avg_SSIM: 0.876647305105002
+[2024-05-11 12:07:37.153762] test start with new-architecture/net2/snapshots2/DehazeNet_epoch159.pth
+[2024-05-11 12:10:58.469187] test end with new-architecture/net2/snapshots2/DehazeNet_epoch159.pth
+[2024-05-11 12:15:19.043753] Avg_PSNR: 19.894728882183355 dB, Avg_SSIM: 0.8779927259407349
+[2024-05-11 12:15:19.063628] test start with new-architecture/net2/snapshots2/DehazeNet_epoch160.pth
+[2024-05-11 12:18:43.151799] test end with new-architecture/net2/snapshots2/DehazeNet_epoch160.pth
+[2024-05-11 12:23:01.384205] Avg_PSNR: 19.784949325280085 dB, Avg_SSIM: 0.8776750120372524
+[2024-05-11 12:23:01.406824] test start with new-architecture/net2/snapshots2/DehazeNet_epoch161.pth
+[2024-05-11 12:26:22.254809] test end with new-architecture/net2/snapshots2/DehazeNet_epoch161.pth
+[2024-05-11 12:30:43.359693] Avg_PSNR: 20.00618108785412 dB, Avg_SSIM: 0.8772980319972673
+[2024-05-11 12:30:43.380140] test start with new-architecture/net2/snapshots2/DehazeNet_epoch162.pth
+[2024-05-11 12:34:06.696097] test end with new-architecture/net2/snapshots2/DehazeNet_epoch162.pth
+[2024-05-11 12:38:25.907832] Avg_PSNR: 19.846196239059026 dB, Avg_SSIM: 0.8773102161784139
+[2024-05-11 12:38:25.931514] test start with new-architecture/net2/snapshots2/DehazeNet_epoch163.pth
+[2024-05-11 12:41:49.009477] test end with new-architecture/net2/snapshots2/DehazeNet_epoch163.pth
+[2024-05-11 12:46:04.018960] Avg_PSNR: 19.61509300781921 dB, Avg_SSIM: 0.8732270561941229
+[2024-05-11 12:46:04.042164] test start with new-architecture/net2/snapshots2/DehazeNet_epoch164.pth
+[2024-05-11 12:49:52.344562] test end with new-architecture/net2/snapshots2/DehazeNet_epoch164.pth
+[2024-05-11 12:54:03.590373] Avg_PSNR: 20.023745446241897 dB, Avg_SSIM: 0.8710265890603545
+[2024-05-11 12:54:03.612077] test start with new-architecture/net2/snapshots2/DehazeNet_epoch165.pth
+[2024-05-11 12:57:26.995213] test end with new-architecture/net2/snapshots2/DehazeNet_epoch165.pth
+[2024-05-11 13:01:38.769364] Avg_PSNR: 20.05641140489526 dB, Avg_SSIM: 0.8753537004214201
+[2024-05-11 13:01:38.790351] test start with new-architecture/net2/snapshots2/DehazeNet_epoch166.pth
+[2024-05-11 13:05:01.119775] test end with new-architecture/net2/snapshots2/DehazeNet_epoch166.pth
+[2024-05-11 13:09:20.444803] Avg_PSNR: 19.978788157947996 dB, Avg_SSIM: 0.877614704210705
+[2024-05-11 13:09:20.465597] test start with new-architecture/net2/snapshots2/DehazeNet_epoch167.pth
+[2024-05-11 13:12:43.158036] test end with new-architecture/net2/snapshots2/DehazeNet_epoch167.pth
+[2024-05-11 13:17:01.103373] Avg_PSNR: 20.0597605322855 dB, Avg_SSIM: 0.8766330404057427
+[2024-05-11 13:17:01.123090] test start with new-architecture/net2/snapshots2/DehazeNet_epoch168.pth
+[2024-05-11 13:20:24.289556] test end with new-architecture/net2/snapshots2/DehazeNet_epoch168.pth
+[2024-05-11 13:24:43.968063] Avg_PSNR: 19.9421834017739 dB, Avg_SSIM: 0.8781609054444909
+[2024-05-11 13:24:43.988649] test start with new-architecture/net2/snapshots2/DehazeNet_epoch169.pth
+[2024-05-11 13:28:08.433928] test end with new-architecture/net2/snapshots2/DehazeNet_epoch169.pth
+[2024-05-11 13:32:27.339334] Avg_PSNR: 19.993920546189226 dB, Avg_SSIM: 0.8776491834804112
+[2024-05-11 13:32:27.359941] test start with new-architecture/net2/snapshots2/DehazeNet_epoch170.pth
+[2024-05-11 13:35:49.860328] test end with new-architecture/net2/snapshots2/DehazeNet_epoch170.pth
+[2024-05-11 13:40:22.221724] Avg_PSNR: 19.70742032718621 dB, Avg_SSIM: 0.8742591733036538
+[2024-05-11 13:40:22.246913] test start with new-architecture/net2/snapshots2/DehazeNet_epoch171.pth
+[2024-05-11 13:43:53.082895] test end with new-architecture/net2/snapshots2/DehazeNet_epoch171.pth
+[2024-05-11 13:48:33.074996] Avg_PSNR: 19.734212375511667 dB, Avg_SSIM: 0.8773487696809823
+[2024-05-11 13:48:33.095643] test start with new-architecture/net2/snapshots2/DehazeNet_epoch172.pth
+[2024-05-11 13:52:05.181062] test end with new-architecture/net2/snapshots2/DehazeNet_epoch172.pth
+[2024-05-11 13:56:53.328744] Avg_PSNR: 19.226892625464625 dB, Avg_SSIM: 0.8682809749238687
+[2024-05-11 13:56:53.348742] test start with new-architecture/net2/snapshots2/DehazeNet_epoch173.pth
+[2024-05-11 14:00:24.485072] test end with new-architecture/net2/snapshots2/DehazeNet_epoch173.pth
+[2024-05-11 14:05:08.140490] Avg_PSNR: 19.746672605878505 dB, Avg_SSIM: 0.8778186702120101
+[2024-05-11 14:05:08.151060] test start with new-architecture/net2/snapshots2/DehazeNet_epoch174.pth
+[2024-05-11 14:08:40.062661] test end with new-architecture/net2/snapshots2/DehazeNet_epoch174.pth
+[2024-05-11 14:13:21.955492] Avg_PSNR: 19.793419009532766 dB, Avg_SSIM: 0.8751083963829186
+[2024-05-11 14:13:21.977326] test start with new-architecture/net2/snapshots2/DehazeNet_epoch175.pth
+[2024-05-11 14:16:53.116920] test end with new-architecture/net2/snapshots2/DehazeNet_epoch175.pth
+[2024-05-11 14:20:55.437380] Avg_PSNR: 20.021373273432943 dB, Avg_SSIM: 0.8771061674381503
+[2024-05-11 14:20:55.459417] test start with new-architecture/net2/snapshots2/DehazeNet_epoch176.pth
+[2024-05-11 14:24:10.486401] test end with new-architecture/net2/snapshots2/DehazeNet_epoch176.pth
+[2024-05-11 14:27:52.521549] Avg_PSNR: 20.00830985417894 dB, Avg_SSIM: 0.8777699820317201
+[2024-05-11 14:27:52.540896] test start with new-architecture/net2/snapshots2/DehazeNet_epoch177.pth
+[2024-05-11 14:31:08.829760] test end with new-architecture/net2/snapshots2/DehazeNet_epoch177.pth
+[2024-05-11 14:35:54.408103] Avg_PSNR: 20.05761468801609 dB, Avg_SSIM: 0.8758865442622619
+[2024-05-11 14:35:54.431934] test start with new-architecture/net2/snapshots2/DehazeNet_epoch178.pth
+[2024-05-11 14:39:24.336313] test end with new-architecture/net2/snapshots2/DehazeNet_epoch178.pth
+[2024-05-11 14:44:09.265812] Avg_PSNR: 20.05598154182485 dB, Avg_SSIM: 0.8776531990626208
+[2024-05-11 14:44:09.289151] test start with new-architecture/net2/snapshots2/DehazeNet_epoch179.pth
+[2024-05-11 14:47:39.407932] test end with new-architecture/net2/snapshots2/DehazeNet_epoch179.pth
+[2024-05-11 14:52:26.744975] Avg_PSNR: 20.08320326557269 dB, Avg_SSIM: 0.8759703760685306
+[2024-05-11 14:52:26.767347] test start with new-architecture/net2/snapshots2/DehazeNet_epoch180.pth
+[2024-05-11 14:55:50.778565] test end with new-architecture/net2/snapshots2/DehazeNet_epoch180.pth
+[2024-05-11 15:00:18.054741] Avg_PSNR: 19.7429322164326 dB, Avg_SSIM: 0.8778874995053391
+[2024-05-11 15:00:18.076553] test start with new-architecture/net2/snapshots2/DehazeNet_epoch181.pth
+[2024-05-11 15:03:34.179129] test end with new-architecture/net2/snapshots2/DehazeNet_epoch181.pth
+[2024-05-11 15:07:09.078584] Avg_PSNR: 19.786195547429582 dB, Avg_SSIM: 0.8786241374400585
+[2024-05-11 15:07:09.095906] test start with new-architecture/net2/snapshots2/DehazeNet_epoch182.pth
+[2024-05-11 15:10:22.999636] test end with new-architecture/net2/snapshots2/DehazeNet_epoch182.pth
+[2024-05-11 15:13:56.452053] Avg_PSNR: 19.987028588857964 dB, Avg_SSIM: 0.8773415625870487
+[2024-05-11 15:13:56.472194] test start with new-architecture/net2/snapshots2/DehazeNet_epoch183.pth
+[2024-05-11 15:17:16.442517] test end with new-architecture/net2/snapshots2/DehazeNet_epoch183.pth
+[2024-05-11 15:21:29.669155] Avg_PSNR: 20.011216745177737 dB, Avg_SSIM: 0.8783024978085174
+[2024-05-11 15:21:29.691505] test start with new-architecture/net2/snapshots2/DehazeNet_epoch184.pth
+[2024-05-11 15:24:49.776649] test end with new-architecture/net2/snapshots2/DehazeNet_epoch184.pth
+[2024-05-11 15:29:10.871021] Avg_PSNR: 19.932184506545948 dB, Avg_SSIM: 0.8790648778743368
+[2024-05-11 15:29:10.889319] test start with new-architecture/net2/snapshots2/DehazeNet_epoch185.pth
+[2024-05-11 15:32:33.805912] test end with new-architecture/net2/snapshots2/DehazeNet_epoch185.pth
+[2024-05-11 15:36:45.960780] Avg_PSNR: 19.869965565037408 dB, Avg_SSIM: 0.8791397378002656
+[2024-05-11 15:36:45.979474] test start with new-architecture/net2/snapshots2/DehazeNet_epoch186.pth
+[2024-05-11 15:40:07.441402] test end with new-architecture/net2/snapshots2/DehazeNet_epoch186.pth
+[2024-05-11 15:44:24.327788] Avg_PSNR: 19.539855463622462 dB, Avg_SSIM: 0.8748906873670885
+[2024-05-11 15:44:24.347074] test start with new-architecture/net2/snapshots2/DehazeNet_epoch187.pth
+[2024-05-11 15:47:45.818167] test end with new-architecture/net2/snapshots2/DehazeNet_epoch187.pth
+[2024-05-11 15:52:04.988455] Avg_PSNR: 19.954864019494607 dB, Avg_SSIM: 0.8783591258780247
+[2024-05-11 15:52:05.008501] test start with new-architecture/net2/snapshots2/DehazeNet_epoch188.pth
+[2024-05-11 15:55:26.851732] test end with new-architecture/net2/snapshots2/DehazeNet_epoch188.pth
+[2024-05-11 15:59:45.236075] Avg_PSNR: 19.83281938244714 dB, Avg_SSIM: 0.8777704287982456
+[2024-05-11 15:59:45.255126] test start with new-architecture/net2/snapshots2/DehazeNet_epoch189.pth
+[2024-05-11 16:03:07.533900] test end with new-architecture/net2/snapshots2/DehazeNet_epoch189.pth
+[2024-05-11 16:07:34.056109] Avg_PSNR: 20.085669112343584 dB, Avg_SSIM: 0.8751707498969218
+[2024-05-11 16:07:34.079177] test start with new-architecture/net2/snapshots2/DehazeNet_epoch190.pth
+[2024-05-11 16:10:56.417703] test end with new-architecture/net2/snapshots2/DehazeNet_epoch190.pth
+[2024-05-11 16:15:13.792933] Avg_PSNR: 20.089561501289126 dB, Avg_SSIM: 0.8765916577892806
+[2024-05-11 16:15:13.813247] test start with new-architecture/net2/snapshots2/DehazeNet_epoch191.pth
+[2024-05-11 16:18:35.670392] test end with new-architecture/net2/snapshots2/DehazeNet_epoch191.pth
+[2024-05-11 16:23:43.221929] Avg_PSNR: 19.871371598841346 dB, Avg_SSIM: 0.8777239628436765
+[2024-05-11 16:23:43.246342] test start with new-architecture/net2/snapshots2/DehazeNet_epoch192.pth
+[2024-05-11 16:27:05.880174] test end with new-architecture/net2/snapshots2/DehazeNet_epoch192.pth
+[2024-05-11 16:31:33.872142] Avg_PSNR: 19.598673832539063 dB, Avg_SSIM: 0.8774029245353532
+[2024-05-11 16:31:33.893724] test start with new-architecture/net2/snapshots2/DehazeNet_epoch193.pth
+[2024-05-11 16:35:05.562846] test end with new-architecture/net2/snapshots2/DehazeNet_epoch193.pth
+[2024-05-11 16:39:57.478795] Avg_PSNR: 19.844586201131172 dB, Avg_SSIM: 0.8792482590071159
+[2024-05-11 16:39:57.501387] test start with new-architecture/net2/snapshots2/DehazeNet_epoch194.pth
+[2024-05-11 16:43:18.802490] test end with new-architecture/net2/snapshots2/DehazeNet_epoch194.pth
+[2024-05-11 16:47:43.100524] Avg_PSNR: 20.037043987437453 dB, Avg_SSIM: 0.877934853050382
+[2024-05-11 16:47:43.122370] test start with new-architecture/net2/snapshots2/DehazeNet_epoch195.pth
+[2024-05-11 16:51:01.170799] test end with new-architecture/net2/snapshots2/DehazeNet_epoch195.pth
+[2024-05-11 16:55:20.804117] Avg_PSNR: 20.0333672769427 dB, Avg_SSIM: 0.8788090754087944
+[2024-05-11 16:55:20.824578] test start with new-architecture/net2/snapshots2/DehazeNet_epoch196.pth
+[2024-05-11 16:58:54.204650] test end with new-architecture/net2/snapshots2/DehazeNet_epoch196.pth
+[2024-05-11 17:03:48.003941] Avg_PSNR: 20.085723420991954 dB, Avg_SSIM: 0.8763440634934813
+[2024-05-11 17:03:48.026783] test start with new-architecture/net2/snapshots2/DehazeNet_epoch197.pth
+[2024-05-11 17:07:12.883530] test end with new-architecture/net2/snapshots2/DehazeNet_epoch197.pth
+[2024-05-11 17:11:34.764092] Avg_PSNR: 19.721346776025392 dB, Avg_SSIM: 0.8778402663422012
+[2024-05-11 17:11:34.786656] test start with new-architecture/net2/snapshots2/DehazeNet_epoch198.pth
+[2024-05-11 17:14:56.729915] test end with new-architecture/net2/snapshots2/DehazeNet_epoch198.pth
+[2024-05-11 17:19:14.262837] Avg_PSNR: 19.98204994558833 dB, Avg_SSIM: 0.8793381537227243
+[2024-05-11 17:19:14.283402] test start with new-architecture/net2/snapshots2/DehazeNet_epoch199.pth
+[2024-05-11 17:22:34.225713] test end with new-architecture/net2/snapshots2/DehazeNet_epoch199.pth
+[2024-05-11 17:26:57.281211] Avg_PSNR: 19.97730204589923 dB, Avg_SSIM: 0.8790201270091371
